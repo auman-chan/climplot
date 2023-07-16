@@ -1,0 +1,51 @@
+#' @docType data
+#' @name plotdata
+#'
+#' @title An example of data format for "clim_plot"
+#' @description  A dataset containing the abbreviation, coordinates and altitude
+#' of different locations, as well as the values of
+#' @details 18 columns of this dataset: "No", "Location", "Lon", "Lat", "Altitude"
+#'are information of locations, "Type" are the labels of climate data,
+#'and the rest of columns with colnames "1-12" are the climate data values
+#'of different months.
+#'
+#'
+#' @format A data frame with 30 rows and 18 variables:
+#' \describe{
+#'     \item{No}{Serial number of the locations.}
+#'     \item{Location}{Abbreviation of the locations.}
+#'     \item{Lon}{Longitude of the locations in decimal digit.}
+#'     \item{Lat}{Latitude of the locations in decimal digit.}
+#'     \item{Altitude}{Altitude of the locations.}
+#'     \item{Type}{Labels of the climate data,including annual average
+#'     precipitation,annual average minimum temperature and annual average
+#'     maximum temperature.}
+#'     \item{1}{Values of specific type of climate data,the names of columns
+#'     represent monthly values from January to December.}
+#'     \item{2}{Values of specific type of climate data,the names of columns
+#'     represent monthly values from January to December.}
+#'     \item{3}{Values of specific type of climate data,the names of columns
+#'     represent monthly values from January to December.}
+#'     \item{4}{Values of specific type of climate data,the names of columns
+#'     represent monthly values from January to December.}
+#'     \item{5}{Values of specific type of climate data,the names of columns
+#'     represent monthly values from January to December.}
+#'    \item{6}{Values of specific type of climate data,the names of columns
+#'    represent monthly values from January to December.}
+#'    \item{7}{Values of specific type of climate data,the names of columns
+#'    represent monthly values from January to December.}
+#'    \item{8}{Values of specific type of climate data,the names of columns
+#'     represent monthly values from January to December.}
+#'    \item{9}{Values of specific type of climate data,the names of columns
+#'     represent monthly values from January to December.}
+#'    \item{10}{Values of specific type of climate data,the names of columns
+#'    represent monthly values from January to December.}
+#'    \item{11}{Values of specific type of climate data,the names of columns
+#'    represent monthly values from January to December.}
+#'    \item{12}{Values of specific type of climate data,the names of columns
+#'    represent monthly values from January to December.}
+#'     ...
+#'     }
+#' @keywords internal
+#' @source \url{NULL}
+NULL
