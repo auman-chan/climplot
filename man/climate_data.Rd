@@ -4,7 +4,7 @@
 \alias{clim_extract}
 \title{Acquire climate data for climatic diagram}
 \usage{
-clim_extract(file)
+clim_extract(file,mintemp_path,maxtemp_path,prec_path)
 }
 \arguments{
 \item{file}{A data.frame(see details in dataset "locdata") with the following 5 columns:

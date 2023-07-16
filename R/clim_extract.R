@@ -1,6 +1,6 @@
 #' @rdname climate_data
 #' @title Acquire climate data for climatic diagram
-#' @usage clim_extract(file)
+#' @usage clim_extract(file,mintemp_path,maxtemp_path,prec_path)
 #' @description \code{clim_extract} acquires climate data which are esstential for
 #'Walter & Lieth climatic diagram plotting according to the provided coordinate of
 #'the location.

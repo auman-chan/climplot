@@ -2,6 +2,8 @@
 
 export(clim_extract)
 export(clim_plot)
+import(graphics)
+import(stats)
 importFrom(dplyr,arrange)
 importFrom(dplyr,as_tibble)
 importFrom(dplyr,desc)

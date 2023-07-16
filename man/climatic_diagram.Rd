@@ -10,7 +10,7 @@ ShowForst=FALSE,shem=FALSE,p3line=FALSE,p50line=FALSE,extremeT=FALSE,
 margen=c(4,4,5,4),per=NA,...)
 }
 \arguments{
-\item{data}{A data.frame(see details in dataset \code{plotdata})
+\item{data}{A data.frame(see details in the dataset \code{plotdata})
 with the following 18 columns:
     \itemize{
    \item \code{No}: Serial number of the locations.

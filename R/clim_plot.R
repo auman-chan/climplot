@@ -92,6 +92,8 @@
 #'
 #' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 #'
+#' @import graphics
+#' @import stats
 #' @keywords internal
 #' @export
 
@@ -189,8 +191,8 @@ clim_plot <- function(data,     #dataset
   if(lmin==-1.5) lmin=0
 
 
-  axis(2,((lmin/10):(ymax/10))*10,label=labT,col.axis=tcol)#side=2,left axis
-  axis(4,((lmin/10):(ymax/10))*10,label=labP,col.axis=pcol)#side=2,right axis
+  axis(2,((lmin/10):(ymax/10))*10,labels=labT,col.axis=tcol)#side=2,left axis
+  axis(4,((lmin/10):(ymax/10))*10,labels=labP,col.axis=pcol)#side=2,right axis
 
   #display mode of ylab
   if(ylabel){

@@ -1,9 +1,13 @@
 library(devtools)
+library(testthat)
 document()
 load_all()
 ?clim_plot()
 
 use_package("climplot")
+
+use_testthat()
+use_test("climplot")
 use_readme_rmd()
 rmarkdown::render("README.Rmd")
 
