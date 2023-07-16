@@ -11,8 +11,8 @@
 #'The RasterLayer are computed by Worldclim Historical monthly weather data in 2010-2019
 #'(Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html), containing annual average precipitation, annual average minimum
 #' temperature and annual average max temperature of 12 months in 2010-2019.
-#'They can output from original climate data mentioned above with the calculation
-#'of function \code(clim_cal), or download directly from the supplementary material.
+#'They can output from original climate data mentioned above with running the code
+#'in script \code{other/clim_cal.R}, or download directly from the supplementary material.
 #'
 #' @param file
 #'     A data.frame(see details in dataset "locdata") with the following 5 columns:

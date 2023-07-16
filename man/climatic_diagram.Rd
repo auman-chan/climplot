@@ -20,7 +20,9 @@ with the following 18 columns:
     \item \code{lat}: Latitude of the locations in decimal digit
 (South latitude are represented by negative numbers).
     \item \code{altitude}: Altitude of the locations.
-    \item \code{type}: Labels of the climate data among precipitation and temperature
+    \item \code{type}: Labels of the climate data,including annual average
+    precipitation,annual average minimum temperature and annual average
+    maximum temperature.
     \item \code{1-12}: Values of specific type of climate data,the names of columns
 represent monthly values from January to December.
 }

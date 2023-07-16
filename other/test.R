@@ -16,6 +16,7 @@ a <- "D:/climplot/mean_mintemp"
 b <- "D:/climplot/mean_maxtemp"
 c <- "D:/climplot/mean_prec"
 lc <- clim_extract(locdata,a,b,c)
+plotdata <- lc
 test <- subset(lc,No==10)
 clim_plot(data=test,ylabel = T,
           ylab1="Temperature(\U{00B0}C)",

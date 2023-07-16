@@ -1,8 +1,8 @@
-#The code for climatic data calculation.
+#The code for climatic data calculation with Worldclim data.
 #Because of the calculation required a lot of memory usage and time,lack of generality.
-#So we haven't import them into package as a function
+#So we haven't import them into package as a function.
 
-#imp_path: path of import Worldclim Worldclim Historical monthly weather data,
+#imp_path: path of import Worldclim Historical monthly weather data,
 #every kind of dataset(mintemp,maxtemp,prec)should be saparated in different folders
 
 #exp_path: path of export arranged data in format of .tif
