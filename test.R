@@ -4,7 +4,8 @@ load_all()
 ?clim_plot()
 
 use_package("climplot")
-git
+use_readme_rmd()
+rmarkdown::render("README.Rmd")
 
 data("locdata")
 a <- "D:/climplot/mean_mintemp"
