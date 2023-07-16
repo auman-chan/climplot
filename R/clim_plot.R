@@ -22,7 +22,9 @@
 #'     \item \code{lat}: Latitude of the locations in decimal digit
 #'(South latitude are represented by negative numbers).
 #'     \item \code{altitude}: Altitude of the locations.
-#'     \item \code{type}: Labels of the climate data among precipitation and temperature
+#'     \item \code{type}: Labels of the climate data,including annual average
+#'     precipitation,annual average minimum temperature and annual average
+#'     maximum temperature.
 #'     \item \code{1-12}: Values of specific type of climate data,the names of columns
 #'represent monthly values from January to December.
 #'}
@@ -252,11 +254,11 @@ clim_plot <- function(data,     #dataset
     n <- 0 #number of points of wet season polygon
     n2 <- 0 # #number of points of humid season polygon
     gr <- FALSE
-    #When pp of two adjacent months are across the 100mm line
-    #the unit of pp would change(2mm and 20mm)
+    #When prec of two adjacent months are across the 100mm line
+    #the unit of prec would change(2mm and 20mm)
     #the scale of curve would change as well
     if(p2[1]>100) {
-      #pp of first month is more than 100mm
+      #prec of first month is more than 100mm
       n <- n+1
       xp[n] <- x[1]
       yp[n] <- 50
@@ -270,7 +272,7 @@ clim_plot <- function(data,     #dataset
       gr <- TRUE
     }
     else {
-      #pp of first month is less than 100mm
+      #prec of first month is less than 100mm
       n2 <- n2+1
       xl[n2] <- x[1]
       yl[n2] <- p2[1]/2
@@ -280,17 +282,17 @@ clim_plot <- function(data,     #dataset
 
         n <- n+1
         if(p2[i]>100) {
-          #1. two adjacent months with pp more than 100mm
+          #1. two adjacent months with prec more than 100mm
           xp[n] <- x[i]
           yp[n] <- 50 + (p2[i]-100)/20
 
         }
         else {
-          #2. the month with pp less than 100mm but the last month more than 100mm
+          #2. the month with prec less than 100mm but the last month more than 100mm
           xp[n] <- x[i-1] + (100-p2[i-1])/(p2[i]-p2[i-1])
           #x coordinate of turning point of wet season polygon would have scale-change
           yp[n] <- 50 #y coordinate of turning point of wet season polygon,set as position 50(C)
-          n2 <- n2+1 #new turning point of pp curve
+          n2 <- n2+1 #new turning point of prec curve
           xl[n2] <- xp[n]
           yl[n2] <- 50
           n <- n+1 # a NA point to mark the potential end of polygon
@@ -305,7 +307,7 @@ clim_plot <- function(data,     #dataset
       else {
 
         if(p2[i]>100) {
-          #2. the month with pp less than 100mm but the last month more than 100mm
+          #2. the month with prec less than 100mm but the last month more than 100mm
           n <- n+1
           xp[n] <- x[i-1] + (100-p2[i-1])/(p2[i]-p2[i-1])
           yp[n] <- 50
@@ -326,7 +328,7 @@ clim_plot <- function(data,     #dataset
           gr <- TRUE
         }
         else {
-          #4.two adjacent months with pp less than 100mm
+          #4.two adjacent months with prec less than 100mm
           n2 <- n2+1
           xl[n2] <- x[i]
           yl[n2] <- p2[i]/2
@@ -367,7 +369,7 @@ clim_plot <- function(data,     #dataset
     for(i in 1:12) if(dat[4,i]<=0 && dat[3,i]>0) rect(i-1,-1.5,i,0,col=pfcol)
   }
 
-  lines(xl[1:n2],yl[1:n2],col=pcol,lwd=2)#pp curve
+  lines(xl[1:n2],yl[1:n2],col=pcol,lwd=2)#prec curve
   if(p3line) lines(x,yl3)
   lines(x,c(tm[12],tm[1:12],tm[1]),col=tcol,lwd=2)# temp curve
 

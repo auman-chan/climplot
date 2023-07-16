@@ -5,9 +5,14 @@
 #'Walter & Lieth climatic diagram plotting according to the provided coordinate of
 #'the location.
 #'
-#'@details The function extracts precipitation and temperature from arranged
-#'Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
+#'@details The function extracts precipitation and temperature from a
+#'series of arranged climate data in RasterLayer format,
 #'and arranges them to a data frame for plotting the climatic diagram.
+#'The RasterLayer are computed by Worldclim Historical monthly weather data in 2010-2019
+#'(Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html), containing annual average precipitation, annual average minimum
+#' temperature and annual average max temperature of 12 months in 2010-2019.
+#'They can output from original climate data mentioned above with the calculation
+#'of function \code(clim_cal), or download directly from the supplementary material.
 #'
 #' @param file
 #'     A data.frame(see details in dataset "locdata") with the following 5 columns:
@@ -23,19 +28,35 @@
 #'     Other columns with information is allowed behind the columns above
 #'     but would be discarded in following process.
 #'
+#'    @param mintemp_path The path for the folder of annual average maximum
+#'    temperature,
+#'
 #' @return A data.frame with annual average precipitation, annual average minimum
-#' temperature and annual average max temperature of different months, as well as
+#' temperature and annual average max temperature of 12 months, as well as
 #' other essential information of every location.
 #' \itemize{
 #'    \item \code{No,location,lon,lat}: information of the station,the the same as
-#'which in parameter code{file}
-#'     \item \code{type}: Labels of the climate data among precipitation and temperature
+#'which in parameter \code{file}.
+#'     \item \code{type}: Labels of the climate data,including annual average
+#'     precipitation,annual average minimum temperature and annual average
+#'     maximum temperature.
 #'     \item \code{1-12}: Values of specific type of climate data,the names of columns
-#'represent monthly values from January to December
+#'represent monthly values from January to December.
 #'}
 #' @references {Guijarro J A (2023). climatol: Climate Tools
 #' (Series Homogenization and Derived Products), 4.0.0.,
 #' https://CRAN.R-project.org/package=climatol
+#'
+#'CRU-TS 4.06 (Harris et al., 2020) downscaled with WorldClim 2.1
+#'(Fick and Hijmans, 2017).
+
+#'Fick, S.E. and R.J. Hijmans, 2017. WorldClim 2:
+#'new 1km spatial resolution climate surfaces for global land areas.
+#'International Journal of Climatology 37 (12): 4302-4315.
+
+#'Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020).
+#'Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset.
+#'Scientific Data 7: 109
 #'
 #' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 #'
@@ -67,11 +88,11 @@ clim_extract <- function(file,
   }
 
   if(!file.exists(maxtemp_path)) {
-    stop("The path of 'mintemp' data doesn't exist!")
+    stop("The path of 'maxtemp' data doesn't exist!")
   }
 
   if(!file.exists(prec_path)) {
-    stop("The path of 'mintemp' data doesn't exist!")
+    stop("The path of 'prep' data doesn't exist!")
   }
 
   avmintemp <- list.files(mintemp_path,full.names = T) %>% stack()
