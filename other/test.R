@@ -40,3 +40,12 @@ for (i in 1:5){
             ylab2="Precipitation(mm)",
             p50line = T)
 }
+
+list1 <- list.files("G:/climplot/climdata/mean_maxtemp")
+list2 <- list.files("G:/climplot/climdata/mean_mintemp")
+list3 <- list.files("G:/climplot/climdata/mean_prec")
+m <- data.frame( "annual_average_maximum_temperature"=list1,
+                "annual_average_minimum_temperature"=list2,
+                "annual_average_precipitation"=list3
+    )
+write.csv(m,file="climdata.csv")
