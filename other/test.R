@@ -3,6 +3,7 @@ library(testthat)
 document()
 load_all()
 ?clim_plot()
+tools::R_user_dir("climplot",which = "data")
 
 use_package("climplot")
 

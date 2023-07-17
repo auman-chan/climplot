@@ -7,7 +7,7 @@
 clim_extract(file,mintemp_path,maxtemp_path,prec_path)
 }
 \arguments{
-\item{file}{A data.frame(see details in dataset "locdata") with the following 5 columns:
+\item{file}{A data.frame(see details in dataset \code{locdata}) with the following 5 columns:
     \itemize{
     \item \code{No}: Serial number of the locations
     \item \code{location}: Abbreviation of the locations
@@ -20,13 +20,20 @@ clim_extract(file,mintemp_path,maxtemp_path,prec_path)
     Other columns with information is allowed behind the columns above
     but would be discarded in following process.
 
-   @param mintemp_path The path for the folder of annual average maximum
-   temperature,}
+   @param mintemp_path The path for the folder of annual average minimum
+   temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+
+   @param maxtemp_path The path for the folder of annual average maximum
+   temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+
+   @param prec_path The path for the folder of annual average maximum
+   temperature. The folder contains 12 .tif files corresponding to data of 12 months.}
 }
 \value{
 A data.frame with annual average precipitation, annual average minimum
 temperature and annual average max temperature of 12 months, as well as
 other essential information of every location.
+
 \itemize{
    \item \code{No,location,lon,lat}: information of the station,the the same as
 which in parameter \code{file}.
@@ -36,6 +43,7 @@ which in parameter \code{file}.
     \item \code{1-12}: Values of specific type of climate data,the names of columns
 represent monthly values from January to December.
 }
+See more details in dataset \code{plotdata}.
 }
 \description{
 \code{clim_extract} acquires climate data which are esstential for
@@ -56,11 +64,15 @@ in script \code{other/clim_cal.R}, or download directly from the supplementary m
 {
 #import data of stations
 data("locdata")
-a <- "D:/climplot/mean_mintemp"
-b <- "D:/climplot/mean_maxtemp"
-c <- "D:/climplot/mean_prec"
+#Please modify the path of yours
+a <- "D:/climplot/climdata/mean_mintemp"
+b <- "D:/climplot/climdata/mean_maxtemp"
+c <- "D:/climplot/climdata/mean_prec"
 #extraction of climate data
+\dontrun{
+#not sure whether the folders are ready
 cli <- clim_extract(locdata,a,b,c)
+}
 }
 }
 \references{
