@@ -94,6 +94,28 @@
 #'
 #' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 #'
+#' @examples {
+#' data("plotdata")
+#' test <- subset(plotdata,No==10)
+#'clim_plot(data=test,ylabel = TRUE,
+#'         ylab1="Temperature(\U{00B0}C)",
+#'         ylab2="Precipitation(mm)",
+#'         p50line = TRUE)
+#'
+#'#use loop to plot multiple diagrams simultaneously
+#'list <- unique(plotdata$No)
+#'par(mfrow=c(1,1))
+#'for (i in 1:5){
+#'  k <- list[i]
+#' sub <- subset(plotdata,No==k)
+#' clim_plot(data=sub,ylabel = TRUE,
+#'           ylab1="Temperature(\U{00B0}C)",
+#'           ylab2="Precipitation(mm)",
+#'            p50line = TRUE)
+#'}
+#'
+#' }
+#'
 #' @import graphics
 #' @import stats
 #' @keywords internal

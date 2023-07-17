@@ -1,0 +1,187 @@
+---
+title: "climplot: Streamline Plotting the Walter & Lieth Climatic Diagram"
+pagetitle: "Introduction to climplot"
+author: 
+- <a href="https://gitee.com/WYY_Space"> Auman Chan, PhD Candidate</a>
+date:  "`r Sys.Date()`"
+output: html_document
+    
+vignette: >
+  %\VignetteIndexEntry{1. Introduction and Intro of climplot}
+  %\usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  
+  editor_options: 
+  chunk_output_type: console
+params:
+  EVAL: !r identical(Sys.getenv("NOT_CRAN"), "true")
+---
+
+```{css,echo=FALSE}
+
+body {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 19px;
+  font-weight: 200;
+}
+
+#sidebar {
+font-size: 16px
+}
+
+#sidebar p {
+font-size: 16px
+}
+
+.contents h1, .contents h2, .contents h3, .contents h4 {
+  padding-top: 60px;
+  margin-top: -50px;
+}
+
+h4 {
+  font-size: 19px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+pre {
+  border: 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  background: #e9f7ed;
+    color: #ffffff;
+    padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 21px;
+  font-size: 15px;
+}
+
+pre code {
+  color: #182125;
+}
+
+code {
+  word-wrap: break-word;
+  font-size: 85%;
+  font-family: Consolas,Monaco,"Courier New",monospace;
+  border-radius: 0;
+}
+
+.nav-pills>li>a {
+  border-radius: 0;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: #408AB4;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #408AB4;
+}
+
+table p {
+  font-size: 85%;
+}
+
+.ref-index h2 {
+  font-size: 24px;
+}
+
+h1.title {
+  font-weight: bold;
+  font-size: 180%;
+  text-align: center
+}
+
+h2.subtitle {
+  font-size: 120%;
+  text-align: center
+}
+
+h3.subtitle {
+  font-size: 120%;
+  text-align: center
+}
+
+h4.author {
+  font-size: 120%;
+  text-align: center
+}
+
+h4.date {
+  font-size: 120%;
+  text-align: center
+}
+
+p {
+  margin-bottom: 30px;
+}
+```
+
+[climplot](https://gitee.com/WYY_Space/climplot) is intended to to acquire essential climate data of Walter & Lieth climatic diagram of locations worldwide, and plot the climatic diagram in a more convenient and customized way.
+
+<div class="alert alert-info">
+
+The main features of the package are: 
+
+- The use of worldwide climate data for acquiring standard and reliable data for
+Walter & Lieth climatic diagram plotting
+- The provision for more parameter to customize the plots and display more information
+
+
+
+The package offers functions for:
+
+- Acquire climate data to plot Walter & Lieth Climatic Diagram for locations worldwide
+- Plot the Walter & Lieth climatic diagram 
+- Modify the color and information display on the diagram
+
+</div>
+
+# Installing and loading
+
+To install the latest developmental version from [gitee](https://gitee.com/) you will need the R package [remotes](https://cran.r-project.org/package=remotes)and [git2r](https://cran.r-project.org/package=git2r):
+
+```{r intasll, eval=FALSE}
+install.packages('remotes')
+install.packages('git2r')
+remotes::install_git("https://gitee.com/WYY_Space/climplot.git")
+```
+
+```{r include=FALSE}
+#load package
+library(climplot)
+```
+
+# Climate data extraction
+
+Finding and clearing up climate data of numerous location is a tough work. [climplot](https://gitee.com/WYY_Space/climplot) can acquire data from 
+Worldclim Historical monthly weather data in 2010-2019(Version of 2.5 minutes, https://worldclim.org/data/monthlywth.html), and arrange them to be ready for diagram plotting.
+
+## Data preparation
+
+
+
+```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
+
+data("locdata")
+locdata
+```
+

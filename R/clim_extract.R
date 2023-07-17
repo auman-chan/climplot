@@ -56,15 +56,12 @@
 #' (Series Homogenization and Derived Products), 4.0.0.,
 #' https://CRAN.R-project.org/package=climatol
 #'
-#'CRU-TS 4.06 (Harris et al., 2020) downscaled with WorldClim 2.1
-#'(Fick and Hijmans, 2017).
-
-#'Fick, S.E. and R.J. Hijmans, 2017. WorldClim 2:
+#' Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2:
 #'new 1km spatial resolution climate surfaces for global land areas.
 #'International Journal of Climatology 37 (12): 4302-4315.
-
-#'Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020).
-#'Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset.
+#'
+#' Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020).
+#' Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset.
 #'Scientific Data 7: 109
 #'
 #' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}

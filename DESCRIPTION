@@ -1,10 +1,10 @@
 Package: climplot
 Type: Package
-Title: climplot: Easily plot the Walter & Lieth climatic diagram
+Title: climplot: Streamline Walter & Lieth Climatic Diagram Plotting
 Version: 0.1.0
 Author: Auman Chan
 Maintainer: Auman Chan <czhfreelancer@163.com>
-Description: The "climplot" a tool to acquire essential climate data of Walter & Lieth climatic diagram of a station worldwide, and plot the climatic diagram in a more convenient and customized way.
+Description: The "climplot" is intended to to acquire essential climate data of Walter & Lieth climatic diagram of a station worldwide, and plot the climatic diagram in a more convenient and customized way.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -19,5 +19,8 @@ RoxygenNote: 7.2.3
 Depends: 
     R (>= 2.10)
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+VignetteBuilder: knitr

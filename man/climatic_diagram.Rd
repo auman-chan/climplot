@@ -94,6 +94,30 @@ with the climate data of different locations. It is based on the method of funct
 axis lab setting and information display of the locations, meeting more
 requirements of research and publishing.
 }
+\examples{
+{
+data("plotdata")
+test <- subset(plotdata,No==10)
+clim_plot(data=test,ylabel = TRUE,
+        ylab1="Temperature(\U{00B0}C)",
+        ylab2="Precipitation(mm)",
+        p50line = TRUE)
+
+#use loop to plot multiple diagrams simultaneously
+list <- unique(plotdata$No)
+par(mfrow=c(1,1))
+for (i in 1:5){
+ k <- list[i]
+sub <- subset(plotdata,No==k)
+clim_plot(data=sub,ylabel = TRUE,
+          ylab1="Temperature(\U{00B0}C)",
+          ylab2="Precipitation(mm)",
+           p50line = TRUE)
+}
+
+}
+
+}
 \references{
 {Guijarro J A (2023). climatol: Climate Tools
 (Series Homogenization and Derived Products), 4.0.0.,
