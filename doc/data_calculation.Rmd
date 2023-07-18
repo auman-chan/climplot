@@ -164,7 +164,7 @@ every kind of dataset(mintemp,maxtemp,prec)should be saparated in different fold
 
 - **method**: the method for calculating the raster,default is "mean" to calculate
 annual average climatic values. 
-Set as "min" to calculate annual minimum climatic values for forst month display.
+Set as "min" to calculate annual minimum climatic values for forsty month display.
 
 ```{r  cal_code,eval=FALSE}
 library(raster)
