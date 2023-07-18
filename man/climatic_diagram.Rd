@@ -2,7 +2,7 @@
 % Please edit documentation in R/clim_plot.R
 \name{clim_plot}
 \alias{clim_plot}
-\title{Climatic diagram plotting in a more convenient and customized way}
+\title{Walter & Lieth climatic diagram construction}
 \usage{
 clim_plot(data,mlab="",pcol="blue",tcol="red",wcol="green",dcol="orange",
 pfcol="#79e6e8",sfcol="#09a0d1",ylabel=FALSE,ylab1=NA,ylab2=NA,xlab="Month",
@@ -16,22 +16,22 @@ with the following 18 columns:
    \item \code{No}: Serial number of the locations.
     \item \code{location}: Abbreviation of the locations.
     \item \code{lon}: Longitude of the locations in decimal digit
-(East longitude are represented by negative numbers).
+    (negative numbers indicating east longitude).
     \item \code{lat}: Latitude of the locations in decimal digit
-(South latitude are represented by negative numbers).
+    (negative numbers indicating south latitude).
     \item \code{altitude}: Altitude of the locations.
-    \item \code{type}: Labels of the climate data,including annual average
-    precipitation,annual average minimum temperature and annual average
-    maximum temperature.
-    \item \code{1-12}: Values of specific type of climate data,the names of columns
-represent monthly values from January to December.
+    \item \code{type}: The labels of climate data, encompassing annual average precipitation,
+    annual average minimum temperature and annual average maximum temperature.
+    In the event that Frost=True, it will also incorporate annual extreme minimum temperature.
+    \item \code{1-12}: The column names of the particular climate data type
+    correspond to monthly values ranging from January to December.
 }
-    Other columns with information is allowed behind the columns above
-     but would be discarded in following process.}
+    Other columns containing information may be placed after the aforementioned columns,
+    but will be disregarded in subsequent processes.}
 
-\item{mlab}{Vector of 12 monthly labels for the X axis,deafult is numeric,
-set to just 'en' or 'es' to use the first letter of
-the month names in English or Spanish respectively
+\item{mlab}{A vector of 12 monthly labels for the X axis.Deafult is numeric.
+Alternatively, set as 'en' or 'es' can be specified to display
+the month names in English or Spanish respectively.
 (original parameter of the referenced function \code{diagwl()}).}
 
 \item{pcol}{Color of the precipitation curve. Default is "blue".}
@@ -43,10 +43,10 @@ the month names in English or Spanish respectively
 \item{dcol}{Color of the arid season polygon. Default is "orange".}
 
 \item{pfcol}{Color of the potential frosty months. Default is "#79e6e8". No use when
-ShowFrost= FALSE}
+ShowFrost= FALSE.}
 
 \item{sfcol}{Color of the accurate frosty months. Default is "#09a0d1".
-No use when ShowFrost= FALSE}
+No use when ShowFrost= FALSE.}
 
 \item{ylabel}{A logical value for whether using customized label of y axis. Default is FALSE.}
 
@@ -79,20 +79,20 @@ Default is FALSE.}
 
 #'@details The function extracts precipitation and temperature from arranged
 Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
-and arranges them to a data frame for plotting the climatic diagram.}
+and arranges them to a data.frame for constructing the climatic diagram.}
 
 \item{ShowFrost}{A logical value for whether marking forst months. Default is FALSE.}
 }
 \value{
-A Walter & Lieth climatic diagram of the given location, including the information
-of temperature and precipitation period change, as well as the humid and arid season distribution.
+A Walter & Lieth climatic diagram of the provided locations, including annual variation
+of temperature and precipitation , as well as the time of humid and arid season.
 }
 \description{
 \code{clim_plot} plots the Walter & Lieth climatic diagram
 with the climate data of different locations. It is based on the method of function
-\code{diagwl()}from package \code{climatol}, but release more parameters for color selections,
-axis lab setting and information display of the locations, meeting more
-requirements of research and publishing.
+\code{diagwl()}from package \code{climatol},
+but offers additional parameters for color selection, axis labeling,
+and location information display to meet diverse research and publishing needs.
 }
 \examples{
 {

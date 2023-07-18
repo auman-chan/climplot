@@ -1,5 +1,5 @@
 ---
-title: "Codes for Calculation of climate data"
+title: "Codes for calculation of climate data"
 pagetitle: "Calculation of climate data"
 author: 
 - <a href="https://gitee.com/WYY_Space"> Auman Chan, PhD Candidate</a>
@@ -143,7 +143,7 @@ p {
 ```
 
 
-If you want to calculate the datasets by yourself, download the original data and follow the code below.Because of the calculation required a lot of memory usage and time, lack of generality.So we haven't import them into package as a function.
+If you wish to perform the dataset calculations independently, please download the original data and refer to the code provided below. Due to high memory usage and time requirements, we have refrained from incorporating these codes as a package function.
 
 The download link of original data as below:
 
@@ -160,7 +160,7 @@ every kind of dataset(mintemp,maxtemp,prec)should be saparated in different fold
 
 - **exp_path**: path of export arranged data in format of .tif
 
-- **name**: the name of tif file to differentiate the data
+- **name**: the name of .tif file to differentiate the data
 
 - **method**: the method for calculating the raster,default is "mean" to calculate
 annual average climatic values. 

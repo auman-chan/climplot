@@ -25,6 +25,6 @@ of different locations.
 }
 \details{
 5 columns of this dataset: "No", "location", "lon", "lat", "altitude"
-are essential for plotting, the columns "name" just a remark.
+are essential for diagram construction, the columns "name" just a remark.
 }
 \keyword{internal}

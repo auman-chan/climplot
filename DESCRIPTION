@@ -1,10 +1,10 @@
 Package: climplot
 Type: Package
-Title: climplot: Streamline Walter & Lieth Climatic Diagram Plotting
+Title: climplot: Facilitate and tailor Walter & Lieth climatic diagram construction
 Version: 0.1.0
 Author: Auman Chan
 Maintainer: Auman Chan <czhfreelancer@163.com>
-Description: The "climplot" is intended to to acquire essential climate data of Walter & Lieth climatic diagram of a station worldwide, and plot the climatic diagram in a more convenient and customized way.
+Description: "climplot" aims to collect crucial climate data from Walter & Lieth climatic diagrams for global locations and present the diagrams in a more user-friendly and personalized manner.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

@@ -5,6 +5,7 @@ library(tidyverse)
 library(raster)
 document()
 load_all()
+build_vignettes()
 ?clim_plot()
 ?clim_extract()
 ?plotdata_Frost
