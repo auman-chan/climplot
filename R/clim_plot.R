@@ -46,10 +46,10 @@
 #'
 #' @param ShowFrost A logical value for whether marking forst months. Default is FALSE.
 #'
-#' @param pfcol Color of the potential frost months. Default is "#79e6e8". No use when
+#' @param pfcol Color of the potential frosty months. Default is "#79e6e8". No use when
 #' ShowFrost= FALSE
 #'
-#' @param sfcol Color of the accurate frost months. Default is "#09a0d1".
+#' @param sfcol Color of the accurate frosty months. Default is "#09a0d1".
 #' No use when ShowFrost= FALSE
 #'
 #' @param ylabel A logical value for whether using customized label of y axis. Default is FALSE.
@@ -90,7 +90,7 @@
 #'
 #' @references {Guijarro J A (2023). climatol: Climate Tools
 #' (Series Homogenization and Derived Products), 4.0.0.,
-#' https://CRAN.R-project.org/package=climatol
+#' https://CRAN.R-project.org/package=climatol.
 #'
 #' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 #'
@@ -133,7 +133,7 @@ clim_plot <- function(data,     #dataset
                        ylab1=NA,
                        ylab2=NA,
                        xlab="Month",
-                       ShowForst=FALSE, #whether display the frost months
+                       ShowForst=FALSE, #whether display the frosty months
                        shem=FALSE,
                        p3line=FALSE, #auxiliary line of temperature
                        p50line=FALSE,#auxiliary line of 50-100mm precipitation
@@ -384,10 +384,10 @@ clim_plot <- function(data,     #dataset
   y2 <- subset(ti,d<0)
   if(length(xw)>0) segments(xw,y1,xw,y2,col=dcol,lty=3,lwd=2)
   if(ShowForst& nrow(dat)==4){
-    #Forst months display
-    #accurate frost months
+    #Forsty months display
+    #accurate frosty months
     for(i in 1:12) if(dat[3,i]<=0) rect(i-1,-1.5,i,0,col=sfcol)
-    #potential frost months
+    #potential frosty months
     for(i in 1:12) if(dat[4,i]<=0 && dat[3,i]>0) rect(i-1,-1.5,i,0,col=pfcol)
   }
 

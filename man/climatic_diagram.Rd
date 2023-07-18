@@ -42,10 +42,10 @@ the month names in English or Spanish respectively
 
 \item{dcol}{Color of the arid season polygon. Default is "orange".}
 
-\item{pfcol}{Color of the potential frost months. Default is "#79e6e8". No use when
+\item{pfcol}{Color of the potential frosty months. Default is "#79e6e8". No use when
 ShowFrost= FALSE}
 
-\item{sfcol}{Color of the accurate frost months. Default is "#09a0d1".
+\item{sfcol}{Color of the accurate frosty months. Default is "#09a0d1".
 No use when ShowFrost= FALSE}
 
 \item{ylabel}{A logical value for whether using customized label of y axis. Default is FALSE.}
@@ -121,7 +121,7 @@ clim_plot(data=sub,ylabel = TRUE,
 \references{
 {Guijarro J A (2023). climatol: Climate Tools
 (Series Homogenization and Derived Products), 4.0.0.,
-https://CRAN.R-project.org/package=climatol
+https://CRAN.R-project.org/package=climatol.
 
 Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 }

@@ -1,1 +1,1 @@
-utils::globalVariables(c("Location", "Type","extemp"))
+utils::globalVariables(c("Location", "Type","No","extemp"))

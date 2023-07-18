@@ -47,9 +47,9 @@ A data frame with 30 rows and 18 variables:
 }
 \description{
 A dataset exported from function \code{clim_extract}
-for plotting the climatic diagrams with frost months display.
+for plotting the climatic diagrams with frosty months display.
 It contains the abbreviation, coordinates and altitude
-of different locations, as well as the values of four kinds of climate data.
+of different locations, as well as the values of 4 kinds of climate data.
 }
 \details{
 18 columns of this dataset: "No", "Location", "Lon", "Lat", "Altitude"

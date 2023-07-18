@@ -45,8 +45,9 @@
 #'
 #' @return A data.frame with annual average precipitation, annual average minimum
 #' temperature and annual average max temperature of 12 months, as well as
-#' other essential information of every location. If Frost=True, it will also include values of annual extreme minimum
-#'    temperature.
+#' other essential information of every location. If Frost=True,
+#' it will also include values of annual extreme minimum
+#'    temperature for plotting the forsty months.
 #'
 #' \itemize{
 #'    \item \code{No,location,lon,lat}: information of the station,the the same as
@@ -62,7 +63,7 @@
 #'
 #' @references {Guijarro J A (2023). climatol: Climate Tools
 #' (Series Homogenization and Derived Products), 4.0.0.,
-#' https://CRAN.R-project.org/package=climatol
+#' https://CRAN.R-project.org/package=climatol.
 #'
 #' Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2:
 #'new 1km spatial resolution climate surfaces for global land areas.
@@ -70,7 +71,7 @@
 #'
 #' Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020).
 #' Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset.
-#'Scientific Data 7: 109
+#'Scientific Data 7: 109.
 #'
 #' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 #'
