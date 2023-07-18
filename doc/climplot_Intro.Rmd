@@ -144,7 +144,7 @@ p {
 }
 ```
 
-[climplot](https://gitee.com/WYY_Space/climplot) aims to collect crucial climate data from Walter & Lieth climatic diagrams for global locations and present the diagrams in a more user-friendly and personalized manner.
+[climplot](https://gitee.com/WYY_Space/climplot) aims to collect crucial climate data for global locations and construct the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
 
 ::: {.alert .alert-info}
 The main features of the package are:
