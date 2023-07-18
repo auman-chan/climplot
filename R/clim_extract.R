@@ -174,9 +174,9 @@ pointdata <- file
   #arrange by the order of mean precipitation,mean min_temperature and
   #mean max_temperature
   if(Frost){
-    clidata <- rbind(prec,avtemp1,avtemp2,extemp) %>% arrange(Location)
+    clidata <- rbind(prec,avtemp1,avtemp2,exmtemp) %>% arrange(No)
   }else{
-    clidata <- rbind(prec,avtemp1,avtemp2) %>% arrange(Location)
+    clidata <- rbind(prec,avtemp1,avtemp2) %>% arrange(No)
   }
 
 

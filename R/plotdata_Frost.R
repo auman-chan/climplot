@@ -1,11 +1,12 @@
 #' @docType data
-#' @name plotdata
+#' @name plotdata_Frost
 #'
-#' @title An example of data.frame export from "clim_extract"
+#' @title An example data.frame export from "clim_extract"with extreme temperature
+#'
 #' @description  A dataset exported from function \code{clim_extract}
-#' for plotting the climatic diagrams without frost months display.
+#' for plotting the climatic diagrams with frost months display.
 #' It contains the abbreviation, coordinates and altitude
-#' of different locations, as well as the values of three kinds of climate data.
+#' of different locations, as well as the values of four kinds of climate data.
 #'
 #' @details 18 columns of this dataset: "No", "Location", "Lon", "Lat", "Altitude"
 #'are information of locations, "Type" are the labels of climate data,

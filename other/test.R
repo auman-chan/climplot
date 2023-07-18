@@ -7,6 +7,7 @@ document()
 load_all()
 ?clim_plot()
 ?clim_extract()
+?plotdata_Frost
 ?plotdata
 tools::R_user_dir("climplot",which = "data")
 
@@ -20,19 +21,24 @@ rmarkdown::render("README.Rmd")
 data("locdata")
 data("plotdata")
 t <- locdata
-a <- "D:/R_data/mean_mintemp"
-b <- "D:/R_data/mean_maxtemp"
-c <- "D:/R_data/mean_prec"
-d <- "D:"
-lc <- clim_extract(locdata,a,b,c,Frost = T,d)
+a <- "G:/climplot/climdata/tmin"
+b <- "G:/climplot/climdata/tmax"
+c <- "G:/climplot/climdata/prec"
+d <- "G:/climplot/climdata/extmin"
+list.files(b)
+avmintemp <- list.files(a,full.names = T) %>% stack()
+lc <- clim_extract(locdata,a,b,c)
+lk <- clim_extract(locdata,a,b,c,Frost=TRUE,d)
 plotdata <- lc
+plotdata_Frost <- lk
+use_data(plotdata,plotdata_Frost)
 
 data("plotdata")
-test <- subset(lc,No==10)
+test <- subset(lk,No==10)
 clim_plot(data=test,ylabel = T,
           ylab1="Temperature(\U{00B0}C)",
           ylab2="Precipitation(mm)",
-          p50line = T,extremeT = T)
+          p50line = T,extremeT = T,ShowForst = T)
 rm(clim_plot)
 list <- unique(plotdata$No)
 par(mfrow=c(1,1))
