@@ -398,10 +398,10 @@ clim_plot <- function(data,     #dataset
   if(extremeT){#extreme value
 
     mtext(formatC(max(as.matrix(dat[3,])),digits=1,format="f"),2,las=1,
-          line=2,at=35)
+          line=2,at=45)
 
     mtext(formatC(min(as.matrix(dat[2,])),digits=1,format="f"),2,las=1,
-          line=2,at=15)
+          line=2,at=5)
   }
   #marker of months
   for(i in 0:13) segments(i,0,i,-1.5)

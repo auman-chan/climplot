@@ -1,6 +1,6 @@
 #' @rdname climate_data
 #' @title Acquire climate data for climatic diagram
-#' @usage clim_extract(file,mintemp_path,maxtemp_path,prec_path)
+#' @usage clim_extract(file,mintemp_path,maxtemp_path,prec_path,Frost=F,exmintemp_path)
 #' @description \code{clim_extract} acquires climate data which are esstential for
 #'Walter & Lieth climatic diagram plotting according to the provided coordinate of
 #'the location.
@@ -37,16 +37,24 @@
 #'    @param prec_path The path for the folder of annual average maximum
 #'    temperature. The folder contains 12 .tif files corresponding to data of 12 months.
 #'
+#'    @param Frost A logical value for whether calculate the annual extreme minimum temperature,for
+#'    follow-up plotting the frost months. Default is FALSE.
+#'
+#'    @param exmintemp_path The path for the folder of annual extreme minimum
+#'    temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+#'
 #' @return A data.frame with annual average precipitation, annual average minimum
 #' temperature and annual average max temperature of 12 months, as well as
-#' other essential information of every location.
+#' other essential information of every location. If Frost=True, it will also include values of annual extreme minimum
+#'    temperature.
 #'
 #' \itemize{
 #'    \item \code{No,location,lon,lat}: information of the station,the the same as
 #'which in parameter \code{file}.
 #'     \item \code{type}: Labels of the climate data,including annual average
 #'     precipitation,annual average minimum temperature and annual average
-#'     maximum temperature.
+#'     maximum temperature. If Frost=True, it will also include annual extreme minimum
+#'    temperature.
 #'     \item \code{1-12}: Values of specific type of climate data,the names of columns
 #'represent monthly values from January to December.
 #'}
@@ -73,10 +81,13 @@
 #' a <- "D:/climplot/climdata/mean_mintemp"
 #' b <- "D:/climplot/climdata/mean_maxtemp"
 #' c <- "D:/climplot/climdata/mean_prec"
+#' d <- "D:/climplot/climdata/min_mintemp"
 #' #extraction of climate data
 #' \dontrun{
 #' #not sure whether the folders are ready
 #' cli <- clim_extract(locdata,a,b,c)
+#' #calculate for forst months display
+#' cli <- clim_extract(locdata,a,b,c,Frost=T,d)
 #' }
 #' }
 #' @importFrom sp coordinates
@@ -91,7 +102,9 @@
 clim_extract <- function(file,
                          mintemp_path,
                          maxtemp_path,
-                         prec_path
+                         prec_path,
+                         Frost=F,
+                         exmintemp_path
                          ){
   if(!file.exists(mintemp_path)) {
     stop("The path of 'mintemp' data doesn't exist!")
@@ -105,9 +118,18 @@ clim_extract <- function(file,
     stop("The path of 'prep' data doesn't exist!")
   }
 
+  if(Frost){
+    if(!file.exists(exmintemp_path)) {
+      stop("The path of 'exmintemp' data doesn't exist!")
+    }
+  }
+
   avmintemp <- list.files(mintemp_path,full.names = T) %>% stack()
   avmaxtemp <- list.files(maxtemp_path,full.names = T) %>% stack()
   avprec <- list.files(prec_path,full.names = T) %>% stack()
+  if(Frost){
+    exmintemp <- list.files(exmintemp_path,full.names = T) %>% stack()
+  }
 
 pointdata <- file
   point <- data.frame(lon=coordinates(pointdata[,"lon"]),
@@ -138,10 +160,25 @@ pointdata <- file
                                  Lon=pointdata$lon,
                                  Lat=pointdata$lat,
                                  Type="precipitation",.before = 1)
+  if(Frost){
+    exmtemp <- extract(exmintemp,point) %>% as_tibble()
+    colnames(exmtemp) <- as.character(c(1:12))
+    exmtemp <- exmtemp %>% mutate(No=pointdata$No,
+                            Altitude=pointdata$altitude,
+                            Location=pointdata$location,
+                            Lon=pointdata$lon,
+                            Lat=pointdata$lat,
+                            Type="extreme.min.temperature",.before = 1)
+  }
 
   #arrange by the order of mean precipitation,mean min_temperature and
   #mean max_temperature
-  clidata <- rbind(prec,avtemp1,avtemp2) %>% arrange(Location,desc(Type))
+  if(Frost){
+    clidata <- rbind(prec,avtemp1,avtemp2,extemp) %>% arrange(Location)
+  }else{
+    clidata <- rbind(prec,avtemp1,avtemp2) %>% arrange(Location)
+  }
+
 
   return(clidata)
 }

@@ -4,7 +4,7 @@
 \alias{clim_extract}
 \title{Acquire climate data for climatic diagram}
 \usage{
-clim_extract(file,mintemp_path,maxtemp_path,prec_path)
+clim_extract(file,mintemp_path,maxtemp_path,prec_path,Frost=F,exmintemp_path)
 }
 \arguments{
 \item{file}{A data.frame(see details in dataset \code{locdata}) with the following 5 columns:
@@ -27,19 +27,27 @@ clim_extract(file,mintemp_path,maxtemp_path,prec_path)
    temperature. The folder contains 12 .tif files corresponding to data of 12 months.
 
    @param prec_path The path for the folder of annual average maximum
+   temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+
+   @param Frost A logical value for whether calculate the annual extreme minimum temperature,for
+   follow-up plotting the frost months. Default is FALSE.
+
+   @param exmintemp_path The path for the folder of annual extreme minimum
    temperature. The folder contains 12 .tif files corresponding to data of 12 months.}
 }
 \value{
 A data.frame with annual average precipitation, annual average minimum
 temperature and annual average max temperature of 12 months, as well as
-other essential information of every location.
+other essential information of every location. If Frost=True, it will also include values of annual extreme minimum
+   temperature.
 
 \itemize{
    \item \code{No,location,lon,lat}: information of the station,the the same as
 which in parameter \code{file}.
     \item \code{type}: Labels of the climate data,including annual average
     precipitation,annual average minimum temperature and annual average
-    maximum temperature.
+    maximum temperature. If Frost=True, it will also include annual extreme minimum
+   temperature.
     \item \code{1-12}: Values of specific type of climate data,the names of columns
 represent monthly values from January to December.
 }
@@ -68,10 +76,13 @@ data("locdata")
 a <- "D:/climplot/climdata/mean_mintemp"
 b <- "D:/climplot/climdata/mean_maxtemp"
 c <- "D:/climplot/climdata/mean_prec"
+d <- "D:/climplot/climdata/min_mintemp"
 #extraction of climate data
 \dontrun{
 #not sure whether the folders are ready
 cli <- clim_extract(locdata,a,b,c)
+#calculate for forst months display
+cli <- clim_extract(locdata,a,b,c,Frost=T,d)
 }
 }
 }
