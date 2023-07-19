@@ -6,6 +6,7 @@ library(raster)
 document()
 load_all()
 build_vignettes()
+build_readme()
 ?clim_plot()
 ?clim_extract()
 ?plotdata_Frost

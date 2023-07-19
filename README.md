@@ -1,53 +1,116 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+# climplot：用于绘制 Walter & Lieth 气候图的流程化工具
 
-# climplot
+<img src="vignettes/imgfile.png" width="30%" style="display: block; margin: auto;" />
 
-<!-- badges: start -->
-<!-- badges: end -->
+[climplot](https://gitee.com/WYY_Space/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
-The goal of climplot is to …
+该软件包的主要作用为:
 
-## Installation
+- 使用Worldclim的气候数据来获得标准化和可靠的数据，以构建 Walter＆Lieth
+  气候图
 
-You can install the development version of climplot like so:
+- 提供更多参数定制图片样式和信息显示方式
 
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
+该包提供以下函数功能:
 
-## Example
+- 获取气候数据以构建Walter＆Lieth气候图
 
-This is a basic example which shows you how to solve a common problem:
+- 绘制Walter＆Lieth气候图
 
-``` r
-library(climplot)
-## basic example code
-```
+- 修改气候图的配色和显示的相关信息
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+## 安装与加载
+
+从[gitee](https://gitee.com)
+安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r):
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+install.packages('remotes')
+install.packages('git2r')
+remotes::install_git("https://gitee.com/WYY_Space/climplot.git")
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+## 使用前数据准备
 
-You can also embed plots, for example:
+Worldclim气候数据是本软件包必不可少的，由于其全球尺度栅格数据的文件较大，软件包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+此数据集包括4个文件夹，共48个tif文件，其中包括年均最低气温、年均最高气温、年均降水和年极端最低气温。
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+## 使用示例
+
+### 气候数据提取
+
+使用前需要按格式整理好绘图地点的信息。这个包中的数据 `locdata` 是
+导入数据格式的样例。导入的数据框必须包含5列，顺序如下:
+
+- **No**:目标地点的序号
+
+- **location**:目标地点的缩写
+
+- **lon**:目标地点的经度，以十进制表示，负数表示西经
+
+- **lat**:目标地点的纬度，以十进制表示，负数表示南纬
+
+- **altitude**:目标地点的高度
+
+上述列的后面允许添加其他包含信息的列，但在后续处理中将被舍弃。
+
+在准备好气候数据集和地点信息后，向函数 `clim_extract`
+导入三个气候数据集的数据框和数据集路径：
+
+``` r
+#Example data in this package
+data("locdata")
+#Modify the path of yours
+a <- "G:/climplot/climdata/tmin"
+b <- "G:/climplot/climdata/tmax"
+c <- "G:/climplot/climdata/prec"
+
+#extraction of climate data
+
+plotdata <- clim_extract(locdata,a,b,c)
+}
+```
+
+导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
+导出数据框架存储在此包的数据`plotdata`中，作为函数导出结果的示例。
+
+### Walter & Lieth的气候图绘制
+
+以`plotdata`数据为例，导入到函数`clim_plot`中：
+
+``` r
+data("plotdata")
+loc <- subset(plotdata,No==2)
+clim_plot(loc)
+```
+
+![](README_files/figure-gfm/plot1-1.png)<!-- -->
+
+在上图中:
+
+- 红色曲线代表气温的年际变化，蓝色曲线代表降水的年际变化。这两条曲线闭合形成了两种斑块，表示湿度和干燥程度。竖线填充的斑块代表湿润季节，散点填充的斑块代表干旱季节。与降水曲线颜色相同的多边形表示降水量大于100mm的月份，表示雨季。
+
+- 左上角的信息包括名称、海拔高度和位置坐标。右上方为年平均气温和年平均降水量。
+
+## 其他参考
+
+更多参考内容请阅读软件包内的帮助文件，以及vignettes中的信息。
+
+# 参考文献
+
+1.  Guijarro J A (2023). climatol: Climate Tools (Series Homogenization
+    and Derived Products), 4.0.0.,
+    <https://CRAN.R-project.org/package=climatol>.
+
+2.  Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2: new 1km spatial
+    resolution climate surfaces for global land areas. International
+    Journal of Climatology 37 (12): 4302-4315.
+
+3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version
+    4 of the CRU TS monthly high-resolution gridded multivariate climate
+    dataset. Scientific Data 7: 109.
+
+4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer,
+    Jena.

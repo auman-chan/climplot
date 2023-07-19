@@ -13,6 +13,7 @@ output:
     toc_float:
       collapsed: false
       smooth_scroll: true
+
 vignette: >
   %\VignetteIndexEntry{1. Introduction and Intro of climplot}
   %\usepackage[utf8]{inputenc}
@@ -143,6 +144,11 @@ p {
 }
 ```
 
+
+```{r, echo=FALSE, out.width="30%",fig.align = 'center'}
+knitr::include_graphics("imgfile.png")
+```
+
 [climplot](https://gitee.com/WYY_Space/climplot) aims to collect crucial climate data for global locations and construct the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
 
 ::: {.alert .alert-info}
@@ -254,7 +260,7 @@ Hereto `clim_extact` have obtained all essential information for the Walter & Li
 
 # Climatic diagram Plotting
 
-The function `clim_plot` can construct the Walter & Lieth climatic diagram plotting in different styles of color scheme and information presentation.
+The function `clim_plot` can construct the Walter & Lieth climatic diagram plotting in different styles of color scheme and information presentation. It refers to the function `diagwl()`of a CRAN package `climatol`.
 
 ## Walter & Lieth climatic diagram plotting of a single location
 

@@ -1,6 +1,9 @@
 params <-
 list(EVAL = FALSE)
 
+## ---- echo=FALSE, out.width="30%",fig.align = 'center'------------------------
+knitr::include_graphics("imgfile.png")
+
 ## ----intasll, eval=FALSE------------------------------------------------------
 #  install.packages('remotes')
 #  install.packages('git2r')
