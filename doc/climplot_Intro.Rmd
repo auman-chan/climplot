@@ -13,7 +13,6 @@ output:
     toc_float:
       collapsed: false
       smooth_scroll: true
-
 vignette: >
   %\VignetteIndexEntry{1. Introduction and Intro of climplot}
   %\usepackage[utf8]{inputenc}
@@ -155,7 +154,7 @@ The main features of the package are:
 The package offers functions for:
 
 -   Obtain climate data to construct Walter & Lieth Climatic Diagram for global locations
--   construct the Walter & Lieth climatic diagram
+-   Construct the Walter & Lieth climatic diagram
 -   Revise the color scheme and information presentation of the diagram
 :::
 
@@ -196,7 +195,7 @@ In order to extract climate data for specific locations, precise coordinates are
 
 -   **No**: Serial number of the locations
 -   **location**: Abbreviation of the locations
--   **lon**: Longitude of the locations in decimal digit (negative numbers indicating east longitude)
+-   **lon**: Longitude of the locations in decimal digit (negative numbers indicating west longitude)
 -   **lat**: Latitude of the locations in decimal digit (negative numbers indicating south latitude)
 -   **altitude**: Altitude of the locations
 

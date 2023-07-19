@@ -195,7 +195,7 @@ In order to extract climate data for specific locations, precise coordinates are
 
 -   **No**: Serial number of the locations
 -   **location**: Abbreviation of the locations
--   **lon**: Longitude of the locations in decimal digit (negative numbers indicating east longitude)
+-   **lon**: Longitude of the locations in decimal digit (negative numbers indicating west longitude)
 -   **lat**: Latitude of the locations in decimal digit (negative numbers indicating south latitude)
 -   **altitude**: Altitude of the locations
 

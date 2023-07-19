@@ -20,7 +20,7 @@
 #'     \item \code{No}: Serial number of the locations
 #'     \item \code{location}: Abbreviation of the locations
 #'     \item \code{lon}: Longitude of the locations in decimal digit
-#'(East longitude are represented by negative numbers)
+#'(West longitude are represented by negative numbers)
 #'     \item \code{lat}: Latitude of the locations in decimal digit
 #'(South latitude are represented by negative numbers)
 #'     \item \code{altitude}: Altitude of the locations
