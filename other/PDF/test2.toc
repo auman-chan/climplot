@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}简介}{1}{section.1}%
+\contentsline {section}{\numberline {2}安装与加载}{2}{section.2}%
+\contentsline {section}{\numberline {3}绘图数据提取}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}数据准备}{2}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}气候数据下载}{2}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}目标地点的信息准备}{3}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}气候数据提取}{4}{subsubsection.3.1.3}%
+\contentsline {section}{\numberline {4}气候图绘制}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}单个地点Walter \& Lieth的气候图绘制}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}多个地点Walter \& Lieth气候图绘制的解决方法}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}其他绘制气候图的提示}{9}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}在气候图中标记霜冻月份}{9}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}改变颜色和坐标轴}{10}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}辅助标记}{11}{subsubsection.4.3.3}%
+\contentsline {section}{\numberline {5}参考文献}{12}{section.5}%
