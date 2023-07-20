@@ -21,7 +21,7 @@ header-includes:
 
 # 简介
 
-[climplot](https://gitee.com/WYY_Space/climplot) 为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
+[climplot](https://gitee.com/auman-chan/climplot) 为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
 ::: {.alert .alert-info}
 该软件包的主要作用为:
@@ -46,7 +46,7 @@ header-includes:
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
 install.packages('git2r')
-remotes::install_git("https://gitee.com/WYY_Space/climplot.git")
+remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 ```
 
 ```{r load package,include=FALSE}
@@ -73,7 +73,7 @@ library(kableExtra)
 ```
 
 ```{r echo=FALSE}
-a <- read.csv("G:/climplot/climplot/vignettes/climdata.csv")
+a <- read.csv("D:/R_data/cimplot_t/vignettes/climdata.csv")
 colnames(a) <- c("No","1","2","3","4")
 kable(a,format="latex", booktabs=TRUE) %>%
   footnote(c("1. 年均最高气温",

@@ -3,7 +3,7 @@
 
 <img src="vignettes/imgfile.png" width="30%" style="display: block; margin: auto;" />
 
-[climplot](https://gitee.com/WYY_Space/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
+[climplot](https://gitee.com/auman-chan/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
 该软件包的主要作用为:
 
@@ -28,7 +28,7 @@
 ``` r
 install.packages('remotes')
 install.packages('git2r')
-remotes::install_git("https://gitee.com/WYY_Space/climplot.git")
+remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 ```
 
 ## 使用前数据准备

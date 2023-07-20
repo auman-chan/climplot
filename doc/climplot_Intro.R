@@ -7,7 +7,7 @@ knitr::include_graphics("imgfile.png")
 ## ----intasll, eval=FALSE------------------------------------------------------
 #  install.packages('remotes')
 #  install.packages('git2r')
-#  remotes::install_git("https://gitee.com/WYY_Space/climplot.git")
+#  remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 
 ## ----load package,include=FALSE-----------------------------------------------
 #load package
