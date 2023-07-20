@@ -243,7 +243,9 @@ clim_plot(loc,xlab="M",mlab = "en",
 
 ```{r auxiliary line}
 loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowForst = TRUE)
+clim_plot(loc,p3line = TRUE,
+          p50line = TRUE,
+          extremeT = TRUE,ShowForst = TRUE)
 ```
 
 # 参考文献
