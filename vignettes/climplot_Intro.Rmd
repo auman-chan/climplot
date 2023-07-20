@@ -2,7 +2,7 @@
 title: "climplot: Facilitate and tailor Walter & Lieth climatic diagram construction"
 pagetitle: "Introduction to climplot"
 author: 
-- <a href="https://gitee.com/WYY_Space"> Auman Chan, PhD Candidate</a>
+- <a href="https://gitee.com/auman-chan"> Auman Chan, PhD Candidate</a>
 date:  "`r Sys.Date()`"
 output: 
   rmarkdown::html_document:
@@ -13,7 +13,6 @@ output:
     toc_float:
       collapsed: false
       smooth_scroll: true
-
 vignette: >
   %\VignetteIndexEntry{1. Introduction and Intro of climplot}
   %\usepackage[utf8]{inputenc}
@@ -149,7 +148,7 @@ p {
 knitr::include_graphics("imgfile.png")
 ```
 
-[climplot](https://gitee.com/WYY_Space/climplot) aims to collect crucial climate data for global locations and construct the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
+[climplot](https://gitee.com/auman-chan/climplot) aims to collect crucial climate data for global locations and construct the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
 
 ::: {.alert .alert-info}
 The main features of the package are:
@@ -171,7 +170,7 @@ To install the latest developmental version from [gitee](https://gitee.com/) you
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
 install.packages('git2r')
-remotes::install_git("https://gitee.com/WYY_Space/climplot.git")
+remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 ```
 
 ```{r load package,include=FALSE}

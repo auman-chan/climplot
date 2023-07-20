@@ -2,7 +2,7 @@
 title: "Codes for calculation of climate data"
 pagetitle: "Calculation of climate data"
 author: 
-- <a href="https://gitee.com/WYY_Space"> Auman Chan, PhD Candidate</a>
+- <a href="https://gitee.com/auman-chan"> Auman Chan, PhD Candidate</a>
 date:  "`r Sys.Date()`"
 output: 
   rmarkdown::html_document:
