@@ -12,7 +12,6 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 version](https://img.shields.io/badge/R-%3E=%202.10-6666ff.svg)](https://cran.r-project.org/)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.1.0-orange.svg?style=flat-square)](commits/develop)
 [![Last-changedate](https://img.shields.io/badge/last%20change-2023--07--21-yellow.svg)](/commits/master)
-
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20provided-red.svg)
 <!-- badges: end -->
 
