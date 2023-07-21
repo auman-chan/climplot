@@ -4,8 +4,8 @@
 \alias{clim_extract}
 \title{Obtain climate data for climatic diagram construction}
 \usage{
-clim_extract(file,mintemp_path=NA,maxtemp_path=NA,prec_path=NA,
-Frost=FALSE,exmintemp_path=NA)
+clim_extract(file,mintemp_path=NA,maxtemp_path=NA,
+prec_path=NA,Frost=FALSE,exmintemp_path=NA)
 }
 \arguments{
 \item{file}{A data.frame(see details in dataset \code{locdata}) with the following 5 columns:
@@ -19,22 +19,22 @@ Frost=FALSE,exmintemp_path=NA)
     \item \code{altitude}: Altitude of the locations
     }
     Other columns with information is allowed behind the columns above
-    but would be discarded in following process.
+    but would be discarded in following process.}
 
-   @param mintemp_path The path for the folder of annual average minimum
-   temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+\item{mintemp_path}{The path for the folder of annual average minimum
+temperature. The folder contains 12 .tif files corresponding to data of 12 months.}
 
-   @param maxtemp_path The path for the folder of annual average maximum
-   temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+\item{maxtemp_path}{The path for the folder of annual average maximum
+temperature. The folder contains 12 .tif files corresponding to data of 12 months.}
 
-   @param prec_path The path for the folder of annual average maximum
-   temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+\item{prec_path}{The path for the folder of annual average maximum
+temperature. The folder contains 12 .tif files corresponding to data of 12 months.}
 
-   @param Frost A logical value for whether calculate the annual extreme minimum temperature,for
-   follow-up plotting the frost months. Default is FALSE.
+\item{Frost}{A logical value for whether calculate the annual extreme minimum temperature,for
+follow-up plotting the frost months. Default is FALSE.}
 
-   @param exmintemp_path The path for the folder of annual extreme minimum
-   temperature. The folder contains 12 .tif files corresponding to data of 12 months.}
+\item{exmintemp_path}{The path for the folder of annual extreme minimum
+temperature. The folder contains 12 .tif files corresponding to data of 12 months.}
 }
 \value{
 A data.frame with annual average precipitation, annual average minimum
