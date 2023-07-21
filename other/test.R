@@ -7,13 +7,18 @@ document()
 load_all()
 build_vignettes()
 build_readme()
+
+
 ?clim_plot()
 ?clim_extract()
 ?plotdata_Frost
 ?plotdata
+
+
 tools::R_user_dir("climplot",which = "data")
 
 use_package("climplot")
+
 
 use_testthat()
 use_test("climplot")
