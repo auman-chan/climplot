@@ -2,6 +2,7 @@
 titie: "climplot：用于绘制 Walter & Lieth 气候图的
 流程化工具"
 output: github_document
+always_allow_html: true
 ---
 
 # climplot：用于绘制 Walter & Lieth 气候图的流程化工具
@@ -81,13 +82,12 @@ c <- "G:/climplot/climdata/prec"
 #extraction of climate data
 
 plotdata <- clim_extract(locdata,a,b,c)
-}
+
 ```
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-kable(plotdata,format="latex", booktabs=TRUE) %>% 
-  kable_styling(latex_options = "scale_down")
+kable(plotdata,format="pipe") 
 ```
 导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
 导出数据框架存储在此包的数据`plotdata`中，作为函数导出结果的示例。
