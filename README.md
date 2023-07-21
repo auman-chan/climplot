@@ -97,7 +97,7 @@ loc <- subset(plotdata,No==2)
 clim_plot(loc)
 ```
 
-<img src="vignettes/plot1-1.png" width="50%" style="display: block; margin: auto auto auto 0;" />
+<img src="vignettes/plot1-1.png" width="672" style="display: block; margin: auto;" />
 
 在上图中:
 

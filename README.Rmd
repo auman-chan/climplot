@@ -103,7 +103,7 @@ clim_plot(loc)
 
 ```
 
-```{r, echo=FALSE, out.width="50%",fig.align = 'left'}
+```{r, echo=FALSE,fig.align = 'center'}
 knitr::include_graphics("vignettes/plot1-1.png")
 ```
 
