@@ -4,7 +4,8 @@
 \alias{clim_extract}
 \title{Obtain climate data for climatic diagram construction}
 \usage{
-clim_extract(file,mintemp_path,maxtemp_path,prec_path,Frost=F,exmintemp_path)
+clim_extract(file,mintemp_path=NA,maxtemp_path=NA,prec_path=NA,
+Frost=FALSE,exmintemp_path=NA)
 }
 \arguments{
 \item{file}{A data.frame(see details in dataset \code{locdata}) with the following 5 columns:
@@ -101,4 +102,3 @@ Scientific Data 7: 109.
 
 Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 }
-\keyword{internal}

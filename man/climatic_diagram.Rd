@@ -6,8 +6,8 @@
 \usage{
 clim_plot(data,mlab="",pcol="blue",tcol="red",wcol="green",dcol="orange",
 pfcol="#79e6e8",sfcol="#09a0d1",ylabel=FALSE,ylab1=NA,ylab2=NA,xlab="Month",
-ShowForst=FALSE,shem=FALSE,p3line=FALSE,p50line=FALSE,extremeT=FALSE,
-margen=c(4,4,5,4),per=NA,...)
+ShowFrost=FALSE,shem=FALSE,p3line=FALSE,p50line=FALSE,extremeT=FALSE,
+margen=c(4,4,5,4),per=NA)
 }
 \arguments{
 \item{data}{A data.frame(see details in the dataset \code{plotdata})
@@ -56,6 +56,8 @@ No use when ShowFrost= FALSE.}
 
 \item{xlab}{A character value for label of x axis. Default is "Month".}
 
+\item{ShowFrost}{A logical value for whether marking forst months. Default is FALSE.}
+
 \item{shem}{A logical value for whether keeping the summer period in
 the central zone of the graphic
 (the diagram will begin the plot with the July data). Default is FALSE. Useful when the
@@ -80,8 +82,6 @@ Default is FALSE.}
 #'@details The function extracts precipitation and temperature from arranged
 Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
 and arranges them to a data.frame for constructing the climatic diagram.}
-
-\item{ShowFrost}{A logical value for whether marking forst months. Default is FALSE.}
 }
 \value{
 A Walter & Lieth climatic diagram of the provided locations, including annual variation
@@ -125,4 +125,3 @@ https://CRAN.R-project.org/package=climatol.
 
 Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
 }
-\keyword{internal}

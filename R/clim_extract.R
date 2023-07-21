@@ -1,6 +1,7 @@
 #' @rdname climate_data
 #' @title Obtain climate data for climatic diagram construction
-#' @usage clim_extract(file,mintemp_path,maxtemp_path,prec_path,Frost=F,exmintemp_path)
+#' @usage clim_extract(file,mintemp_path=NA,maxtemp_path=NA,prec_path=NA,
+#' Frost=FALSE,exmintemp_path=NA)
 #' @description \code{clim_extract} acquires crucial climate data for
 #' generating Walter & Lieth climatic diagrams
 #' based on the provided location coordinates.
@@ -96,15 +97,14 @@
 #' @importFrom dplyr as_tibble
 #' @importFrom magrittr %>%
 #'
-#' @keywords internal
 #' @export
 
 clim_extract <- function(file,
-                         mintemp_path,
-                         maxtemp_path,
-                         prec_path,
-                         Frost=F,
-                         exmintemp_path
+                         mintemp_path=NA,
+                         maxtemp_path=NA,
+                         prec_path=NA,
+                         Frost=FALSE,
+                         exmintemp_path=NA
                          ){
   if(!file.exists(mintemp_path)) {
     stop("The path of 'mintemp' data doesn't exist!")

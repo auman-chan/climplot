@@ -2,8 +2,8 @@
 #' @title  Walter & Lieth climatic diagram construction
 #' @usage clim_plot(data,mlab="",pcol="blue",tcol="red",wcol="green",dcol="orange",
 #'pfcol="#79e6e8",sfcol="#09a0d1",ylabel=FALSE,ylab1=NA,ylab2=NA,xlab="Month",
-#'ShowForst=FALSE,shem=FALSE,p3line=FALSE,p50line=FALSE,extremeT=FALSE,
-#'margen=c(4,4,5,4),per=NA,...)
+#'ShowFrost=FALSE,shem=FALSE,p3line=FALSE,p50line=FALSE,extremeT=FALSE,
+#'margen=c(4,4,5,4),per=NA)
 #'
 #' @description \code{clim_plot} plots the Walter & Lieth climatic diagram
 #' with the climate data of different locations. It is based on the method of function
@@ -118,7 +118,6 @@
 #'
 #' @import graphics
 #' @import stats
-#' @keywords internal
 #' @export
 
 clim_plot <- function(data,     #dataset
@@ -133,14 +132,14 @@ clim_plot <- function(data,     #dataset
                        ylab1=NA,
                        ylab2=NA,
                        xlab="Month",
-                       ShowForst=FALSE, #whether display the frosty months
+                       ShowFrost=FALSE, #whether display the frosty months
                        shem=FALSE,
                        p3line=FALSE, #auxiliary line of temperature
                        p50line=FALSE,#auxiliary line of 50-100mm precipitation
                        extremeT=FALSE,
                       margen=c(4,4,5,4),
-                      per=NA, #观测年份
-                       ...) {
+                      per=NA #观测年份
+                       ) {
 
   est <- data$Location[1]
   alt <- data$Altitude[1]
@@ -383,7 +382,7 @@ clim_plot <- function(data,     #dataset
   y1 <- subset(pi,d<0)
   y2 <- subset(ti,d<0)
   if(length(xw)>0) segments(xw,y1,xw,y2,col=dcol,lty=3,lwd=2)
-  if(ShowForst& nrow(dat)==4){
+  if(ShowFrost& nrow(dat)==4){
     #Forsty months display
     #accurate frosty months
     for(i in 1:12) if(dat[3,i]<=0) rect(i-1,-1.5,i,0,col=sfcol)

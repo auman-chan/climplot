@@ -304,7 +304,7 @@ clim_plot(data=sub,ylabel = TRUE,
 
 data("plotdata_Frost")
 loc <- subset(plotdata_Frost,No==3)
-clim_plot(data=loc,ShowForst = T)
+clim_plot(data=loc,ShowFrost = T)
 ```
 
 The blocks with light blue color on x-axis represent the months with potential frost.
@@ -317,7 +317,7 @@ It is possible to adjust the colors of temperature, precipitation, humidity, ari
 
 ```{r color picker, echo=TRUE}
 loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,pcol = "#8DB6CD",tcol = "#FF6A6A",wcol="#4EEE94",dcol = "#EEB422",pfcol="#00BFFF",sfcol="#8A2BE2",ShowForst = TRUE)
+clim_plot(loc,pcol = "#8DB6CD",tcol = "#FF6A6A",wcol="#4EEE94",dcol = "#EEB422",pfcol="#00BFFF",sfcol="#8A2BE2",ShowFrost = TRUE)
 
 ```
 
@@ -325,7 +325,7 @@ Additionally, the display of axis labels can be controlled and custom labels can
 
 ```{r label, echo=TRUE}
 loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",ylab2 ="Precipitation(mm)",ShowForst = TRUE)
+clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",ylab2 ="Precipitation(mm)",ShowFrost = TRUE)
 ```
 
 ### Auxiliary marker
@@ -334,7 +334,7 @@ Displaying extreme temperatures, the auxiliary line of precipitation curve and p
 
 ```{r auxiliary line}
 loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowForst = TRUE)
+clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowFrost = TRUE)
 ```
 
 ## Reference

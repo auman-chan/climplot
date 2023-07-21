@@ -73,18 +73,18 @@ clim_plot(loc)
 
 data("plotdata_Frost")
 loc <- subset(plotdata_Frost,No==3)
-clim_plot(data=loc,ShowForst = T)
+clim_plot(data=loc,ShowFrost = T)
 
 ## ----color picker, echo=TRUE--------------------------------------------------
 loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,pcol = "#8DB6CD",tcol = "#FF6A6A",wcol="#4EEE94",dcol = "#EEB422",pfcol="#00BFFF",sfcol="#8A2BE2",ShowForst = TRUE)
+clim_plot(loc,pcol = "#8DB6CD",tcol = "#FF6A6A",wcol="#4EEE94",dcol = "#EEB422",pfcol="#00BFFF",sfcol="#8A2BE2",ShowFrost = TRUE)
 
 
 ## ----label, echo=TRUE---------------------------------------------------------
 loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",ylab2 ="Precipitation(mm)",ShowForst = TRUE)
+clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",ylab2 ="Precipitation(mm)",ShowFrost = TRUE)
 
 ## ----auxiliary line-----------------------------------------------------------
 loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowForst = TRUE)
+clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowFrost = TRUE)
 
