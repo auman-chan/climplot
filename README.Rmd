@@ -87,7 +87,8 @@ plotdata <- clim_extract(locdata,a,b,c)
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-kable(plotdata,format="pipe") 
+p <- plotdata %>% dplyr::filter(No<4)
+kable(p,format = "pipe")
 ```
 导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
 导出数据框架存储在此包的数据`plotdata`中，作为函数导出结果的示例。
@@ -95,11 +96,15 @@ kable(plotdata,format="pipe")
 ### Walter & Lieth的气候图绘制
 以`plotdata`数据为例，导入到函数`clim_plot`中：
 
-```{r plot1}
+```{r plot1, eval=FALSE}
 data("plotdata")
 loc <- subset(plotdata,No==2)
 clim_plot(loc)
 
+```
+
+```{r, echo=FALSE, out.width="50%",fig.align = 'left'}
+knitr::include_graphics("vignettes/plot1-1.png")
 ```
 
 在上图中:

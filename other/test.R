@@ -61,3 +61,10 @@ m <- data.frame( "annual_average_maximum_temperature"=list1,
                 "annual_average_precipitation"=list3
     )
 write.csv(m,file="climdata.csv")
+
+
+#for csv
+library(climplot)
+data("plotdata")
+p <- plotdata %>% dplyr::filter(No<4)
+write.csv(p,"plotdata_part.csv")
