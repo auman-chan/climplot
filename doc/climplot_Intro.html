@@ -2884,8 +2884,12 @@ diagram</li>
 </div>
 <div id="installing-and-loading" class="section level1">
 <h1>Installing and loading</h1>
-<p>To install the latest developmental version from <a href="https://gitee.com/">gitee</a> you will need the R package <a href="https://cran.r-project.org/package=remotes">remotes</a>and <a href="https://cran.r-project.org/package=git2r">git2r</a>:</p>
+<p>To install the latest developmental version from <a href="https://github.com/">github</a> and <a href="https://gitee.com/">gitee</a>, you will need the R package <a href="https://cran.r-project.org/package=remotes">remotes</a>and <a href="https://cran.r-project.org/package=git2r">git2r</a>:</p>
 <pre class="r"><code>install.packages(&#39;remotes&#39;)
+
+#from github
+remotes::install_github(&quot;auman-chan/climplot&quot;)
+#from gitee
 install.packages(&#39;git2r&#39;)
 remotes::install_git(&quot;https://gitee.com/auman-chan/climplot.git&quot;)</code></pre>
 </div>

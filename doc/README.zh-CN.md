@@ -36,11 +36,15 @@ version](https://img.shields.io/badge/R-%3E=%202.10-6666ff.svg)](https://cran.r-
 
 ## 安装与加载
 
-从[gitee](https://gitee.com)
+从[gitee](https://gitee.com)和[github](https://github.com/)
 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r):
 
 ``` r
 install.packages('remotes')
+
+#from github
+remotes::install_github("auman-chan/climplot")
+#from gitee
 install.packages('git2r')
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 ```

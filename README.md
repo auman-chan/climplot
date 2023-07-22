@@ -40,12 +40,17 @@ The package offers functions for:
 ## Installing and loading
 
 To install the latest developmental version from
-[gitee](https://gitee.com/) you will need the R package
+[github](https://github.com/) and [gitee](https://gitee.com/), you will
+need the R package
 [remotes](https://cran.r-project.org/package=remotes)and
 [git2r](https://cran.r-project.org/package=git2r):
 
 ``` r
 install.packages('remotes')
+
+#from github
+remotes::install_github("auman-chan/climplot")
+#from gitee
 install.packages('git2r')
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 ```
