@@ -196,7 +196,7 @@ read.csv("climdata.csv")
 
 ### Location information preparation
 
-In order to extract climate data for specific locations, precise coordinates are essential. Additionally, the diagram should display other relevant information such as location names and altitudes. Therefore, a data.frame containing information of the target locations is necessary for `clim_extract` The imported data.frame must contain five columns in the following order:
+In order to extract climate data for specific locations, precise coordinates are essential. Additionally, the diagram should display other relevant information such as location names and altitudes. Therefore, a data.frame containing information of the target locations is necessary for `clim_extract`. The imported data.frame must contain five columns in the following order:
 
 -   **No**: Serial number of the locations
 -   **location**: Abbreviation of the locations

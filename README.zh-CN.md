@@ -1,4 +1,10 @@
-
+---
+titie: "climplot：用于绘制 Walter & Lieth 气候图的流程化工具"
+output: github_document
+always_allow_html: true
+editor_options: 
+  chunk_output_type: console
+---
 # climplot：用于绘制 Walter & Lieth 气候图的流程化工具
 
 <!-- badges: start -->
