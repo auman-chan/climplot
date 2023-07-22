@@ -73,6 +73,7 @@ in script \code{other/clim_cal.R}, or download directly from the supplementary m
 {
 #import data of stations
 data("locdata")
+#or create a new data.frame
 #Please modify the path of yours
 a <- "D:/climplot/climdata/mean_mintemp"
 b <- "D:/climplot/climdata/mean_maxtemp"
@@ -81,9 +82,9 @@ d <- "D:/climplot/climdata/min_mintemp"
 #extraction of climate data
 \dontrun{
 #not sure whether the folders are ready
-cli <- clim_extract(locdata,a,b,c)
+cli <- clim_extract(m,a,b,c)
 #calculate for forst months display
-cli <- clim_extract(locdata,a,b,c,Frost=T,d)
+cli <- clim_extract(m,a,b,c,Frost=T,d)
 }
 }
 }
