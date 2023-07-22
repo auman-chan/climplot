@@ -78,6 +78,7 @@
 #'@examples{
 #' #import data of stations
 #' data("locdata")
+#' #or create a new data.frame
 #' #Please modify the path of yours
 #' a <- "D:/climplot/climdata/mean_mintemp"
 #' b <- "D:/climplot/climdata/mean_maxtemp"
@@ -86,14 +87,14 @@
 #' #extraction of climate data
 #' \dontrun{
 #' #not sure whether the folders are ready
-#' cli <- clim_extract(locdata,a,b,c)
+#' cli <- clim_extract(m,a,b,c)
 #' #calculate for forst months display
-#' cli <- clim_extract(locdata,a,b,c,Frost=T,d)
+#' cli <- clim_extract(m,a,b,c,Frost=T,d)
 #' }
 #' }
-#' @importFrom sp coordinates
+#' @importFrom sp SpatialPoints
 #' @importFrom dplyr mutate arrange desc
-#' @importFrom raster extract stack
+#' @importFrom raster extract stack crs
 #' @importFrom dplyr as_tibble
 #' @importFrom magrittr %>%
 #'
@@ -132,8 +133,8 @@ clim_extract <- function(file,
   }
 
 pointdata <- file
-  point <- data.frame(lon=coordinates(pointdata[,"lon"]),
-                            lat=coordinates(pointdata[,"lat"]))
+  point <- SpatialPoints(cbind(file$lon ,file$lat),
+                         proj4string=crs(avmintemp))
   avtemp1 <- extract(avmintemp,point) %>% as_tibble()
   colnames(avtemp1) <- as.character(c(1:12))
   avtemp1 <- avtemp1 %>% mutate(No=pointdata$No,
