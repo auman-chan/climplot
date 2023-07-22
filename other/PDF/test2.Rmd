@@ -77,7 +77,7 @@ library(kableExtra)
 ```
 
 ```{r echo=FALSE}
-a <- read.csv("D:/climplot/climplot/vignettes/climdata.csv")
+a <- read.csv("climdata.csv")
 colnames(a) <- c("No","1","2","3","4")
 kable(a,format="latex", booktabs=TRUE) %>%
   footnote(c("1. 年均最高气温",
