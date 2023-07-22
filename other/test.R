@@ -8,6 +8,9 @@ load_all()
 
 build_vignettes()
 build_readme()
+
+usethis::use_pkgdown()
+pkgdown::build_site()
 rmarkdown::render("README.zh-CN.Rmd")
 
 ?clim_plot()

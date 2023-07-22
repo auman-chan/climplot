@@ -12,6 +12,18 @@ knitr::include_graphics("imgfile.png")
 #  #from gitee
 #  install.packages('git2r')
 #  remotes::install_git("https://gitee.com/auman-chan/climplot.git")
+#  
+#  #add vignettes
+#  remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+#  
+#  remotes::install_git("https://gitee.com/auman-chan/climplot.git",
+#                       build_vignettes= TRUE)
+#  
+#  #add vignettes
+#  remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+#  
+#  remotes::install_git("https://gitee.com/auman-chan/climplot.git",
+#                       build_vignettes= TRUE)
 
 ## ----load package,include=FALSE-----------------------------------------------
 #load package

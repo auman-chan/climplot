@@ -39,7 +39,8 @@ editor_options:
 
 ## 安装与加载
 
-从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r):
+从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。 
+如果需要查看更多帮助信息，请在后面加上代码`build_vignettes= TRUE`。
 
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
@@ -49,6 +50,12 @@ remotes::install_github("auman-chan/climplot")
 #from gitee
 install.packages('git2r')
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
+
+#add vignettes
+remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+
+remotes::install_git("https://gitee.com/auman-chan/climplot.git",
+                     build_vignettes= TRUE)
 ```
 
 ```{r load package,include=FALSE}
