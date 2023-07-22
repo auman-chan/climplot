@@ -4,8 +4,12 @@ output: github_document
 always_allow_html: true
 editor_options: 
   chunk_output_type: console
+  markdown: 
+    wrap: 72
 ---
+
 # climplot：用于绘制 Walter & Lieth 气候图的流程化工具
+
 <!-- badges: start -->
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Project Status: Active  The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -14,30 +18,39 @@ editor_options:
      readLines(con = "./DESCRIPTION"), value = TRUE),pattern=">= [0-9].[0-9]{2,}")`-6666ff.svg)](https://cran.r-project.org/)
 [![packageversion](https://img.shields.io/badge/Package%20version-`r gsub("version: |version:", "", grep("version", ignore.case = TRUE, readLines(con = "./DESCRIPTION"), value = TRUE), ignore.case = TRUE)`-orange.svg?style=flat-square)](commits/develop)
 [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellow.svg)](/commits/master)
-![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not provided-red.svg)
+![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not ready-red.svg)
 <!-- badges: end -->
 
-<img src="vignettes/imgfile.png" alt="climplot logo" align="right" width = "40%"/>
+语言选择：
+[English](README.md)
+[中文](doc/README.zh-CN.md)
 
-[climplot](https://gitee.com/auman-chan/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
+<img src="vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
 
-该软件包的主要作用为:
+[climplot](https://gitee.com/auman-chan/climplot) aims to collect
+crucial climate data for global locations and construct the Walter &
+Lieth climatic diagrams in a more user-friendly and personalized manner.
 
--   使用Worldclim的气候数据来获得标准化和可靠的数据，以构建 Walter＆Lieth 气候图
+The main features of the package are:
 
--   提供更多参数定制图片样式和信息显示方式
+-   The use of worldwide climate data to obtain standardized and
+    reliable data for constructing Walter & Lieth climatic diagrams
+-   The provision for more parameter to customize the plots and display
+    comprehensive information
 
-该包提供以下函数功能:
+The package offers functions for:
 
--   获取气候数据以构建Walter＆Lieth气候图
+-   Obtain climate data to construct Walter & Lieth Climatic Diagram for
+    global locations
+-   Construct the Walter & Lieth climatic diagram
+-   Revise the color scheme and information presentation of the diagram
 
--   绘制Walter＆Lieth气候图
+## Installing and loading
 
--   修改气候图的配色和显示的相关信息
-
-## 安装与加载
-
-从[gitee](https://gitee.com) 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r):
+To install the latest developmental version from
+[gitee](https://gitee.com/) you will need the R package
+[remotes](https://cran.r-project.org/package=remotes)and
+[git2r](https://cran.r-project.org/package=git2r):
 
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
@@ -50,10 +63,17 @@ remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 library(climplot)
 ```
 
-## 使用前数据准备
-Worldclim气候数据是本软件包必不可少的，由于其全球尺度栅格数据的文件较大，软件包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
+## Data preparation
 
-此数据集包括4个文件夹，共48个tif文件，其中包括年均最低气温、年均最高气温、年均降水和年极端最低气温。
+The climate data provided by Worldclim is indispensable, however, due to
+its global-scale raster layer format, the file size are substantial and
+cannot be accommodated within the package. Therefore, kindly obtain the
+climate dataset from [Figshare](NULL) before use.
+
+The dataset comprises of four folders and a total of 48 .tif files,
+which include annual average minimum temperature, annual average maximum
+temperature, annual average precipitation, and annual extreme minimum
+temperature.
 
 ```{r include=FALSE}
 library(dplyr)
@@ -61,23 +81,29 @@ library(knitr)
 library(kableExtra)
 ```
 
-## 使用示例
-### 气候数据提取
-使用前需要按格式整理好绘图地点的信息。这个包中的数据 `locdata` 是 导入数据格式的样例。导入的数据框必须包含5列，顺序如下:
+## Eaxmple
 
--   **No**:目标地点的序号
+### Extraction of climate data
 
--   **location**:目标地点的缩写
+Information of the target locations should be ready for the
+extraction.The data `locdata` in this package can be a example of the
+import data.frame. It must contain five columns in the following order:
 
--   **lon**:目标地点的经度，以十进制表示，负数表示西经
+-   **No**: Serial number of the locations
+-   **location**: Abbreviation of the locations
+-   **lon**: Longitude of the locations in decimal digit (negative
+    numbers indicating west longitude)
+-   **lat**: Latitude of the locations in decimal digit (negative
+    numbers indicating south latitude)
+-   **altitude**: Altitude of the locations
 
--   **lat**:目标地点的纬度，以十进制表示，负数表示南纬
+Other extra columns with information is allowed behind the columns
+above, but would be discarded in following process.
 
--   **altitude**:目标地点的高度
+After preparing the climate dataset and location information, import the
+data.frame and path of three climate datasets into the function `clim_extract`:
 
-上述列的后面允许添加其他包含信息的列，但在后续处理中将被舍弃。
 
-在准备好气候数据集和地点信息后，向函数 `clim_extract` 导入三个气候数据集的数据框和数据集路径：
 
 ```{r extraction,eval=FALSE}
 #Example data in this package
@@ -98,11 +124,13 @@ data("plotdata")
 p <- plotdata %>% dplyr::filter(No<4)
 kable(p,format = "pipe")
 ```
-导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
-导出数据框架存储在此包的数据`plotdata`中，作为函数导出结果的示例。
 
-### Walter & Lieth的气候图绘制
-以`plotdata`数据为例，导入到函数`clim_plot`中：
+The exported data.frame includes 5 kinds of information of locations(as which in the data.frame import), and values of 3 kinds of climate factors across 12 months. An export data.frame stores in the data `plotdata` of this package, as an example of the function export.
+
+
+### Climatic diagram Plotting
+
+Take the data `plotdata` and `plotdata_Frost` as an example, and import them into the function `clim_plot`:
 
 ```{r plot1, eval=FALSE}
 data("plotdata")
@@ -115,23 +143,31 @@ clim_plot(loc)
 knitr::include_graphics("vignettes/plot1-1.png")
 ```
 
-在上图中:
+In the figure above:
 
--    红色曲线代表气温的年际变化，蓝色曲线代表降水的年际变化。这两条曲线闭合形成了两种斑块，表示湿度和干燥程度。竖线填充的斑块代表湿润季节，散点填充的斑块代表干旱季节。与降水曲线颜色相同的多边形表示降水量大于100mm的月份，表示雨季。
+-   The red curve represents the annual variation of temperature, and blue one represents of precipitation variation. These two curves form two types of patches indicating humidity and aridity levels. The string-filled patches represent humid seasons while those with scattered points represent arid seasons. The polygon filled with the color same as precipitation curve indicates months with precipitation over 100mm, displaying the wet season period.
 
--    左上角的信息包括名称、海拔高度和位置坐标。右上方为年平均气温和年平均降水量。
-
-## 其他参考
-更多参考内容请阅读软件包内的帮助文件，以及vignettes中的信息。
+-   The information on the left top includes the name, the altitude and the coordinates of the locations. The right top are the values of annual mean temperature and mean precipitation.
 
 
-## 参考文献
-1.  Guijarro J A (2023). climatol: Climate Tools (Series Homogenization and Derived Products), 4.0.0., <https://CRAN.R-project.org/package=climatol>.
+## More inforamtion
 
-2.  Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2: new 1km spatial resolution climate surfaces for global land areas. International Journal of Climatology 37 (12): 4302-4315.
-
-3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset. Scientific Data 7: 109.
-
-4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
+More examples and information, please view the help pages and the files in vignettes.
 
 
+## Reference
+
+1.  Guijarro J A (2023). climatol: Climate Tools (Series Homogenization
+    and Derived Products), 4.0.0.,
+    <https://CRAN.R-project.org/package=climatol>.
+
+2.  Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2: new 1km spatial
+    resolution climate surfaces for global land areas. International
+    Journal of Climatology 37 (12): 4302-4315.
+
+3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version
+    4 of the CRU TS monthly high-resolution gridded multivariate climate
+    dataset. Scientific Data 7: 109.
+
+4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer,
+    Jena.

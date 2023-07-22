@@ -1,10 +1,4 @@
----
-titie: "climplot：用于绘制 Walter & Lieth 气候图的流程化工具"
-output: github_document
-always_allow_html: true
-editor_options: 
-  chunk_output_type: console
----
+
 # climplot：用于绘制 Walter & Lieth 气候图的流程化工具
 
 <!-- badges: start -->
@@ -18,10 +12,10 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 version](https://img.shields.io/badge/R-%3E=%202.10-6666ff.svg)](https://cran.r-project.org/)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.1.0-orange.svg?style=flat-square)](commits/develop)
 [![Last-changedate](https://img.shields.io/badge/last%20change-2023--07--22-yellow.svg)](/commits/master)
-![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20provided-red.svg)
+![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 <!-- badges: end -->
 
-<img src="vignettes/imgfile.png" alt="climplot logo" align="right" width = "40%"/>
+<img src="vignettes/imgfile.png" alt="climplot logo" align="right" width="40%"/>
 
 [climplot](https://gitee.com/auman-chan/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 

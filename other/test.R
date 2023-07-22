@@ -5,9 +5,10 @@ library(tidyverse)
 library(raster)
 document()
 load_all()
+
 build_vignettes()
 build_readme()
-
+rmarkdown::render("README.zh-CN.Rmd")
 
 ?clim_plot()
 ?clim_extract()
