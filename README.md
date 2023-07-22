@@ -1,5 +1,5 @@
 
-# climplot：用于绘制 Walter & Lieth 气候图的流程化工具
+# climplot: Facilitate and tailor Walter & Lieth climatic diagram construction
 
 <!-- badges: start -->
 
