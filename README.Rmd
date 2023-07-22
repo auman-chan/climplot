@@ -1,5 +1,5 @@
 ---
-titie: "climplot：用于绘制 Walter & Lieth 气候图的流程化工具"
+titie: "climplot: Facilitate and tailor Walter & Lieth climatic diagram construction"
 output: github_document
 always_allow_html: true
 editor_options: 
@@ -8,7 +8,7 @@ editor_options:
     wrap: 72
 ---
 
-# climplot：用于绘制 Walter & Lieth 气候图的流程化工具
+# climplot: Facilitate and tailor Walter & Lieth climatic diagram construction
 
 <!-- badges: start -->
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
