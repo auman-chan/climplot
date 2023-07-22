@@ -45,7 +45,7 @@ the month names in English or Spanish respectively.
 \item{pfcol}{Color of the potential frosty months. Default is "#79e6e8". No use when
 ShowFrost= FALSE.}
 
-\item{sfcol}{Color of the accurate frosty months. Default is "#09a0d1".
+\item{sfcol}{Color of the confirmed frosty months. Default is "#09a0d1".
 No use when ShowFrost= FALSE.}
 
 \item{ylabel}{A logical value for whether using customized label of y axis. Default is FALSE.}
