@@ -11,7 +11,7 @@
 
 <meta name="author" content=" Auman Chan, PhD Candidate" />
 
-<meta name="date" content="2023-07-22" />
+<meta name="date" content="2023-07-23" />
 
 <title>Introduction to climplot</title>
 
@@ -2760,7 +2760,7 @@ font-size: 0.95em;
 &amp; Lieth climatic diagram construction</h1>
 <h4 class="author"><a href="https://gitee.com/auman-chan"> Auman Chan,
 PhD Candidate</a></h4>
-<h4 class="date">2023-07-22</h4>
+<h4 class="date">2023-07-23</h4>
 
 </div>
 
@@ -2884,14 +2884,28 @@ diagram</li>
 </div>
 <div id="installing-and-loading" class="section level1">
 <h1>Installing and loading</h1>
-<p>To install the latest developmental version from <a href="https://github.com/">github</a> and <a href="https://gitee.com/">gitee</a>, you will need the R package <a href="https://cran.r-project.org/package=remotes">remotes</a>and <a href="https://cran.r-project.org/package=git2r">git2r</a>:</p>
+<p>To install the latest developmental version from <a href="https://github.com/">github</a> and <a href="https://gitee.com/">gitee</a>, you will need the R package <a href="https://cran.r-project.org/package=remotes">remotes</a>and <a href="https://cran.r-project.org/package=git2r">git2r</a>. If you want
+to see more help of this package, please add
+<code>build_vignettes= TRUE</code>.</p>
 <pre class="r"><code>install.packages(&#39;remotes&#39;)
 
 #from github
 remotes::install_github(&quot;auman-chan/climplot&quot;)
 #from gitee
 install.packages(&#39;git2r&#39;)
-remotes::install_git(&quot;https://gitee.com/auman-chan/climplot.git&quot;)</code></pre>
+remotes::install_git(&quot;https://gitee.com/auman-chan/climplot.git&quot;)
+
+#add vignettes
+remotes::install_github(&quot;auman-chan/climplot&quot;,build_vignettes= TRUE)
+
+remotes::install_git(&quot;https://gitee.com/auman-chan/climplot.git&quot;,
+                     build_vignettes= TRUE)
+
+#add vignettes
+remotes::install_github(&quot;auman-chan/climplot&quot;,build_vignettes= TRUE)
+
+remotes::install_git(&quot;https://gitee.com/auman-chan/climplot.git&quot;,
+                     build_vignettes= TRUE)</code></pre>
 </div>
 <div id="plotting-data-extraction" class="section level1">
 <h1>Plotting data extraction</h1>

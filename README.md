@@ -11,7 +11,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![minimal R
 version](https://img.shields.io/badge/R-%3E=%202.10-6666ff.svg)](https://cran.r-project.org/)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.1.0-orange.svg?style=flat-square)](commits/develop)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2023--07--22-yellow.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2023--07--23-yellow.svg)](/commits/master)
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 <!-- badges: end -->
 
@@ -43,7 +43,8 @@ To install the latest developmental version from
 [github](https://github.com/) and [gitee](https://gitee.com/), you will
 need the R package
 [remotes](https://cran.r-project.org/package=remotes)and
-[git2r](https://cran.r-project.org/package=git2r):
+[git2r](https://cran.r-project.org/package=git2r). If you want to see
+more help of this package, please add `build_vignettes= TRUE`.
 
 ``` r
 install.packages('remotes')
@@ -53,6 +54,12 @@ remotes::install_github("auman-chan/climplot")
 #from gitee
 install.packages('git2r')
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
+
+#add vignettes
+remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+
+remotes::install_git("https://gitee.com/auman-chan/climplot.git",
+                     build_vignettes= TRUE)
 ```
 
 ## Data preparation
