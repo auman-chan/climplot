@@ -15,7 +15,7 @@ version](https://img.shields.io/badge/R-%3E=%202.10-6666ff.svg)](https://cran.r-
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 <!-- badges: end -->
 
-<img src="imgfile.png" alt="climplot logo" align="right" width="40%"/>
+<img src="imgfile.png" alt="climplot logo" align="right" width="35%"/>
 
 [climplot](https://gitee.com/auman-chan/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
