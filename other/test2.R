@@ -15,6 +15,7 @@ data("plotdata_Frost")
 
 data("locdata")
 y <- readxl::read_xlsx("other/datatest.xlsx")
+k <- subset(plotdata_Frost,No==3)
 m <- data.frame(No="1",location="test",lon=113.27,lat=23.13,altitude=20)
 p <- as_tibble(m)
 loc <- as.data.frame(locdata)
@@ -23,7 +24,7 @@ b <- "D:/climplot/tmax"
 c <- "D:/climplot/prec"
 d <- "D:/climplot/extmin"
 x <- clim_extract(y,a,b,c,Frost = T,d)
-clim_plot(x,ShowFrost = T)
+clim_plot(k,ShowFrost = T)
 
 for (i in 1:3){
 

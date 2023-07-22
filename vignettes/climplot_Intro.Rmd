@@ -314,7 +314,7 @@ loc <- subset(plotdata_Frost,No==3)
 clim_plot(data=loc,ShowFrost = T)
 ```
 
-The blocks with light blue color on x-axis represent the months with potential frost.
+The blocks with light blue color on x-axis represent the months with potential frost, and the dark blue ones mean those with confirmed frost.
 
 ### Color and axis modification
 

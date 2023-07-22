@@ -49,7 +49,7 @@
 #' @param pfcol Color of the potential frosty months. Default is "#79e6e8". No use when
 #' ShowFrost= FALSE.
 #'
-#' @param sfcol Color of the accurate frosty months. Default is "#09a0d1".
+#' @param sfcol Color of the confirmed frosty months. Default is "#09a0d1".
 #' No use when ShowFrost= FALSE.
 #'
 #' @param ylabel A logical value for whether using customized label of y axis. Default is FALSE.
@@ -385,9 +385,9 @@ clim_plot <- function(data,     #dataset
   if(ShowFrost& nrow(dat)==4){
     #Forsty months display
     #accurate frosty months
-    for(i in 1:12) if(dat[3,i]<=0) rect(i-1,-1.5,i,0,col=sfcol)
+    for(i in 1:12) if(dat[2,i]<=0) rect(i-1,-1.5,i,0,col=sfcol)
     #potential frosty months
-    for(i in 1:12) if(dat[4,i]<=0 && dat[3,i]>0) rect(i-1,-1.5,i,0,col=pfcol)
+    for(i in 1:12) if(dat[4,i]<=0 && dat[2,i]>0) rect(i-1,-1.5,i,0,col=pfcol)
   }
 
   lines(xl[1:n2],yl[1:n2],col=pcol,lwd=2)#prec curve
