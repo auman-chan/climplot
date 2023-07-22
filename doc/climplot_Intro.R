@@ -6,6 +6,10 @@ knitr::include_graphics("imgfile.png")
 
 ## ----intasll, eval=FALSE------------------------------------------------------
 #  install.packages('remotes')
+#  
+#  #from github
+#  remotes::install_github("auman-chan/climplot")
+#  #from gitee
 #  install.packages('git2r')
 #  remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 
