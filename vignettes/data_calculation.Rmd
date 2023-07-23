@@ -1,12 +1,12 @@
 ---
 title: "Codes for calculation of climate data"
-pagetitle: "Calculation of climate data"
+pagetitle: "Supplementary code for data calculation"
 author: 
 - <a href="https://gitee.com/auman-chan"> Auman Chan, PhD Candidate</a>
 date:  "`r Sys.Date()`"
 output: 
   rmarkdown::html_document:
-    df_print: paged
+    df_print: kable
     self_contained: yes
     toc: true
     toc_depth: 3
@@ -14,7 +14,7 @@ output:
       collapsed: false
       smooth_scroll: true
 vignette: >
-  %\VignetteIndexEntry{1. Supplementary code for data calculation}
+  %\VignetteIndexEntry{2. Supplementary code for data calculation}
   %\usepackage[utf8]{inputenc}
   %\VignetteEncoding{UTF-8}
   

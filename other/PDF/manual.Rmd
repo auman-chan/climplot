@@ -41,7 +41,7 @@ header-includes:
 
 # 安装与加载
 
-从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r):
+从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。如果你打算一同安装此软件包的插曲文件（vignettes）, 请在代码中加入 `build_vignettes= TRUE`
 
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
@@ -50,7 +50,16 @@ install.packages('remotes')
 remotes::install_github("auman-chan/climplot")
 #from gitee
 install.packages('git2r')
-remotes::install_git("https://gitee.com/auman-chan/climplot.git")
+remotes::install_git(
+  "https://gitee.com/auman-chan/climplot.git")
+
+#add vignettes
+remotes::install_github("auman-chan/climplot",
+                        build_vignettes= TRUE)
+
+remotes::install_git(
+  "https://gitee.com/auman-chan/climplot.git",
+                     build_vignettes= TRUE)
 ```
 
 ```{r load package,include=FALSE}
@@ -60,7 +69,7 @@ library(climplot)
 
 # 绘图数据提取
 
-搜索和处理多个地点的气候数据是一项具有挑战性的工作。函数 `clim_extract`可以检索来自Worldclim 的历史月度天气数据(2010-2019年2.5度分版本，<https://worldclim.org/data/monthlywth.html>)的数据,为图表可视化做好准备。
+搜索和处理多个地点的气候数据是一项具有挑战性的工作。函数 `clim_extract`可以检索来自Worldclim 的历史月度天气数据(2010-2019年2.5度分版本，<https://worldclim.org/data/monthlywth.html>),为图表可视化做好准备。
 
 ## 数据准备
 
@@ -217,7 +226,7 @@ x轴上浅蓝色的方块代表可能出现霜冻的月份,深蓝色表示确定
 ### 改变颜色和坐标轴
 
 绘图颜色和坐标轴标签可自定义，以满足特定要求。
-可以调整温度、降水、湿度、干旱、雨季和霜冻月份块的颜色。
+可以调整温度和降水线，湿度、干旱、雨季斑块和霜冻月份色块的颜色。
 
 ```{r color picker, echo=TRUE}
 loc <- subset(plotdata_Frost,No==1)

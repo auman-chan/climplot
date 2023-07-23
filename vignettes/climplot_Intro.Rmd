@@ -1,12 +1,12 @@
 ---
-title: "climplot: Facilitate and tailor Walter & Lieth climatic diagram construction"
+title: "Facilitate and tailor Walter & Lieth climatic diagram drawing"
 pagetitle: "Introduction to climplot"
 author: 
 - <a href="https://gitee.com/auman-chan"> Auman Chan, PhD Candidate</a>
 date:  "`r Sys.Date()`"
 output: 
   html_document:
-    df_print: paged
+    df_print: kable
     toc: true
     toc_depth: 3
     toc_float:
@@ -146,27 +146,27 @@ p {
 knitr::include_graphics("imgfile.png")
 ```
 
-[climplot](https://gitee.com/auman-chan/climplot) aims to collect crucial climate data for global locations and construct the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
+[climplot](https://gitee.com/auman-chan/climplot) aims to collect crucial climate data for global locations and draw the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
 
 ::: {.alert .alert-info}
 The main features of the package are:
 
--   The use of worldwide climate data to obtain standardized and reliable data for constructing Walter & Lieth climatic diagrams
+-   The use of worldwide climate data to obtain standardized and reliable data for drawing Walter & Lieth climatic diagrams
 -   The provision for more parameter to customize the plots and display comprehensive information
 
 The package offers functions for:
 
--   Obtain climate data to construct Walter & Lieth Climatic Diagram for global locations
--   Construct the Walter & Lieth climatic diagram
+-   Obtain climate data to draw Walter & Lieth Climatic Diagram for global locations
+-   Draw the Walter & Lieth climatic diagram
 -   Revise the color scheme and information presentation of the diagram
 :::
 
 # Installing and loading
 
 To install the latest developmental version from [github](https://github.com/) and
-[gitee](https://gitee.com/), you will need the R package
-[remotes](https://cran.r-project.org/package=remotes)and
-[git2r](https://cran.r-project.org/package=git2r). If you want to see more help of this package, please add `build_vignettes= TRUE`.
+[gitee](https://gitee.com/), you will need the R packages
+[remotes](https://cran.r-project.org/package=remotes) and
+[git2r](https://cran.r-project.org/package=git2r). If you want to install the vignettes of this package, please add `build_vignettes= TRUE`.
 
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
@@ -195,7 +195,7 @@ remotes::install_git("https://gitee.com/auman-chan/climplot.git",
 library(climplot)
 ```
 
-```{r}
+```{r include=FALSE}
 library(dplyr)
 library(knitr)
 library(kableExtra)
@@ -203,18 +203,19 @@ library(kableExtra)
 
 # Plotting data extraction
 
-The task of searching for and processing climate data from multiple locations is a challenging endeavor. Function `clim_extract` can retrieve data derived from Worldclim Historical monthly weather data in 2010-2019(Version of 2.5 minutes, [https://worldclim.org/data/monthlywth.html](#0){.uri}), which be ready for diagrams visualization.
+The task of searching for and processing climate data from multiple locations is a challenging endeavor. Function `clim_extract` can retrieve data from Worldclim Historical monthly weather data in 2010-2019 (Version of 2.5 minutes, [https://worldclim.org/data/monthlywth.html](#0){.uri}), which are used for diagrams visualization.
 
 ## Data preparation
 
 ### Climate data download
 
-The climate data provided by Worldclim is indispensable, however, due to its global-scale raster layer format, the file size are substantial and cannot be accommodated within the package. Therefore, kindly obtain the climate dataset from [Figshare](NULL) before use.
+The climate data provided by Worldclim is indispensable. however, due to its global-scale raster layer format, the file size are substantial and cannot be accommodated within the package. Therefore, kindly obtain the climate dataset from [Figshare](NULL) before use.
 
 The dataset comprises of four folders and a total of 48 .tif files, which include annual average minimum temperature, annual average maximum temperature, annual average precipitation, and annual extreme minimum temperature. These values are calculated by taking the monthly averages and minimizations within 2010-2019. The structure of the dataset is illustrated in the table below:
 
 ```{r echo=FALSE}
-read.csv("climdata.csv")
+m <- read.csv("climdata.csv")
+kable(m,format = "pipe")
 ```
 
 ### Location information preparation
@@ -227,7 +228,7 @@ In order to extract climate data for specific locations, precise coordinates are
 -   **lat**: Latitude of the locations in decimal digit (negative numbers indicating south latitude)
 -   **altitude**: Altitude of the locations
 
-The data `locdata` in this package can be a example of the import data.frame. Other extra columns with information is allowed behind the columns above, but would be discarded in following process.
+The data `locdata` in this package can be an example of the import data.frame. Other extra columns with information is allowed behind the columns above, but would be discarded in following process.
 
 ```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
 data("locdata")
@@ -245,17 +246,17 @@ b <- "G:/climplot/climdata/tmax"
 c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
-plotdata <- clim_extract(locdata,a,b,c)
+plotdata <- clim_extract(locdata, a, b, c)
 ```
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-plotdata
+kable(plotdata,format = "pipe")
 ```
 
-The exported data.frame includes 5 kinds of information of locations(as which in the data.frame import), and values of 3 kinds of climate factors across 12 months. An export data.frame stores in the data `plotdata` of this package, as an example of the function export.
+The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 3 kinds of climate factors across 12 months. An  data.frame stores in the data `plotdata` of this package, as an example of the function export.
 
-To include the frosty months in subsequent plots, it is necessary to extract the extreme minimum temperature for each location. Set the parameter `Frost` from FALSE to TRUE, and provide the path of the dataset containing annual extreme minimum temperatures
+To include the frosty months in subsequent plots, it is necessary to extract the extreme minimum temperature for each location. Set the parameter `Frost` from `FALSE` to `TRUE`, and provide the path of the dataset containing annual extreme minimum temperatures.
 
 ```{r extraction with Frost,eval=FALSE}
 #Modify the path of yours
@@ -271,18 +272,18 @@ plotdata <- clim_extract(locdata,a,b,c,Frost = TRUE,d)
 
 ```{r plotdata_F,echo=FALSE}
 data("plotdata_Frost")
-plotdata_Frost
+kable(plotdata_Frost,format = "pipe")
 ```
 
-In this mode, the data.frame export includes 5 kinds of information of locations(as which in the data.frame import), and values of 4 kinds of climate factors among 12 months. The annual extreme minimum temperature are included as a new row of every location. An export data.frame of this mode stores in the data `plotdata_Frost` of this package, as an example of the function export.
+In this mode, the data.frame exported includes 5 kinds of information of locations(as which in the data.frame imported), and values of 4 kinds of climate factors among 12 months. The annual extreme minimum temperature are included as a new row of every location. A  data.frame of this mode stores in the data `plotdata_Frost` of this package, as an example of the function export.
 
-Hereto `clim_extact` have obtained all essential information for the Walter & Lieth climatic diagram plotting.
+Hereto `clim_extact` have obtained all essential information for the Walter & Lieth climatic diagram drawing.
 
-# Climatic diagram Plotting
+# Climatic diagram drawing
 
-The function `clim_plot` can construct the Walter & Lieth climatic diagram plotting in different styles of color scheme and information presentation. It refers to the function `diagwl()`of a CRAN package `climatol`.
+The function `clim_plot` can draw the Walter & Lieth climatic diagram plotting in different styles of color scheme and information presentation. It refers to the function `diagwl()`of a CRAN package `climatol`.
 
-## Walter & Lieth climatic diagram plotting of a single location
+## Walter & Lieth climatic diagram drawing of a single location
 
 Take the data `plotdata` and `plotdata_Frost` as an example, and import them into `clim_plot`.
 
@@ -295,13 +296,13 @@ clim_plot(loc)
 
 In the figure above:
 
--   The red curve represents the annual variation of temperature, and blue one represents of precipitation variation. These two curves form two types of patches indicating humidity and aridity levels. The string-filled patches represent humid seasons while those with scattered points represent arid seasons. The polygon filled with the color same as precipitation curve indicates months with precipitation over 100mm, displaying the wet season period.
+-   The red curve represents the annual variation of temperature, and blue one represents of precipitation variation. These two curves form two kinds of patches indicating humidity and aridity levels. The line-filled patches represent humid seasons while those with scattered points represent arid seasons. The polygon filled with the color same as precipitation curve indicates months with precipitation over 100mm, displaying the wet season.
 
--   The information on the left top includes the name, the altitude and the coordinates of the locations. The right top are the values of annual mean temperature and mean precipitation.
+-   The information on the left top includes the name, the altitude and the coordinate of the location. The right top are the values of annual mean temperature and mean precipitation.
 
-## Solution to plot for serveral location
+## Solution to drawing for serveral location
 
-`clim_plot`only supports constructing diagrams for one location at a time, as we recommend checking each plot individually, and importing multiple vectors of climate data increases the risk of errors. Therefore, if you require automated plotting for several locations, utilizing a loop is recommended:
+`clim_plot`only supports drawing diagrams for one location at a time, as we recommend checking each plot individually, and importing multiple vectors of climate data increases the risk of errors. Therefore, if you require automated plotting for several locations, utilizing a loop is recommended:
 
 ```{r plot mutli, eval=FALSE}
 data("plotdata")
@@ -328,13 +329,13 @@ loc <- subset(plotdata_Frost,No==3)
 clim_plot(data=loc,ShowFrost = T)
 ```
 
-The blocks with light blue color on x-axis represent the months with potential frost, and the dark blue ones mean those with confirmed frost.
+The blocks with light blue color on x-axis represent the months with potential frost, and the dark blue ones are those with confirmed frost.
 
 ### Color and axis modification
 
 The color and the axis labels could be customized to meet specific requirements.
 
-It is possible to adjust the colors of temperature, precipitation, humidity, aridity, wet season patches and frosty month blocks.
+It is possible to adjust the colors of line of temperature and precipitation, as well as  patches of humidity, aridity, wet season and frosty month blocks.
 
 ```{r echo=TRUE}
 loc <- subset(plotdata_Frost,No==1)

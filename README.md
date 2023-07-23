@@ -1,5 +1,5 @@
 
-# climplot: Facilitate and tailor Walter & Lieth climatic diagram construction
+# climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing
 
 <!-- badges: start -->
 
@@ -15,34 +15,35 @@ version](https://img.shields.io/badge/R-%3E=%203.5.0-6666ff.svg)](https://cran.r
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 <!-- badges: end -->
 
-<img src="vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
+<img src="./vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
 
 [climplot](https://gitee.com/auman-chan/climplot) aims to collect
-crucial climate data for global locations and construct the Walter &
-Lieth climatic diagrams in a more user-friendly and personalized manner.
+crucial climate data for global locations and render the Walter & Lieth
+climatic diagrams in a more user-friendly and personalized manner.
 
 The main features of the package are:
 
 - The use of worldwide climate data to obtain standardized and reliable
-  data for constructing Walter & Lieth climatic diagrams
+  data for drawing Walter & Lieth climatic diagrams
 - The provision for more parameter to customize the plots and display
   comprehensive information
 
 The package offers functions for:
 
-- Obtain climate data to construct Walter & Lieth Climatic Diagram for
-  global locations
-- Construct the Walter & Lieth climatic diagram
+- Obtain climate data to draw Walter & Lieth Climatic Diagram for global
+  locations
+- Draw the Walter & Lieth climatic diagram
 - Revise the color scheme and information presentation of the diagram
 
 ## Installing and loading
 
 To install the latest developmental version from
 [github](https://github.com/) and [gitee](https://gitee.com/), you will
-need the R package
-[remotes](https://cran.r-project.org/package=remotes)and
-[git2r](https://cran.r-project.org/package=git2r). If you want to see
-more help of this package, please add `build_vignettes= TRUE`.
+need the R packages
+[remotes](https://cran.r-project.org/package=remotes) and
+[git2r](https://cran.r-project.org/package=git2r). If you want to
+install the vignettes of this package, please add
+`build_vignettes= TRUE`.
 
 ``` r
 install.packages('remotes')
@@ -76,9 +77,9 @@ temperature.
 
 ### Extraction of climate data
 
-Information of the target locations should be ready for the
-extraction.The data `locdata` in this package can be a example of the
-import data.frame. It must contain five columns in the following order:
+Information of the target locations should be ready for the extraction.
+The data `locdata` in this package can be a example of the import
+data.frame. It must contain five columns in the following order:
 
 - **No**: Serial number of the locations
 - **location**: Abbreviation of the locations
@@ -105,7 +106,7 @@ c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
 
-plotdata <- clim_extract(locdata,a,b,c)
+plotdata <- clim_extract(locdata, a, b, c)
 ```
 
 |  No | Altitude | Location   |      Lon |     Lat | Type           |     1 |         2 |     3 |     4 |      5 |      6 |      7 |      8 |      9 |     10 |    11 |    12 |
@@ -121,11 +122,11 @@ plotdata <- clim_extract(locdata,a,b,c)
 |   3 |     2082 | Wawushan   | 102.9167 | 29.5000 | max.temprature |  4.00 |  6.100000 | 10.40 | 14.70 |  17.20 |  18.60 |  21.00 |  21.10 |  16.40 |  12.60 |  9.50 |  5.00 |
 
 The exported data.frame includes 5 kinds of information of locations(as
-which in the data.frame import), and values of 3 kinds of climate
-factors across 12 months. An export data.frame stores in the data
-`plotdata` of this package, as an example of the function export.
+which in the data.frame imported), and values of 3 kinds of climate
+factors across 12 months. A data.frame stores in the data `plotdata` of
+this package, as an example of the function export.
 
-### Climatic diagram Plotting
+### Climatic diagram drawing
 
 Take the data `plotdata` and `plotdata_Frost` as an example, and import
 them into the function `clim_plot`:
@@ -146,7 +147,7 @@ In the figure above:
   string-filled patches represent humid seasons while those with
   scattered points represent arid seasons. The polygon filled with the
   color same as precipitation curve indicates months with precipitation
-  over 100mm, displaying the wet season period.
+  over 100mm, displaying the wet season.
 
 - The information on the left top includes the name, the altitude and
   the coordinates of the locations. The right top are the values of

@@ -4,7 +4,7 @@ pagetitle: "Introduction to climplot in Chinese"
 date:  "`r Sys.Date()`"
 output: 
   rmarkdown::html_document:
-    df_print: paged
+    df_print: kable
     self_contained: yes
     toc: true
     toc_depth: 3
@@ -12,7 +12,7 @@ output:
       collapsed: false
       smooth_scroll: true
 vignette: >
-  %\VignetteIndexEntry{1. Introduction and Intro of climplot}
+  %\VignetteIndexEntry{3. Introduction to climplot in Chinese}
   %\usepackage[utf8]{inputenc}
   %\VignetteEncoding{UTF-8}
   

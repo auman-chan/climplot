@@ -21,7 +21,10 @@ usethis::use_mit_license()
 usethis::use_pkgdown()
 #Reinstall Cairo and ragg packages when error of purrr...
 #no use to bulid vignettes again cos they read from .Rmd files
+#remember
 pkgdown::build_site()
+#use kable to display table instead of export directly
+pkgdown::build_articles()
 #build home from readme.md,so it should update the build again
 #sometimes the pic can't display,move it to docs/articles manually
 #also the name of customized pics without "-" or "num"
@@ -42,9 +45,8 @@ use_package("climplot")
 
 use_testthat()
 use_test("climplot")
-use_readme_rmd()
-rmarkdown::render("README.Rmd")
 
+#test of use
 data("locdata")
 data("plotdata")
 t <- locdata
@@ -87,7 +89,7 @@ m <- data.frame( "annual_average_maximum_temperature"=list1,
     )
 write.csv(m,file="climdata.csv")
 
-
+#test of badges
 stringr::str_extract(grep(pattern="R \\(>= [0-9].[0-9]{1,}.[0-9]{1,}\\)", ignore.case = TRUE,
                           readLines(con = "./DESCRIPTION"), value = TRUE),
                      pattern=">= [0-9].[0-9]{1,}.[0-9]{1,}")
