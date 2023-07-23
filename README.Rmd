@@ -1,5 +1,5 @@
 ---
-titie: "climplot: Facilitate and tailor Walter & Lieth climatic diagram construction"
+titie= "climplot: Facilitate and tailor Walter & Lieth climatic diagram construction"
 output: github_document
 always_allow_html: true
 editor_options: 
@@ -20,10 +20,6 @@ editor_options:
 [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellow.svg)](/commits/master)
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not ready-red.svg)
 <!-- badges: end -->
-
-语言选择：
-[English](README.md)
-[中文](doc/README.zh-CN.md)
 
 <img src="vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
 
@@ -142,16 +138,13 @@ The exported data.frame includes 5 kinds of information of locations(as which in
 
 Take the data `plotdata` and `plotdata_Frost` as an example, and import them into the function `clim_plot`:
 
-```{r plot1, eval=FALSE}
+```{r eval=FALSE}
 data("plotdata")
 loc <- subset(plotdata,No==2)
 clim_plot(loc)
 
 ```
-
-```{r, echo=FALSE,fig.align = 'center'}
-knitr::include_graphics("vignettes/plot1-1.png")
-```
+<img src="vignettes/result.png" alt="plot result" align="center"/>
 
 In the figure above:
 

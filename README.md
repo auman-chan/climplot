@@ -138,7 +138,7 @@ loc <- subset(plotdata,No==2)
 clim_plot(loc)
 ```
 
-<img src="vignettes/plot1-1.png" width="672" style="display: block; margin: auto;" />
+<img src="vignettes/result.png" alt="plot result" align="center"/>
 
 In the figure above:
 

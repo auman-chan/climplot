@@ -10,7 +10,14 @@ build_vignettes()
 build_readme()
 
 usethis::use_pkgdown()
+#Reinstall Cairo and ragg packages when error of purrr...
+#no use to bulid vignettes again cos they read from .Rmd files
 pkgdown::build_site()
+#build home from readme.md,so it should update the build again
+#sometimes the pic can't display,move it to docs/articles manually
+#also the name of customized pics without "-" or "num"
+pkgdown::build_home()
+pkgdown::build_reference()
 rmarkdown::render("README.zh-CN.Rmd")
 
 ?clim_plot()

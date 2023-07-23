@@ -1,25 +1,31 @@
 ---
-titie: "climplot：用于绘制 Walter & Lieth 气候图的流程化工具"
-output: github_document
-always_allow_html: true
+title: "climplot：用于绘制 Walter & Lieth 气候图的流程化工具"
+pagetitle: "Introduction to climplot in Chinese"
+date:  "`r Sys.Date()`"
+output: 
+  rmarkdown::html_document:
+    df_print: paged
+    self_contained: yes
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+vignette: >
+  %\VignetteIndexEntry{1. Introduction and Intro of climplot}
+  %\usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
+  
+  %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
+  
   chunk_output_type: console
+params:
+  EVAL: !r identical(Sys.getenv("NOT_CRAN"), "true")
 ---
 
-# climplot：用于绘制 Walter & Lieth 气候图的流程化工具
-
-<!-- badges: start -->
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![Project Status: Active  The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![minimal R version](https://img.shields.io/badge/R-`r stringr::str_extract(grep(pattern="R \\(>= [0-9].[0-9]{2,}\\)", ignore.case = TRUE, 
-     readLines(con = "./DESCRIPTION"), value = TRUE),pattern=">= [0-9].[0-9]{2,}")`-6666ff.svg)](https://cran.r-project.org/)
-[![packageversion](https://img.shields.io/badge/Package%20version-`r gsub("version: |version:", "", grep("version", ignore.case = TRUE, readLines(con = "./DESCRIPTION"), value = TRUE), ignore.case = TRUE)`-orange.svg?style=flat-square)](commits/develop)
-[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellow.svg)](/commits/master)
-![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not ready-red.svg)
-<!-- badges: end -->
-
 <img src="imgfile.png" alt="climplot logo" align="right" width="35%"/>
+#(本文为readme文件的中文翻译版本)
 
 [climplot](https://gitee.com/auman-chan/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
@@ -127,7 +133,7 @@ loc <- subset(plotdata,No==2)
 clim_plot(loc)
 
 ```
-<img src="plot1-1.png" alt="climplot" align="center"/>
+<img src="result.png" alt="climplot" align="center"/>
 
 在上图中:
 

@@ -284,7 +284,7 @@ The function `clim_plot` can construct the Walter & Lieth climatic diagram plott
 
 Take the data `plotdata` and `plotdata_Frost` as an example, and import them into `clim_plot`.
 
-```{r plot1}
+```{r}
 data("plotdata")
 loc <- subset(plotdata,No==2)
 clim_plot(loc)
@@ -319,7 +319,7 @@ clim_plot(data=sub,ylabel = TRUE,
 
 ### Plotting the frosty months
 
-```{r plot frost, echo=TRUE}
+```{r echo=TRUE}
 
 data("plotdata_Frost")
 loc <- subset(plotdata_Frost,No==3)
@@ -334,7 +334,7 @@ The color and the axis labels could be customized to meet specific requirements.
 
 It is possible to adjust the colors of temperature, precipitation, humidity, aridity, wet season patches and frosty month blocks.
 
-```{r color picker, echo=TRUE}
+```{r echo=TRUE}
 loc <- subset(plotdata_Frost,No==1)
 clim_plot(loc,pcol = "#8DB6CD",tcol = "#FF6A6A",wcol="#4EEE94",dcol = "#EEB422",pfcol="#00BFFF",sfcol="#8A2BE2",ShowFrost = TRUE)
 
@@ -342,7 +342,7 @@ clim_plot(loc,pcol = "#8DB6CD",tcol = "#FF6A6A",wcol="#4EEE94",dcol = "#EEB422",
 
 Additionally, the display of axis labels can be controlled and custom labels can be imported using parameters `ylabel`, `ylab1`, `ylab2` `mlab` and `xlab` .
 
-```{r label, echo=TRUE}
+```{r echo=TRUE}
 loc <- subset(plotdata_Frost,No==1)
 clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",ylab2 ="Precipitation(mm)",ShowFrost = TRUE)
 ```
@@ -351,7 +351,7 @@ clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B
 
 Displaying extreme temperatures, the auxiliary line of precipitation curve and position of 50°C-100mm are optional.
 
-```{r auxiliary line}
+```{r echo=TRUE}
 loc <- subset(plotdata_Frost,No==1)
 clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowFrost = TRUE)
 ```
