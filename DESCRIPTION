@@ -5,7 +5,7 @@ Version: 0.2.0
 Author: Auman Chan
 Maintainer: Auman Chan <czhfreelancer@163.com>
 Description: "climplot" aims to collect crucial climate data for global locations and construct the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
-License: GPL-3
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 

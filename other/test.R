@@ -3,11 +3,20 @@ library(testthat)
 library(climplot)
 library(tidyverse)
 library(raster)
+
+lintr::lint_package()
+
 document()
+
+
+
 load_all()
 
 build_vignettes()
 build_readme()
+
+usethis::use_version()
+usethis::use_mit_license()
 
 usethis::use_pkgdown()
 #Reinstall Cairo and ragg packages when error of purrr...
@@ -77,3 +86,8 @@ m <- data.frame( "annual_average_maximum_temperature"=list1,
                 "annual_average_precipitation"=list3
     )
 write.csv(m,file="climdata.csv")
+
+
+stringr::str_extract(grep(pattern="R \\(>= [0-9].[0-9]{1,}.[0-9]{1,}\\)", ignore.case = TRUE,
+                          readLines(con = "./DESCRIPTION"), value = TRUE),
+                     pattern=">= [0-9].[0-9]{1,}.[0-9]{1,}")
