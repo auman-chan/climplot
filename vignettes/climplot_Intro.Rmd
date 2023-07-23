@@ -14,7 +14,7 @@ output:
       collapsed: false
       smooth_scroll: true
 vignette: >
-  %\VignetteIndexEntry{1. Introduction and Intro of climplot}
+  %\VignetteIndexEntry{1. Introduction to climplot}
   %\usepackage[utf8]{inputenc}
   %\VignetteEncoding{UTF-8}
   
