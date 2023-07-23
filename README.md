@@ -154,8 +154,8 @@ In the figure above:
 
 ## More inforamtion
 
-More examples and information, please view the help pages and the files
-in vignettes.
+More examples and information, please view the help pages and [the
+websites of this package](https://auman-chan.github.io/climplot/) .
 
 ## Reference
 
