@@ -1,11 +1,11 @@
 Package: climplot
 Type: Package
-Title: climplot: Facilitate and tailor Walter & Lieth climatic diagram construction
-Version: 0.1.0
+Title: climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing
+Version: 0.2.0
 Author: Auman Chan
 Maintainer: Auman Chan <czhfreelancer@163.com>
-Description: "climplot" aims to collect crucial climate data for global locations and construct the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
-License: GPL-3
+Description: "climplot" aims to collect crucial climate data for global locations and draw the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -17,11 +17,14 @@ Imports:
     stats
 RoxygenNote: 7.2.3
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)
 Suggests: 
+    kableExtra,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
     sf
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+URL: https://github.com/auman-chan/climplot
+BugReports: https://github.com/auman-chan/climplot/issues

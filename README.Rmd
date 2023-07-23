@@ -1,5 +1,5 @@
 ---
-titie: "climplot: Facilitate and tailor Walter & Lieth climatic diagram construction"
+titie= "climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing"
 output: github_document
 always_allow_html: true
 editor_options: 
@@ -8,49 +8,45 @@ editor_options:
     wrap: 72
 ---
 
-# climplot: Facilitate and tailor Walter & Lieth climatic diagram construction
+# climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing
 
 <!-- badges: start -->
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Project Status: Active  The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![minimal R version](https://img.shields.io/badge/R-`r stringr::str_extract(grep(pattern="R \\(>= [0-9].[0-9]{2,}\\)", ignore.case = TRUE, 
-     readLines(con = "./DESCRIPTION"), value = TRUE),pattern=">= [0-9].[0-9]{2,}")`-6666ff.svg)](https://cran.r-project.org/)
+[![Licence](https://img.shields.io/badge/licence-MIT-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![minimal R version](https://img.shields.io/badge/R-`r stringr::str_extract(grep(pattern="R \\(>= [0-9].[0-9]{1,}.[0-9]{1,}\\)", ignore.case = TRUE, readLines(con = "./DESCRIPTION"), value = TRUE),pattern=">= [0-9].[0-9]{1,}.[0-9]{1,}")`-6666ff.svg)](https://cran.r-project.org/)
 [![packageversion](https://img.shields.io/badge/Package%20version-`r gsub("version: |version:", "", grep("version", ignore.case = TRUE, readLines(con = "./DESCRIPTION"), value = TRUE), ignore.case = TRUE)`-orange.svg?style=flat-square)](commits/develop)
 [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellow.svg)](/commits/master)
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not ready-red.svg)
 <!-- badges: end -->
 
-语言选择：
-[English](README.md)
-[中文](doc/README.zh-CN.md)
-
-<img src="vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
+<img src="./vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
 
 [climplot](https://gitee.com/auman-chan/climplot) aims to collect
-crucial climate data for global locations and construct the Walter &
+crucial climate data for global locations and render the Walter &
 Lieth climatic diagrams in a more user-friendly and personalized manner.
 
 The main features of the package are:
 
 -   The use of worldwide climate data to obtain standardized and
-    reliable data for constructing Walter & Lieth climatic diagrams
+    reliable data for drawing Walter & Lieth climatic diagrams
 -   The provision for more parameter to customize the plots and display
     comprehensive information
 
 The package offers functions for:
 
--   Obtain climate data to construct Walter & Lieth Climatic Diagram for
+-   Obtain climate data to draw Walter & Lieth Climatic Diagram for
     global locations
--   Construct the Walter & Lieth climatic diagram
+-   Draw the Walter & Lieth climatic diagram
 -   Revise the color scheme and information presentation of the diagram
 
 ## Installing and loading
 
 To install the latest developmental version from [github](https://github.com/) and
-[gitee](https://gitee.com/), you will need the R package
-[remotes](https://cran.r-project.org/package=remotes)and
-[git2r](https://cran.r-project.org/package=git2r). If you want to see more help of this package, please add `build_vignettes= TRUE`.
+[gitee](https://gitee.com/), you will need the R packages
+[remotes](https://cran.r-project.org/package=remotes) and
+[git2r](https://cran.r-project.org/package=git2r). If you want to install the vignettes of this package, please add `build_vignettes= TRUE`.
+>>>>>>> dev
 
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
@@ -96,7 +92,7 @@ library(kableExtra)
 ### Extraction of climate data
 
 Information of the target locations should be ready for the
-extraction.The data `locdata` in this package can be a example of the
+extraction. The data `locdata` in this package can be a example of the
 import data.frame. It must contain five columns in the following order:
 
 -   **No**: Serial number of the locations
@@ -125,7 +121,7 @@ c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
 
-plotdata <- clim_extract(locdata,a,b,c)
+plotdata <- clim_extract(locdata, a, b, c)
 
 ```
 
@@ -135,34 +131,31 @@ p <- plotdata %>% dplyr::filter(No<4)
 kable(p,format = "pipe")
 ```
 
-The exported data.frame includes 5 kinds of information of locations(as which in the data.frame import), and values of 3 kinds of climate factors across 12 months. An export data.frame stores in the data `plotdata` of this package, as an example of the function export.
+The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 3 kinds of climate factors across 12 months. A data.frame stores in the data `plotdata` of this package, as an example of the function export.
 
 
-### Climatic diagram Plotting
+### Climatic diagram drawing
 
 Take the data `plotdata` and `plotdata_Frost` as an example, and import them into the function `clim_plot`:
 
-```{r plot1, eval=FALSE}
+```{r eval=FALSE}
 data("plotdata")
 loc <- subset(plotdata,No==2)
 clim_plot(loc)
 
 ```
-
-```{r, echo=FALSE,fig.align = 'center'}
-knitr::include_graphics("vignettes/plot1-1.png")
-```
+<img src="vignettes/result.png" alt="plot result" align="center"/>
 
 In the figure above:
 
--   The red curve represents the annual variation of temperature, and blue one represents of precipitation variation. These two curves form two types of patches indicating humidity and aridity levels. The string-filled patches represent humid seasons while those with scattered points represent arid seasons. The polygon filled with the color same as precipitation curve indicates months with precipitation over 100mm, displaying the wet season period.
+-   The red curve represents the annual variation of temperature, and blue one represents of precipitation variation. These two curves form two types of patches indicating humidity and aridity levels. The string-filled patches represent humid seasons while those with scattered points represent arid seasons. The polygon filled with the color same as precipitation curve indicates months with precipitation over 100mm, displaying the wet season.
 
 -   The information on the left top includes the name, the altitude and the coordinates of the locations. The right top are the values of annual mean temperature and mean precipitation.
 
 
 ## More inforamtion
 
-More examples and information, please view the help pages and the files in vignettes.
+More examples and information, please view the help pages and [the websites of this package](https://auman-chan.github.io/climplot/) .
 
 
 ## Reference
