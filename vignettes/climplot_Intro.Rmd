@@ -5,9 +5,8 @@ author:
 - <a href="https://gitee.com/auman-chan"> Auman Chan, PhD Candidate</a>
 date:  "`r Sys.Date()`"
 output: 
-  rmarkdown::html_document:
+  html_document:
     df_print: paged
-    self_contained: yes
     toc: true
     toc_depth: 3
     toc_float:
@@ -20,7 +19,6 @@ vignette: >
   
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
-  
   chunk_output_type: console
 params:
   EVAL: !r identical(Sys.getenv("NOT_CRAN"), "true")
@@ -197,6 +195,12 @@ remotes::install_git("https://gitee.com/auman-chan/climplot.git",
 library(climplot)
 ```
 
+```{r}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+```
+
 # Plotting data extraction
 
 The task of searching for and processing climate data from multiple locations is a challenging endeavor. Function `clim_extract` can retrieve data derived from Worldclim Historical monthly weather data in 2010-2019(Version of 2.5 minutes, [https://worldclim.org/data/monthlywth.html](#0){.uri}), which be ready for diagrams visualization.
@@ -241,9 +245,7 @@ b <- "G:/climplot/climdata/tmax"
 c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
-
 plotdata <- clim_extract(locdata,a,b,c)
-}
 ```
 
 ```{r plotdata,echo=FALSE}
