@@ -232,7 +232,7 @@ The data `locdata` in this package can be an example of the import data.frame. O
 
 ```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
 data("locdata")
-locdata
+kable(locdata,format = "pipe")
 ```
 
 ## Extraction of climate data

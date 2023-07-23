@@ -401,19 +401,106 @@ contain five columns in the following order:</p>
 the import data.frame. Other extra columns with information is allowed
 behind the columns above, but would be discarded in following
 process.</p>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 10 × 6</span></span></span>
-<span><span class="co">##       No location       lon   lat altitude name                                 </span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 Motuo         95.4  29.3     <span style="text-decoration: underline;">2</span>025 墨脱县仁钦崩寺                       </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 Wulianshan   100.   24.5     <span style="text-decoration: underline;">1</span>301 无量山自然保护区                     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 Wawushan     103.   29.5     <span style="text-decoration: underline;">2</span>082 四川省眉山市洪雅县瓦屋山             </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 Leibo        103.   28.4     <span style="text-decoration: underline;">1</span>204 四川省凉山州雷波县                   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 Longcanggou  103.   29.6     <span style="text-decoration: underline;">1</span>764 四川省雅安市荥经县龙苍沟国家森林公园 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 Jinfoshan    107.   29.0     <span style="text-decoration: underline;">1</span>917 重庆市南川区金佛山国家级自然保护区   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 Xishui       106.   28.3      863 贵州省习水良村镇羊化村               </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8 Tonglingshan 120.   27.8      724 浙江省铜铃山国家森林公园             </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9 Qinglongshan 113.   23.2      320 广东省鼎湖山自然保护区的百丈岭、青龙…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10 Tiantongshan 122.   29.8      199 浙江省天童山</span></span></code></pre>
+<table class="table">
+<colgroup>
+<col width="3%">
+<col width="15%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="47%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">No</th>
+<th align="left">location</th>
+<th align="right">lon</th>
+<th align="right">lat</th>
+<th align="right">altitude</th>
+<th align="left">name</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Motuo</td>
+<td align="right">95.3536</td>
+<td align="right">29.30420</td>
+<td align="right">2025</td>
+<td align="left">墨脱县仁钦崩寺</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">Wulianshan</td>
+<td align="right">100.5000</td>
+<td align="right">24.50000</td>
+<td align="right">1301</td>
+<td align="left">无量山自然保护区</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">Wawushan</td>
+<td align="right">102.9167</td>
+<td align="right">29.50000</td>
+<td align="right">2082</td>
+<td align="left">四川省眉山市洪雅县瓦屋山</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">Leibo</td>
+<td align="right">103.4667</td>
+<td align="right">28.45000</td>
+<td align="right">1204</td>
+<td align="left">四川省凉山州雷波县</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">Longcanggou</td>
+<td align="right">102.8333</td>
+<td align="right">29.61667</td>
+<td align="right">1764</td>
+<td align="left">四川省雅安市荥经县龙苍沟国家森林公园</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">Jinfoshan</td>
+<td align="right">107.1933</td>
+<td align="right">29.00017</td>
+<td align="right">1917</td>
+<td align="left">重庆市南川区金佛山国家级自然保护区</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">Xishui</td>
+<td align="right">106.4667</td>
+<td align="right">28.30000</td>
+<td align="right">863</td>
+<td align="left">贵州省习水良村镇羊化村</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">Tonglingshan</td>
+<td align="right">119.8598</td>
+<td align="right">27.82128</td>
+<td align="right">724</td>
+<td align="left">浙江省铜铃山国家森林公园</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">Qinglongshan</td>
+<td align="right">112.5341</td>
+<td align="right">23.17020</td>
+<td align="right">320</td>
+<td align="left">广东省鼎湖山自然保护区的百丈岭、青龙山</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">Tiantongshan</td>
+<td align="right">121.7855</td>
+<td align="right">29.80710</td>
+<td align="right">199</td>
+<td align="left">浙江省天童山</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section level3">
@@ -422,7 +509,7 @@ process.</p>
 <p>After preparing the climate dataset and location information, import
 the data.frame and path of three climate datasets, this function will
 export a data.frame.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Modify the path of yours</span></span>
 <span><span class="va">a</span> <span class="op">&lt;-</span> <span class="st">"G:/climplot/climdata/tmin"</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="st">"G:/climplot/climdata/tmax"</span></span>
@@ -1084,15 +1171,15 @@ extract the extreme minimum temperature for each location. Set the
 parameter <code>Frost</code> from <code>FALSE</code> to
 <code>TRUE</code>, and provide the path of the dataset containing annual
 extreme minimum temperatures.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co">#Modify the path of yours</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/tmin"</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/tmax"</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/prec"</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/extmin"</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#extraction of climate data</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">clim_extract</span>(locdata,a,b,c,<span class="at">Frost =</span> <span class="cn">TRUE</span>,d)</span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co">#Modify the path of yours</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/tmin"</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/tmax"</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/prec"</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/extmin"</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#extraction of climate data</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">clim_extract</span>(locdata,a,b,c,<span class="at">Frost =</span> <span class="cn">TRUE</span>,d)</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="1%">
@@ -1960,7 +2047,7 @@ location<a class="anchor" aria-label="anchor" href="#walter-lieth-climatic-diagr
 </h3>
 <p>Take the data <code>plotdata</code> and <code>plotdata_Frost</code>
 as an example, and import them into <code>clim_plot</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata"</span><span class="op">)</span></span>
 <span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>,<span class="va">No</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span><span class="op">)</span></span></code></pre></div>
@@ -1987,7 +2074,7 @@ at a time, as we recommend checking each plot individually, and
 importing multiple vectors of climate data increases the risk of errors.
 Therefore, if you require automated plotting for several locations,
 utilizing a loop is recommended:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata"</span><span class="op">)</span></span>
 <span><span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">plotdata</span><span class="op">$</span><span class="va">No</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
@@ -2006,7 +2093,7 @@ utilizing a loop is recommended:</p>
 <div class="section level4">
 <h4 id="plotting-the-frosty-months">Plotting the frosty months<a class="anchor" aria-label="anchor" href="#plotting-the-frosty-months"></a>
 </h4>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata_Frost"</span><span class="op">)</span></span>
 <span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">loc</span>,ShowFrost <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
@@ -2023,7 +2110,7 @@ requirements.</p>
 <p>It is possible to adjust the colors of line of temperature and
 precipitation, as well as patches of humidity, aridity, wet season and
 frosty month blocks.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,pcol <span class="op">=</span> <span class="st">"#8DB6CD"</span>,tcol <span class="op">=</span> <span class="st">"#FF6A6A"</span>,wcol<span class="op">=</span><span class="st">"#4EEE94"</span>,dcol <span class="op">=</span> <span class="st">"#EEB422"</span>,pfcol<span class="op">=</span><span class="st">"#00BFFF"</span>,sfcol<span class="op">=</span><span class="st">"#8A2BE2"</span>,ShowFrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="climplot_Intro_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
@@ -2031,7 +2118,7 @@ frosty month blocks.</p>
 labels can be imported using parameters <code>ylabel</code>,
 <code>ylab1</code>, <code>ylab2</code> <code>mlab</code> and
 <code>xlab</code> .</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,xlab<span class="op">=</span><span class="st">"月份"</span>,mlab <span class="op">=</span> <span class="st">"en"</span>,ylabel <span class="op">=</span> <span class="cn">TRUE</span>,ylab1 <span class="op">=</span><span class="st">"Temperature(\U{00B0}C)"</span>,ylab2 <span class="op">=</span><span class="st">"Precipitation(mm)"</span>,ShowFrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="climplot_Intro_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
@@ -2041,7 +2128,7 @@ labels can be imported using parameters <code>ylabel</code>,
 </h4>
 <p>Displaying extreme temperatures, the auxiliary line of precipitation
 curve and position of 50°C-100mm are optional.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,p3line <span class="op">=</span> <span class="cn">TRUE</span>,p50line <span class="op">=</span> <span class="cn">TRUE</span>,extremeT <span class="op">=</span> <span class="cn">TRUE</span>,ShowFrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="climplot_Intro_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
