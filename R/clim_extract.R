@@ -1,5 +1,5 @@
 #' @rdname climate_data
-#' @title Obtain climate data for climatic diagram construction
+#' @title Obtain climate data for climatic diagram drawing
 #' @usage clim_extract(file,mintemp_path=NA,maxtemp_path=NA,
 #' prec_path=NA,Frost=FALSE,exmintemp_path=NA)
 #' @description \code{clim_extract} acquires crucial climate data for
@@ -92,7 +92,7 @@
 #' cli <- clim_extract(m,a,b,c,Frost=T,d)
 #' }
 #' }
-#' @importFrom sp SpatialPoints
+#' @importFrom sf st_as_sf
 #' @importFrom dplyr mutate arrange desc
 #' @importFrom raster extract stack crs
 #' @importFrom dplyr as_tibble
@@ -133,8 +133,9 @@ clim_extract <- function(file,
   }
 
 pointdata <- file
-  point <- SpatialPoints(cbind(file$lon ,file$lat),
-                         proj4string=crs(avmintemp))
+
+  point <- st_as_sf(file, coords = c("lon","lat"),crs=crs(avmintemp))
+
   avtemp1 <- extract(avmintemp,point) %>% as_tibble()
   colnames(avtemp1) <- as.character(c(1:12))
   avtemp1 <- avtemp1 %>% mutate(No=pointdata$No,

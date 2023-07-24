@@ -358,6 +358,7 @@ Displaying extreme temperatures, the auxiliary line of precipitation curve and p
 loc <- subset(plotdata_Frost,No==1)
 clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowFrost = TRUE)
 ```
+---
 
 ## Reference
 
@@ -368,3 +369,11 @@ clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowFrost = TRUE)
 3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset. Scientific Data 7: 109.
 
 4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
+
+
+
+Session information
+
+```{r session info, echo=F}
+sessionInfo()
+```

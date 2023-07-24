@@ -2,7 +2,7 @@
 % Please edit documentation in R/clim_plot.R
 \name{clim_plot}
 \alias{clim_plot}
-\title{Walter & Lieth climatic diagram construction}
+\title{Walter & Lieth climatic diagram drawing}
 \usage{
 clim_plot(data,mlab="",pcol="blue",tcol="red",wcol="green",dcol="orange",
 pfcol="#79e6e8",sfcol="#09a0d1",ylabel=FALSE,ylab1=NA,ylab2=NA,xlab="Month",
@@ -81,7 +81,7 @@ Default is FALSE.}
 
 #'@details The function extracts precipitation and temperature from arranged
 Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
-and arranges them to a data.frame for constructing the climatic diagram.}
+and arranges them to a data.frame for drawing the climatic diagram.}
 }
 \value{
 A Walter & Lieth climatic diagram of the provided locations, including annual variation

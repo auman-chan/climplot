@@ -3,7 +3,7 @@
 #'
 #' @title An example of data.frame export from "clim_extract"
 #' @description  A dataset exported from function \code{clim_extract}
-#' forclimatic diagrams construction without frosty months display.
+#' forclimatic diagrams drawing without frosty months display.
 #' It contains the abbreviation, coordinates and altitude
 #' of different locations, as well as the values of 3 types of climate data.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/clim_extract.R
 \name{clim_extract}
 \alias{clim_extract}
-\title{Obtain climate data for climatic diagram construction}
+\title{Obtain climate data for climatic diagram drawing}
 \usage{
 clim_extract(file,mintemp_path=NA,maxtemp_path=NA,
 prec_path=NA,Frost=FALSE,exmintemp_path=NA)
