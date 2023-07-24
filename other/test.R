@@ -1,5 +1,6 @@
 library(devtools)
 library(testthat)
+library(usethis)
 library(climplot)
 library(tidyverse)
 library(raster)
@@ -44,7 +45,7 @@ use_package("climplot")
 
 
 use_testthat()
-use_test("climplot")
+use_test("clim_extract")
 
 #test of use
 data("locdata")
