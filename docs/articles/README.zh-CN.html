@@ -82,14 +82,14 @@
     
 <p><img src="imgfile.png" alt="climplot logo" align="right" width="35%">
 #(本文为readme文件的中文翻译版本)</p>
-<p><a href="https://gitee.com/auman-chan/climplot" class="external-link">climplot</a>为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。</p>
-<p>该软件包的主要作用为:</p>
+<p><a href="https://gitee.com/auman-chan/climplot" class="external-link">climplot</a>为一个绘图程序包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。</p>
+<p>此程序包的主要作用为:</p>
 <ul>
 <li><p>使用Worldclim的气候数据来获得标准化和可靠的数据，以构建
 Walter＆Lieth 气候图</p></li>
 <li><p>提供更多参数定制图片样式和信息显示方式</p></li>
 </ul>
-<p>该包提供以下函数功能:</p>
+<p>此程序包提供以下函数功能:</p>
 <ul>
 <li><p>获取气候数据以构建Walter＆Lieth气候图</p></li>
 <li><p>绘制Walter＆Lieth气候图</p></li>
@@ -98,8 +98,8 @@ Walter＆Lieth 气候图</p></li>
 <div class="section level2">
 <h2 id="安装与加载">安装与加载<a class="anchor" aria-label="anchor" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8A%A0%E8%BD%BD"></a>
 </h2>
-<p>从<a href="https://gitee.com" class="external-link">gitee</a>和<a href="https://github.com/" class="external-link">github</a> 安装最新的开发版本，请安装R包<a href="https://cran.r-project.org/package=remotes" class="external-link">remotes</a>和<a href="https://cran.r-project.org/package=git2r" class="external-link">git2r</a>。
-如果需要查看更多帮助信息，请在后面加上代码<code>build_vignettes= TRUE</code>。</p>
+<p>从<a href="https://gitee.com" class="external-link">gitee</a>和<a href="https://github.com/" class="external-link">github</a> 安装最新的开发版本，请安装程序包<a href="https://cran.r-project.org/package=remotes" class="external-link">remotes</a>和<a href="https://cran.r-project.org/package=git2r" class="external-link">git2r</a>。
+如果你打算一同安装此程序包的插曲文件（vignettes），请在代码中加入<code>build_vignettes= TRUE</code>。</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'remotes'</span><span class="op">)</span></span>
 <span></span>
@@ -118,7 +118,7 @@ Walter＆Lieth 气候图</p></li>
 <div class="section level2">
 <h2 id="使用前数据准备">使用前数据准备<a class="anchor" aria-label="anchor" href="#%E4%BD%BF%E7%94%A8%E5%89%8D%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"></a>
 </h2>
-<p>Worldclim气候数据是本软件包必不可少的，由于其全球尺度栅格数据的文件较大，软件包中无法容纳需要的气候数据。因此，请在使用前从<a href="NULL">Figshare</a>获取对应的气候数据集。</p>
+<p>Worldclim气候数据是本程序包必不可少的，由于其全球尺度栅格数据的文件较大，程序包中无法容纳需要的气候数据。因此，请在使用前从<a href="NULL">Figshare</a>获取对应的气候数据集。</p>
 <p>此数据集包括4个文件夹，共48个tif文件，其中包括年均最低气温、年均最高气温、年均降水和年极端最低气温。</p>
 </div>
 <div class="section level2">
@@ -127,7 +127,7 @@ Walter＆Lieth 气候图</p></li>
 <div class="section level3">
 <h3 id="气候数据提取">气候数据提取<a class="anchor" aria-label="anchor" href="#%E6%B0%94%E5%80%99%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"></a>
 </h3>
-<p>使用前需要按格式整理好绘图地点的信息。这个包中的数据
+<p>使用前需要按格式整理好绘图地点的信息。这个程序包中的数据
 <code>locdata</code> 是
 导入数据格式的样例。导入的数据框必须包含5列，顺序如下:</p>
 <ul>
@@ -137,7 +137,7 @@ Walter＆Lieth 气候图</p></li>
 <li><p><strong>lat</strong>:目标地点的纬度，以十进制表示，负数表示南纬</p></li>
 <li><p><strong>altitude</strong>:目标地点的高度</p></li>
 </ul>
-<p>上述列的后面允许添加其他包含信息的列，但在后续处理中将被舍弃。</p>
+<p>上述列的后面允许添加包含其他信息的列，但在后续处理中将被舍弃。</p>
 <p>在准备好气候数据集和地点信息后，向函数 <code>clim_extract</code>
 导入三个气候数据集的数据框和数据集路径：</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -376,7 +376,7 @@ Walter＆Lieth 气候图</p></li>
 </tbody>
 </table>
 <p>导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
-导出数据框架存储在此包的数据<code>plotdata</code>中，作为函数导出结果的示例。</p>
+导出数据框架存储在此程序包的数据<code>plotdata</code>中，作为函数导出结果的示例。</p>
 </div>
 <div class="section level3">
 <h3 id="walter-lieth的气候图绘制">Walter &amp; Lieth的气候图绘制<a class="anchor" aria-label="anchor" href="#walter-lieth%E7%9A%84%E6%B0%94%E5%80%99%E5%9B%BE%E7%BB%98%E5%88%B6"></a>
@@ -397,23 +397,16 @@ Walter＆Lieth 气候图</p></li>
 <div class="section level2">
 <h2 id="其他参考">其他参考<a class="anchor" aria-label="anchor" href="#%E5%85%B6%E4%BB%96%E5%8F%82%E8%80%83"></a>
 </h2>
-<p>更多参考内容请阅读软件包内的帮助文件，以及vignettes中的信息。</p>
+<p>更多参考内容请阅读程序包内的帮助文件，以及<a href="https://auman-chan.github.io/climplot/" class="external-link">此程序包的网页</a>。</p>
 </div>
 <div class="section level2">
-<h2 id="参考文献">参考文献<a class="anchor" aria-label="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"></a>
+<h2 id="引用">引用<a class="anchor" aria-label="anchor" href="#%E5%BC%95%E7%94%A8"></a>
 </h2>
-<ol style="list-style-type: decimal">
-<li><p>Guijarro J A (2023). climatol: Climate Tools (Series
-Homogenization and Derived Products), 4.0.0., <a href="https://CRAN.R-project.org/package=climatol" class="external-link uri">https://CRAN.R-project.org/package=climatol</a>.</p></li>
-<li><p>Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2: new 1km spatial
-resolution climate surfaces for global land areas. International Journal
-of Climatology 37 (12): 4302-4315.</p></li>
-<li><p>Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020).
-Version 4 of the CRU TS monthly high-resolution gridded multivariate
-climate dataset. Scientific Data 7: 109.</p></li>
-<li><p>Walter H &amp; Lieth H (1960): Klimadiagramm Weltatlas. G.
-Fischer, Jena.</p></li>
-</ol>
+<p>请按下列格式引用climplot:</p>
+<p>Chan A (2023). climplot: climplot: Facilitate and tailor Walter &amp;
+Lieth climatic diagram drawing. R package version 0.3.0, <a href="https://github.com/auman-chan/climplot" class="external-link uri">https://github.com/auman-chan/climplot</a>.</p>
+<p>NOTE: 同时请引用程序包<a href="https://CRAN.R-project.org/package=climatol" class="external-link">‘climatol’</a>和数据
+<a href="https://worldclim.org/data/monthlywth.html" class="external-link">Worldclim</a>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

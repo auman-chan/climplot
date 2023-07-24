@@ -21,16 +21,16 @@ header-includes:
 
 # 简介
 
-[climplot](https://gitee.com/auman-chan/climplot) 为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
+[climplot](https://gitee.com/auman-chan/climplot) 为一个绘图程序包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
 ::: {.alert .alert-info}
-该软件包的主要作用为:
+此程序包的主要作用为:
 
 -   使用Worldclim的气候数据来获得标准化和可靠的数据，以构建 Walter＆Lieth 气候图
 
 -   提供更多参数定制图片样式和信息显示方式
 
-该包提供以下函数功能:
+此程序包提供以下函数功能:
 
 -   获取气候数据以构建Walter＆Lieth气候图
 
@@ -41,7 +41,7 @@ header-includes:
 
 # 安装与加载
 
-从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。如果你打算一同安装此软件包的插曲文件（vignettes）, 请在代码中加入 `build_vignettes= TRUE`
+从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装程序包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。如果你打算一同安装此程序包的插曲文件（vignettes）, 请在代码中加入 `build_vignettes= TRUE`
 
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
@@ -75,7 +75,7 @@ library(climplot)
 
 ### 气候数据下载
 
-Worldclim气候数据是本软件包必不可少的，由于其全球尺度栅格数据的文件较大，软件包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
+Worldclim气候数据是本程序包必不可少的，由于其全球尺度栅格数据的文件较大，程序包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
 
 此数据集包括4个文件夹，共48个tif文件，其中包括年均最低气温、年均最高气温、年均降水和年极端最低气温。这些数值是根据2010-2019年的月平均值和最小值计算得出的。数据集的结构如下表所示:
 
@@ -111,7 +111,7 @@ kable(a,format="latex", booktabs=TRUE) %>%
 
 -   **altitude**:目标地点的高度
 
-这个包中的数据 `locdata` 是 导入格式的例子。上述列的后面允许添加其他包含信息的列，但在后续处理中将被舍弃。
+这个程序包中的数据 `locdata` 是 导入格式的例子。上述列的后面允许添加其他包含信息的列，但在后续处理中将被舍弃。
 
 ```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
 data("locdata")
@@ -141,7 +141,7 @@ kable(plotdata,format="latex", booktabs=TRUE) %>%
   kable_styling(latex_options = "scale_down")
 ```
 导出的数据框包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
-导出数据框架存储在此包的数据`plotdata`中，作为函数导出结果的示例。
+导出数据框架存储在此程序包的数据`plotdata`中，作为函数导出结果的示例。
 
 为了在随后的气候图中展示霜冻月份，必须提取每个地点的极端最低温度。
 将参数Frost从FALSE设置为TRUE，并提供包含年极端最低温度数据集的路径。
@@ -166,12 +166,12 @@ kable(plotdata_Frost,format="latex", booktabs=TRUE) %>%
 \newpage
 在此模式下，导出的数据框中包含5种位置信息(与导入的数据框中相同)，
 以及12个月份的4种气候数值。每个地点的年极端最低气温都作为新行包括在内。
-此模式的导出数据框存储在软件包的数据`plotdata_Frost`中，作为函数导出的示例。
+此模式的导出数据框存储在程序包的数据`plotdata_Frost`中，作为函数导出的示例。
 
 至此，`clim_extact`已经导出了绘制Walter & Lieth气候图所必需的全部资料。
 
 # 气候图绘制
-`clim_plot`函数可以按照不同风格的配色方案和信息表示方式绘制Walter & Lieth气候图。其参考了CRAN上的软件包`climatol`中的函数`diagwl()`。
+`clim_plot`函数可以按照不同风格的配色方案和信息表示方式绘制Walter & Lieth气候图。其参考了CRAN上的程序包`climatol`中的函数`diagwl()`。
 
 ## 单个地点Walter & Lieth的气候图绘制
 以`plotdata`和`plotdata_Frost`数据为例，导入到`clim_plot`中。
