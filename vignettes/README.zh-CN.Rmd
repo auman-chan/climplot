@@ -149,6 +149,6 @@ clim_plot(loc)
 
 请按下列格式引用climplot:
 
-Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing. R package version 0.3.0, https://github.com/auman-chan/climplot.
+Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing. R package version 0.2.1, https://github.com/auman-chan/climplot.
 
 NOTE: 同时请引用程序包['climatol'](https://CRAN.R-project.org/package=climatol)和数据 [Worldclim](https://worldclim.org/data/monthlywth.html).

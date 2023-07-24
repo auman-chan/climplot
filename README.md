@@ -163,7 +163,7 @@ websites of this package](https://auman-chan.github.io/climplot/).
 Please cite climplot as follows:
 
 Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth
-climatic diagram drawing. R package version 0.3.0,
+climatic diagram drawing. R package version 0.2.1,
 <https://github.com/auman-chan/climplot>.
 
 NOTE: please also cite the

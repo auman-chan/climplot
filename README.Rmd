@@ -160,6 +160,6 @@ More examples and information, please view the help pages and [the websites of t
 ## Citations
 Please cite climplot as follows:
 
-Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing. R package version 0.3.0, https://github.com/auman-chan/climplot.
+Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing. R package version 0.2.1, https://github.com/auman-chan/climplot.
 
 NOTE: please also cite the ['climatol'](https://CRAN.R-project.org/package=climatol) package and [Worldclim](https://worldclim.org/data/monthlywth.html) data.
