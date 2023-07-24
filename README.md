@@ -43,7 +43,7 @@ need the R packages
 [remotes](https://cran.r-project.org/package=remotes) and
 [git2r](https://cran.r-project.org/package=git2r). If you want to
 install the vignettes of this package, please add
-`build_vignettes= TRUE`. \>\>\>\>\>\>\> dev
+`build_vignettes= TRUE`.
 
 ``` r
 install.packages('remotes')
