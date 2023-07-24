@@ -45,22 +45,28 @@ The package offers functions for:
 To install the latest developmental version from [github](https://github.com/) and
 [gitee](https://gitee.com/), you will need the R packages
 [remotes](https://cran.r-project.org/package=remotes) and
-[git2r](https://cran.r-project.org/package=git2r). If you want to install the vignettes of this package, please add `build_vignettes= TRUE`.
+[git2r](https://cran.r-project.org/package=git2r). If you want to install the vignettes of this package, please add `build_vignettes = TRUE`.
 
 ```{r intasll, eval=FALSE}
-install.packages('remotes')
+install.packages("remotes")
 
 #from github
 remotes::install_github("auman-chan/climplot")
 #from gitee
-install.packages('git2r')
+install.packages("git2r")
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 
 #add vignettes
-remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
 remotes::install_git("https://gitee.com/auman-chan/climplot.git",
                      build_vignettes= TRUE)
+
+#add vignettes
+remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
+
+remotes::install_git("https://gitee.com/auman-chan/climplot.git", 
+                     build_vignettes = TRUE)
 ```
 
 ```{r load package,include=FALSE}

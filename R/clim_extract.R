@@ -1,7 +1,7 @@
 #' @rdname climate_data
 #' @title Obtain climate data for climatic diagram drawing
-#' @usage clim_extract(file,mintemp_path=NA,maxtemp_path=NA,
-#' prec_path=NA,Frost=FALSE,exmintemp_path=NA)
+#' @usage clim_extract(file, mintemp_path = NA,maxtemp_path = NA,
+#' prec_path = NA, Frost = FALSE,exmintemp_path = NA)
 #' @description \code{clim_extract} acquires crucial climate data for
 #' generating Walter & Lieth climatic diagrams
 #' based on the provided location coordinates.
@@ -9,14 +9,18 @@
 #'@details The function extracts precipitation and temperature from a
 #'series of arranged climate data in RasterLayer format,
 #'and arranges them to a data frame for plotting the climatic diagram.
-#'The RasterLayer are computed by Worldclim Historical monthly weather data in 2010-2019
-#'(Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html), containing annual average precipitation, annual average minimum
+#'The RasterLayer are computed by Worldclim Historical monthly weather
+#'data in 2010-2019
+#'(Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html),
+#'containing annual average precipitation, annual average minimum
 #' temperature and annual average max temperature of 12 months across 2010-2019.
 #'They can output from original climate data mentioned above with running the code
-#'in script \code{other/clim_cal.R}, or download directly from the supplementary material.
+#'in script \code{other/clim_cal.R}, or download directly
+#'from the supplementary material.
 #'
 #' @param file
-#'     A data.frame(see details in dataset \code{locdata}) with the following 5 columns:
+#'     A data.frame(see details in dataset \code{locdata})
+#'     with the following 5 columns:
 #'     \itemize{
 #'     \item \code{No}: Serial number of the locations
 #'     \item \code{location}: Abbreviation of the locations
@@ -30,32 +34,41 @@
 #'     but would be discarded in following process.
 #'
 #' @param mintemp_path The path for the folder of annual average minimum
-#'    temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+#'    temperature. The folder contains 12 .tif files
+#'    corresponding to data of 12 months.
 #'
 #' @param maxtemp_path The path for the folder of annual average maximum
-#'    temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+#'    temperature. The folder contains 12 .tif files
+#'    corresponding to data of 12 months.
 #'
 #' @param prec_path The path for the folder of annual average maximum
-#'    temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+#'    temperature. The folder contains 12 .tif files
+#'    corresponding to data of 12 months.
 #'
-#' @param Frost A logical value for whether calculate the annual extreme minimum temperature,for
+#' @param Frost A logical value for whether calculate the
+#' annual extreme minimum temperature,for
 #'    follow-up plotting the frost months. Default is FALSE.
 #'
 #' @param exmintemp_path The path for the folder of annual extreme minimum
-#'    temperature. The folder contains 12 .tif files corresponding to data of 12 months.
+#'    temperature. The folder contains 12 .tif files
+#'    corresponding to data of 12 months.
 #'
-#' @return A data.frame with annual average precipitation, annual average minimum
+#' @return A data.frame with annual average precipitation,
+#' annual average minimum
 #' temperature and annual average max temperature of 12 months, as well as
 #' other essential information of every location. If Frost=True,
 #' it will also include values of annual extreme minimum
 #'    temperature for plotting the forsty months.
 #'
 #' \itemize{
-#'    \item \code{No,location,lon,lat}: Information of the locations,the the same as
-#'which in parameter \code{file}.
-#'     \item \code{type}: The labels of climate data, encompassing annual average precipitation,
-#'     annual average minimum temperature and annual average maximum temperature.
-#'     In the event that Frost=True, it will also incorporate annual extreme minimum temperature.
+#'    \item \code{No,location,lon,lat}: Information of the locations,
+#'    the the same as which in parameter \code{file}.
+#'     \item \code{type}: The labels of climate data,
+#'     encompassing annual average precipitation,
+#'     annual average minimum temperature and
+#'     annual average maximum temperature.
+#'     In the event that Frost=True, it will also incorporate
+#'     annual extreme minimum temperature.
 #'     \item \code{1-12}: The column names of the particular climate data type
 #'     correspond to monthly values ranging from January to December.
 #'}
@@ -73,9 +86,9 @@
 #' #extraction of climate data
 #' \dontrun{
 #' #not sure whether the folders are ready
-#' cli <- clim_extract(m,a,b,c)
+#' cli <- clim_extract(m, a, b, c)
 #' #calculate for forst months display
-#' cli <- clim_extract(m,a,b,c,Frost=T,d)
+#' cli <- clim_extract(m, a, b, c, Frost = TRUE, d)
 #' }
 #' }
 #' @importFrom sf st_as_sf
