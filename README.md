@@ -11,7 +11,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![minimal R
 version](https://img.shields.io/badge/R-%3E=%203.5.0-6666ff.svg)](https://cran.r-project.org/)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.2.1-orange.svg?style=flat-square)](commits/develop)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2023--07--23-yellow.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2023--07--24-yellow.svg)](/commits/master)
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 <!-- badges: end -->
 
@@ -156,21 +156,16 @@ In the figure above:
 ## More inforamtion
 
 More examples and information, please view the help pages and [the
-websites of this package](https://auman-chan.github.io/climplot/) .
+websites of this package](https://auman-chan.github.io/climplot/).
 
-## Reference
+## Citations
 
-1.  Guijarro J A (2023). climatol: Climate Tools (Series Homogenization
-    and Derived Products), 4.0.0.,
-    <https://CRAN.R-project.org/package=climatol>.
+Please cite climplot as follows:
 
-2.  Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2: new 1km spatial
-    resolution climate surfaces for global land areas. International
-    Journal of Climatology 37 (12): 4302-4315.
+Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth
+climatic diagram drawing. R package version 0.2.1,
+<https://github.com/auman-chan/climplot>.
 
-3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version
-    4 of the CRU TS monthly high-resolution gridded multivariate climate
-    dataset. Scientific Data 7: 109.
-
-4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer,
-    Jena.
+NOTE: please also cite the
+[‘climatol’](https://CRAN.R-project.org/package=climatol) package and
+[Worldclim](https://worldclim.org/data/monthlywth.html) data.

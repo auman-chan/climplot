@@ -47,7 +47,7 @@ A data frame with 30 rows and 18 variables:
 }
 \description{
 A dataset exported from function \code{clim_extract}
-forclimatic diagrams construction without frosty months display.
+forclimatic diagrams drawing without frosty months display.
 It contains the abbreviation, coordinates and altitude
 of different locations, as well as the values of 3 types of climate data.
 }

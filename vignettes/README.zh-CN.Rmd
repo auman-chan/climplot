@@ -27,15 +27,15 @@ params:
 <img src="imgfile.png" alt="climplot logo" align="right" width="35%"/>
 #(本文为readme文件的中文翻译版本)
 
-[climplot](https://gitee.com/auman-chan/climplot)为一个绘图软件包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
+[climplot](https://gitee.com/auman-chan/climplot)为一个绘图程序包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
-该软件包的主要作用为:
+此程序包的主要作用为:
 
 -   使用Worldclim的气候数据来获得标准化和可靠的数据，以构建 Walter＆Lieth 气候图
 
 -   提供更多参数定制图片样式和信息显示方式
 
-该包提供以下函数功能:
+此程序包提供以下函数功能:
 
 -   获取气候数据以构建Walter＆Lieth气候图
 
@@ -45,8 +45,8 @@ params:
 
 ## 安装与加载
 
-从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装R包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。 
-如果需要查看更多帮助信息，请在后面加上代码`build_vignettes= TRUE`。
+从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装程序包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。 
+如果你打算一同安装此程序包的插曲文件（vignettes），请在代码中加入`build_vignettes= TRUE`。
 
 ```{r intasll, eval=FALSE}
 install.packages('remotes')
@@ -71,7 +71,7 @@ library(climplot)
 
 ## 使用前数据准备
 
-Worldclim气候数据是本软件包必不可少的，由于其全球尺度栅格数据的文件较大，软件包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
+Worldclim气候数据是本程序包必不可少的，由于其全球尺度栅格数据的文件较大，程序包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
 
 此数据集包括4个文件夹，共48个tif文件，其中包括年均最低气温、年均最高气温、年均降水和年极端最低气温。
 
@@ -85,7 +85,7 @@ library(kableExtra)
 
 ### 气候数据提取
 
-使用前需要按格式整理好绘图地点的信息。这个包中的数据 `locdata` 是 导入数据格式的样例。导入的数据框必须包含5列，顺序如下:
+使用前需要按格式整理好绘图地点的信息。这个程序包中的数据 `locdata` 是 导入数据格式的样例。导入的数据框必须包含5列，顺序如下:
 
 -   **No**:目标地点的序号
 
@@ -97,7 +97,7 @@ library(kableExtra)
 
 -   **altitude**:目标地点的高度
 
-上述列的后面允许添加其他包含信息的列，但在后续处理中将被舍弃。
+上述列的后面允许添加包含其他信息的列，但在后续处理中将被舍弃。
 
 在准备好气候数据集和地点信息后，向函数 `clim_extract` 导入三个气候数据集的数据框和数据集路径：
 
@@ -121,7 +121,7 @@ p <- plotdata %>% dplyr::filter(No<4)
 kable(p,format = "pipe")
 ```
 
-导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。 导出数据框架存储在此包的数据`plotdata`中，作为函数导出结果的示例。
+导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。 导出数据框架存储在此程序包的数据`plotdata`中，作为函数导出结果的示例。
 
 ### Walter & Lieth的气候图绘制
 
@@ -143,14 +143,12 @@ clim_plot(loc)
 
 ## 其他参考
 
-更多参考内容请阅读软件包内的帮助文件，以及vignettes中的信息。
+更多参考内容请阅读程序包内的帮助文件，以及[此程序包的网页](https://auman-chan.github.io/climplot/)。
 
-## 参考文献
+## 引用
 
-1.  Guijarro J A (2023). climatol: Climate Tools (Series Homogenization and Derived Products), 4.0.0., <https://CRAN.R-project.org/package=climatol>.
+请按下列格式引用climplot:
 
-2.  Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2: new 1km spatial resolution climate surfaces for global land areas. International Journal of Climatology 37 (12): 4302-4315.
+Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing. R package version 0.2.1, https://github.com/auman-chan/climplot.
 
-3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset. Scientific Data 7: 109.
-
-4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
+NOTE: 同时请引用程序包['climatol'](https://CRAN.R-project.org/package=climatol)和数据 [Worldclim](https://worldclim.org/data/monthlywth.html).

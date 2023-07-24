@@ -1,0 +1,274 @@
+---
+title: "climplot：用于绘制Walter & Lieth气候图的流程化工具"
+author: 
+- 陈子豪  
+- 在读博士生
+
+documentclass: ctexart
+
+output:
+  rticles::ctex:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    
+header-includes:
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=2in,height=2in]{imgfile.png}\LARGE\\}
+  - \posttitle{\end{center}}
+---
+
+# 简介
+
+[climplot](https://gitee.com/auman-chan/climplot) 为一个绘图程序包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
+
+::: {.alert .alert-info}
+此程序包的主要作用为:
+
+-   使用Worldclim的气候数据来获得标准化和可靠的数据，以构建 Walter＆Lieth 气候图
+
+-   提供更多参数定制图片样式和信息显示方式
+
+此程序包提供以下函数功能:
+
+-   获取气候数据以构建Walter＆Lieth气候图
+
+-   绘制Walter＆Lieth气候图
+
+-   修改气候图的配色和显示的相关信息
+:::
+
+# 安装与加载
+
+从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装程序包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。如果你打算一同安装此程序包的插曲文件（vignettes）, 请在代码中加入 `build_vignettes= TRUE`
+
+```{r intasll, eval=FALSE}
+install.packages('remotes')
+
+#from github
+remotes::install_github("auman-chan/climplot")
+#from gitee
+install.packages('git2r')
+remotes::install_git(
+  "https://gitee.com/auman-chan/climplot.git")
+
+#add vignettes
+remotes::install_github("auman-chan/climplot",
+                        build_vignettes= TRUE)
+
+remotes::install_git(
+  "https://gitee.com/auman-chan/climplot.git",
+                     build_vignettes= TRUE)
+```
+
+```{r load package,include=FALSE}
+#load package
+library(climplot)
+```
+
+# 绘图数据提取
+
+搜索和处理多个地点的气候数据是一项具有挑战性的工作。函数 `clim_extract`可以检索来自Worldclim 的历史月度天气数据(2010-2019年2.5度分版本，<https://worldclim.org/data/monthlywth.html>),为图表可视化做好准备。
+
+## 数据准备
+
+### 气候数据下载
+
+Worldclim气候数据是本程序包必不可少的，由于其全球尺度栅格数据的文件较大，程序包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
+
+此数据集包括4个文件夹，共48个tif文件，其中包括年均最低气温、年均最高气温、年均降水和年极端最低气温。这些数值是根据2010-2019年的月平均值和最小值计算得出的。数据集的结构如下表所示:
+
+```{r include=FALSE}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+```
+
+```{r echo=FALSE}
+a <- read.csv("climdata.csv")
+colnames(a) <- c("No","1","2","3","4")
+kable(a,format="latex", booktabs=TRUE) %>%
+  footnote(c("1. 年均最高气温",
+             "2. 年均最低气温",
+             "3. 年均降水",
+             "4. 年极端最低气温"))
+  
+
+```
+
+### 目标地点的信息准备
+
+为了提取特定地点的气候数据，精确的坐标是必不可少的。此外，图表应该显示其他相关信息，如位置名称和高度。因此，一个包含目标位置信息的数据框对于clim_extract来说是必要的。导入的数据框必须包含5列，顺序如下:
+
+-   **No**:目标地点的序号
+
+-   **location**:目标地点的缩写
+
+-   **lon**:目标地点的经度，以十进制表示，负数表示西经
+
+-   **lat**:目标地点的纬度，以十进制表示，负数表示南纬
+
+-   **altitude**:目标地点的高度
+
+这个程序包中的数据 `locdata` 是 导入格式的例子。上述列的后面允许添加其他包含信息的列，但在后续处理中将被舍弃。
+
+```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
+data("locdata")
+kable(locdata,format="latex", booktabs=TRUE)%>% 
+  kable_styling(latex_options = "scale_down")
+```
+
+
+### 气候数据提取
+在准备好气候数据集和位置信息后，导入三个气候数据集的数据框和数据集路径，此函数将导出一个数据框。
+
+```{r extraction,eval=FALSE}
+#Modify the path of yours
+a <- "G:/climplot/climdata/tmin"
+b <- "G:/climplot/climdata/tmax"
+c <- "G:/climplot/climdata/prec"
+
+#extraction of climate data
+
+plotdata <- clim_extract(locdata,a,b,c)
+}
+```
+
+```{r plotdata,echo=FALSE}
+data("plotdata")
+kable(plotdata,format="latex", booktabs=TRUE) %>% 
+  kable_styling(latex_options = "scale_down")
+```
+导出的数据框包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
+导出数据框架存储在此程序包的数据`plotdata`中，作为函数导出结果的示例。
+
+为了在随后的气候图中展示霜冻月份，必须提取每个地点的极端最低温度。
+将参数Frost从FALSE设置为TRUE，并提供包含年极端最低温度数据集的路径。
+
+```{r extraction with Frost,eval=FALSE}
+#Modify the path of yours
+a <- "G:/climplot/climdata/tmin"
+b <- "G:/climplot/climdata/tmax"
+c <- "G:/climplot/climdata/prec"
+d <- "G:/climplot/climdata/extmin"
+#extraction of climate data
+
+plotdata <- clim_extract(locdata,a,b,c,Frost = TRUE,d)
+}
+```
+```{r plotdata_F, echo=FALSE}
+data("plotdata_Frost")
+kable(plotdata_Frost,format="latex", booktabs=TRUE) %>% 
+  kable_styling(latex_options = "scale_down")
+```
+
+\newpage
+在此模式下，导出的数据框中包含5种位置信息(与导入的数据框中相同)，
+以及12个月份的4种气候数值。每个地点的年极端最低气温都作为新行包括在内。
+此模式的导出数据框存储在程序包的数据`plotdata_Frost`中，作为函数导出的示例。
+
+至此，`clim_extact`已经导出了绘制Walter & Lieth气候图所必需的全部资料。
+
+# 气候图绘制
+`clim_plot`函数可以按照不同风格的配色方案和信息表示方式绘制Walter & Lieth气候图。其参考了CRAN上的程序包`climatol`中的函数`diagwl()`。
+
+## 单个地点Walter & Lieth的气候图绘制
+以`plotdata`和`plotdata_Frost`数据为例，导入到`clim_plot`中。
+
+```{r plot1}
+data("plotdata")
+loc <- subset(plotdata,No==2)
+clim_plot(loc)
+
+```
+
+在上图中:
+-    红色曲线代表气温的年际变化，蓝色曲线代表降水的年际变化。这两条曲线闭合形成了两种斑块，表示湿度和干燥程度。竖线填充的斑块代表湿润季节，散点填充的斑块代表干旱季节。与降水曲线颜色相同的多边形表示降水量大于100mm的月份，表示雨季。
+-    左上角的信息包括名称、海拔高度和位置坐标。右上方为年平均气温和年平均降水量。
+
+## 多个地点Walter & Lieth气候图绘制的解决方法
+
+`clim_plot`仅支持一次为一个地点绘制气候图，因为我们建议绘制完成后每张图需要检查，同时向函数导入多个气候数据向量会增加错误的风险。因此，如果您需要自动对多个地点进行绘图，建议使用循环功能:
+
+```{r plot mutli, eval=FALSE}
+data("plotdata")
+list <- unique(plotdata$No)
+par(mfrow=c(1,1))
+for (i in 1:5){
+ k <- list[i]
+sub <- subset(plotdata,No==k)
+clim_plot(data=sub,ylabel = TRUE,
+          ylab1="Temperature(\U{00B0}C)",
+          ylab2="Precipitation(mm)",
+           p50line = TRUE)
+}
+```
+
+## 其他绘制气候图的提示
+
+### 在气候图中标记霜冻月份
+
+```{r plot frost, echo=TRUE}
+
+data("plotdata_Frost")
+loc <- subset(plotdata_Frost,No==3)
+clim_plot(data=loc,ShowFrost = T)
+
+
+
+```
+
+
+x轴上浅蓝色的方块代表可能出现霜冻的月份,深蓝色表示确定出现霜冻的月份。
+
+
+### 改变颜色和坐标轴
+
+绘图颜色和坐标轴标签可自定义，以满足特定要求。
+可以调整温度和降水线，湿度、干旱、雨季斑块和霜冻月份色块的颜色。
+
+```{r color picker, echo=TRUE}
+loc <- subset(plotdata_Frost,No==1)
+clim_plot(loc,pcol = "#8DB6CD",
+          tcol = "#FF6A6A",
+          wcol="#4EEE94",
+          dcol = "#EEB422",
+          pfcol="#00BFFF",
+          sfcol="#8A2BE2",
+          ShowFrost = TRUE)
+
+```
+
+此外，可以控制轴标签的显示，
+并可以使用参数`ylabel`, `ylab1`, `ylab2`, `mlab`和`xlab`导入自定义标签。
+
+```{r label, echo=TRUE}
+loc <- subset(plotdata_Frost,No==1)
+clim_plot(loc,xlab="M",mlab = "en",
+          ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",
+          ylab2 ="Precipitation(mm)",ShowFrost = TRUE)
+```
+
+### 辅助标记
+
+可选择显示极端温度、降水曲线辅助线、50°C-100mm辅助标记线。
+
+```{r auxiliary line}
+loc <- subset(plotdata_Frost,No==1)
+clim_plot(loc,p3line = TRUE,
+          p50line = TRUE,
+          extremeT = TRUE,ShowFrost = TRUE)
+```
+
+# 参考文献
+
+1.  Guijarro J A (2023). climatol: Climate Tools (Series Homogenization and Derived Products), 4.0.0., <https://CRAN.R-project.org/package=climatol>.
+
+2.  Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2: new 1km spatial resolution climate surfaces for global land areas. International Journal of Climatology 37 (12): 4302-4315.
+
+3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset. Scientific Data 7: 109.
+
+4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
+
+

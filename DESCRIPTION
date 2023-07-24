@@ -10,8 +10,8 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     dplyr,
-    sp,
-    raster,
+    sf,
+    terra,
     magrittr,
     graphics,
     stats
@@ -23,7 +23,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
-    sf
+    readxl
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://github.com/auman-chan/climplot
