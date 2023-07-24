@@ -1,5 +1,6 @@
 library(sp)
 library(raster)
+library(terra)
 library(dplyr)
 library(sf)
 library(tibble)
@@ -19,14 +20,14 @@ data("plotdata")
 y <- readxl::read_xlsx("other/datatest.xlsx")
 k <- subset(plotdata_Frost,No==3)
 
-avmintemp <- list.files(a,full.names = T) %>% stack()
+avmintemp <- list.files(a,full.names = T) %>% rast()
 
 m <- data.frame(No="1",location="test",lon=113.27,lat=23.13,altitude=20)
 file <- m
-point <- st_as_sf(file, coords = c("lon","lat"))
+point <- st_as_sf(file, coords = c("lon","lat"),crs=crs(avmintemp))
 st_crs(point) <- crs(avmintemp)
 
-avtemp1 <- extract(avmintemp,point) %>% as_tibble()
+avtemp1 <- extract(avmintemp,point) %>% as_tibble() %>% select(-ID)
 p <- as_tibble(m)
 loc <- as.data.frame(locdata)
 a <- "G:/climplot/climdata/tmin"

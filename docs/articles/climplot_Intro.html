@@ -74,7 +74,7 @@
                         <h4 data-toc-skip class="author"><a href="https://gitee.com/auman-chan" class="external-link">
 Auman Chan, PhD Candidate</a></h4>
             
-            <h4 data-toc-skip class="date">2023-07-23</h4>
+            <h4 data-toc-skip class="date">2023-07-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/auman-chan/climplot/blob/HEAD/vignettes/climplot_Intro.Rmd" class="external-link"><code>vignettes/climplot_Intro.Rmd</code></a></small>
       <div class="d-none name"><code>climplot_Intro.Rmd</code></div>
@@ -2131,8 +2131,12 @@ curve and position of 50°C-100mm are optional.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,p3line <span class="op">=</span> <span class="cn">TRUE</span>,p50line <span class="op">=</span> <span class="cn">TRUE</span>,extremeT <span class="op">=</span> <span class="cn">TRUE</span>,ShowFrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="climplot_Intro_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
+</div>
+<div class="section level3">
+<h3 id="section">
+<img src="climplot_Intro_files/figure-html/unnamed-chunk-9-1.png" width="700"><a class="anchor" aria-label="anchor" href="#section"></a>
+</h3>
 </div>
 <div class="section level3">
 <h3 id="reference">Reference<a class="anchor" aria-label="anchor" href="#reference"></a>
@@ -2149,6 +2153,48 @@ climate dataset. Scientific Data 7: 109.</p></li>
 <li><p>Walter H &amp; Lieth H (1960): Klimadiagramm Weltatlas. G.
 Fischer, Jena.</p></li>
 </ol>
+<p>Session information</p>
+<pre><code><span><span class="co">## R version 4.3.1 (2023-06-16 ucrt)</span></span>
+<span><span class="co">## Platform: x86_64-w64-mingw32/x64 (64-bit)</span></span>
+<span><span class="co">## Running under: Windows 11 x64 (build 22621)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Matrix products: default</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## locale:</span></span>
+<span><span class="co">## [1] LC_COLLATE=Chinese (Simplified)_China.utf8 </span></span>
+<span><span class="co">## [2] LC_CTYPE=Chinese (Simplified)_China.utf8   </span></span>
+<span><span class="co">## [3] LC_MONETARY=Chinese (Simplified)_China.utf8</span></span>
+<span><span class="co">## [4] LC_NUMERIC=C                               </span></span>
+<span><span class="co">## [5] LC_TIME=Chinese (Simplified)_China.utf8    </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## time zone: Asia/Shanghai</span></span>
+<span><span class="co">## tzcode source: internal</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attached base packages:</span></span>
+<span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## other attached packages:</span></span>
+<span><span class="co">## [1] kableExtra_1.3.4 knitr_1.43       dplyr_1.1.2      climplot_0.3.0  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## loaded via a namespace (and not attached):</span></span>
+<span><span class="co">##  [1] sass_0.4.7         utf8_1.2.3         generics_0.1.3     xml2_1.3.5        </span></span>
+<span><span class="co">##  [5] class_7.3-22       KernSmooth_2.23-22 stringi_1.7.12     lattice_0.21-8    </span></span>
+<span><span class="co">##  [9] digest_0.6.33      magrittr_2.0.3     evaluate_0.21      grid_4.3.1        </span></span>
+<span><span class="co">## [13] fastmap_1.1.1      rprojroot_2.0.3    jsonlite_1.8.7     e1071_1.7-13      </span></span>
+<span><span class="co">## [17] DBI_1.1.3          httr_1.4.6         rvest_1.0.3        purrr_1.0.1       </span></span>
+<span><span class="co">## [21] fansi_1.0.4        viridisLite_0.4.2  scales_1.2.1       codetools_0.2-19  </span></span>
+<span><span class="co">## [25] textshaping_0.3.6  jquerylib_0.1.4    cli_3.6.1          rlang_1.1.1       </span></span>
+<span><span class="co">## [29] units_0.8-2        munsell_0.5.0      cachem_1.0.8       yaml_2.3.7        </span></span>
+<span><span class="co">## [33] tools_4.3.1        raster_3.6-23      memoise_2.0.1      colorspace_2.1-0  </span></span>
+<span><span class="co">## [37] webshot_0.5.5      vctrs_0.6.3        R6_2.5.1           proxy_0.4-27      </span></span>
+<span><span class="co">## [41] lifecycle_1.0.3    classInt_0.4-9     stringr_1.5.0      fs_1.6.3          </span></span>
+<span><span class="co">## [45] ragg_1.2.5         pkgconfig_2.0.3    desc_1.4.2         pkgdown_2.0.7     </span></span>
+<span><span class="co">## [49] terra_1.7-39       pillar_1.9.0       bslib_0.5.0        glue_1.6.2        </span></span>
+<span><span class="co">## [53] Rcpp_1.0.11        sf_1.0-14          systemfonts_1.0.4  xfun_0.39         </span></span>
+<span><span class="co">## [57] tibble_3.2.1       tidyselect_1.2.0   highr_0.10         rstudioapi_0.15.0 </span></span>
+<span><span class="co">## [61] htmltools_0.5.5    svglite_2.1.1      rmarkdown_2.23     compiler_4.3.1    </span></span>
+<span><span class="co">## [65] sp_2.0-0</span></span></code></pre>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

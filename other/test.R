@@ -18,12 +18,13 @@ build_readme()
 
 usethis::use_version()
 usethis::use_mit_license()
-
+usethis::use_citation()
 usethis::use_pkgdown()
 #Reinstall Cairo and ragg packages when error of purrr...
 #no use to bulid vignettes again cos they read from .Rmd files
 #remember
 pkgdown::build_site()
+
 #use kable to display table instead of export directly
 pkgdown::build_articles()
 #build home from readme.md,so it should update the build again

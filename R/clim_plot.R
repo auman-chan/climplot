@@ -88,12 +88,6 @@
 #' @return A Walter & Lieth climatic diagram of the provided locations, including annual variation
 #' of temperature and precipitation , as well as the time of humid and arid season.
 #'
-#' @references {Guijarro J A (2023). climatol: Climate Tools
-#' (Series Homogenization and Derived Products), 4.0.0.,
-#' https://CRAN.R-project.org/package=climatol.
-#'
-#' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
-#'
 #' @examples {
 #' data("plotdata")
 #' test <- subset(plotdata,No==10)

@@ -61,20 +61,6 @@
 #'}
 #'See more details in dataset \code{plotdata}.
 #'
-#' @references {Guijarro J A (2023). climatol: Climate Tools
-#' (Series Homogenization and Derived Products), 4.0.0.,
-#' https://CRAN.R-project.org/package=climatol.
-#'
-#' Fick, S.E. and R.J. Hijmans, (2017). WorldClim 2:
-#'new 1km spatial resolution climate surfaces for global land areas.
-#'International Journal of Climatology 37 (12): 4302-4315.
-#'
-#' Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020).
-#' Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset.
-#'Scientific Data 7: 109.
-#'
-#' Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
-#'
 #'@examples{
 #' #import data of stations
 #' data("locdata")
@@ -93,8 +79,8 @@
 #' }
 #' }
 #' @importFrom sf st_as_sf
-#' @importFrom dplyr mutate arrange desc
-#' @importFrom raster extract stack crs
+#' @importFrom dplyr mutate arrange desc select
+#' @importFrom terra extract rast crs
 #' @importFrom dplyr as_tibble
 #' @importFrom magrittr %>%
 #'
@@ -125,18 +111,18 @@ clim_extract <- function(file,
     }
   }
 
-  avmintemp <- list.files(mintemp_path,full.names = T) %>% stack()
-  avmaxtemp <- list.files(maxtemp_path,full.names = T) %>% stack()
-  avprec <- list.files(prec_path,full.names = T) %>% stack()
+  avmintemp <- list.files(mintemp_path,full.names = T) %>% rast()
+  avmaxtemp <- list.files(maxtemp_path,full.names = T) %>% rast()
+  avprec <- list.files(prec_path,full.names = T) %>% rast()
   if(Frost){
-    exmintemp <- list.files(exmintemp_path,full.names = T) %>% stack()
+    exmintemp <- list.files(exmintemp_path,full.names = T) %>% rast()
   }
 
 pointdata <- file
 
   point <- st_as_sf(file, coords = c("lon","lat"),crs=crs(avmintemp))
 
-  avtemp1 <- extract(avmintemp,point) %>% as_tibble()
+  avtemp1 <- extract(avmintemp,point) %>% as_tibble()%>% select(-ID)
   colnames(avtemp1) <- as.character(c(1:12))
   avtemp1 <- avtemp1 %>% mutate(No=pointdata$No,
                                        Altitude=pointdata$altitude,
@@ -145,7 +131,7 @@ pointdata <- file
                                        Lat=pointdata$lat,
                                        Type="min.temprature",.before = 1)
 
-  avtemp2 <- extract(avmaxtemp,point) %>% as_tibble()
+  avtemp2 <- extract(avmaxtemp,point) %>% as_tibble()%>% select(-ID)
   colnames(avtemp2) <- as.character(c(1:12))
   avtemp2 <- avtemp2 %>% mutate(No=pointdata$No,
                                        Altitude=pointdata$altitude,
@@ -154,7 +140,7 @@ pointdata <- file
                                        Lat=pointdata$lat,
                                        Type="max.temprature",.before = 1)
 
-  prec <- extract(avprec,point) %>% as_tibble()
+  prec <- extract(avprec,point) %>% as_tibble()%>% select(-ID)
   colnames(prec) <- as.character(c(1:12))
   prec <- prec %>% mutate(No=pointdata$No,
                                  Altitude=pointdata$altitude,
@@ -163,7 +149,7 @@ pointdata <- file
                                  Lat=pointdata$lat,
                                  Type="precipitation",.before = 1)
   if(Frost){
-    exmtemp <- extract(exmintemp,point) %>% as_tibble()
+    exmtemp <- extract(exmintemp,point) %>% as_tibble()%>% select(-ID)
     colnames(exmtemp) <- as.character(c(1:12))
     exmtemp <- exmtemp %>% mutate(No=pointdata$No,
                             Altitude=pointdata$altitude,

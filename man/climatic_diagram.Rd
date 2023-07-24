@@ -118,10 +118,3 @@ clim_plot(data=sub,ylabel = TRUE,
 }
 
 }
-\references{
-{Guijarro J A (2023). climatol: Climate Tools
-(Series Homogenization and Derived Products), 4.0.0.,
-https://CRAN.R-project.org/package=climatol.
-
-Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.}
-}

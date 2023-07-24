@@ -4,7 +4,7 @@ test_that("normal extract", {
   tmin <- "G:/climplot/climdata/tmin"
   tmax <- "G:/climplot/climdata/tmax"
   prec <- "G:/climplot/climdata/prec"
-  m <- climplot::clim_extract(locdata,tmin,tmax,prec)
+  m <- clim_extract(locdata,tmin,tmax,prec)
   expect_equal(m,plotdata)
 })
 
@@ -15,7 +15,7 @@ test_that("extract with forst",{
   tmax <- "G:/climplot/climdata/tmax"
   prec <- "G:/climplot/climdata/prec"
   extmin <- "G:/climplot/climdata/extmin"
-  mq <- climplot::clim_extract(locdata,tmin,tmax,prec,Frost = T,extmin)
+  mq <- clim_extract(locdata,tmin,tmax,prec,Frost = T,extmin)
   expect_equal(mq,plotdata_Frost)
 })
 
@@ -25,7 +25,7 @@ test_that("data_frame import",{
   tmax <- "G:/climplot/climdata/tmax"
   prec <- "G:/climplot/climdata/prec"
   extmin <- "G:/climplot/climdata/extmin"
-  mq <- climplot::clim_extract(m,tmin,tmax,prec,Frost = T,extmin)
+  mq <- clim_extract(m,tmin,tmax,prec,Frost = T,extmin)
   expect_true(nrow(mq)==4,ncol(mq)==18)
 })
 
@@ -35,6 +35,6 @@ test_that("excel import",{
   tmax <- "G:/climplot/climdata/tmax"
   prec <- "G:/climplot/climdata/prec"
   extmin <- "G:/climplot/climdata/extmin"
-  mq <- climplot::clim_extract(m,tmin,tmax,prec,Frost = T,extmin)
+  mq <- clim_extract(m,tmin,tmax,prec,Frost = T,extmin)
   expect_true(nrow(mq)==12,ncol(mq)==18)
 })
