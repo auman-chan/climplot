@@ -52,9 +52,9 @@ It contains the abbreviation, coordinates and altitude
 of different locations, as well as the values of 3 types of climate data.
 }
 \details{
-18 columns of this dataset: "No", "Location", "Lon", "Lat", "Altitude"
-are information of locations, "Type" are the labels of climate data,
-and the rest of columns with colnames "1-12" are the climate data values
-of different months.
+18 columns of this dataset: "No", "Location", "Lon",
+"Lat", "Altitude" are information of locations,
+"Type" are the labels of climate data, and the rest of columns with colnames
+"1-12" are the climate data values of different months.
 }
 \keyword{internal}

@@ -63,12 +63,12 @@ remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
 remotes::install_git("https://gitee.com/auman-chan/climplot.git",
-                     build_vignettes= TRUE)
+                     build_vignettes = TRUE)
 
 #add vignettes
 remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
-remotes::install_git("https://gitee.com/auman-chan/climplot.git", 
+remotes::install_git("https://gitee.com/auman-chan/climplot.git",
                      build_vignettes = TRUE)
 ```
 
@@ -139,7 +139,6 @@ kable(p, format = "pipe")
 data("plotdata")
 loc <- subset(plotdata, No == 2)
 clim_plot(loc)
-
 ```
 <img src="result.png" alt="climplot" align="center"/>
 

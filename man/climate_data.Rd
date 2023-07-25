@@ -5,7 +5,7 @@
 \title{Obtain climate data for climatic diagram drawing}
 \usage{
 clim_extract(file, mintemp_path = NA, maxtemp_path = NA,
-prec_path = NA, Frost = FALSE, exmintemp_path = NA)
+prec_path = NA, frost = FALSE, exmintemp_path = NA)
 }
 \arguments{
 \item{file}{A data.frame(see details in dataset \code{locdata})
@@ -34,7 +34,7 @@ corresponding to data of 12 months.}
 temperature. The folder contains 12 .tif files
 corresponding to data of 12 months.}
 
-\item{Frost}{A logical value for whether calculate the
+\item{frost}{A logical value for whether calculate the
 annual extreme minimum temperature,for
    follow-up plotting the frost months. Default is FALSE.}
 
@@ -46,7 +46,7 @@ corresponding to data of 12 months.}
 A data.frame with annual average precipitation,
 annual average minimum
 temperature and annual average max temperature of 12 months, as well as
-other essential information of every location. If Frost=True,
+other essential information of every location. If frost=True,
 it will also include values of annual extreme minimum
    temperature for plotting the forsty months.
 
@@ -57,7 +57,7 @@ it will also include values of annual extreme minimum
     encompassing annual average precipitation,
     annual average minimum temperature and
     annual average maximum temperature.
-    In the event that Frost=True, it will also incorporate
+    In the event that frost=True, it will also incorporate
     annual extreme minimum temperature.
     \item \code{1-12}: The column names of the particular climate data type
     correspond to monthly values ranging from January to December.
@@ -78,9 +78,9 @@ data in 2010-2019
 (Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html),
 containing annual average precipitation, annual average minimum
 temperature and annual average max temperature of 12 months across 2010-2019.
-They can output from original climate data mentioned above with running the code
-in script \code{other/clim_cal.R}, or download directly
-from the supplementary material.
+They can output from original climate data mentioned above
+with running the code in script \code{other/clim_cal.R},
+or download directly from the supplementary material.
 }
 \examples{
 {
@@ -97,7 +97,7 @@ d <- "D:/climplot/climdata/min_mintemp"
 #not sure whether the folders are ready
 cli <- clim_extract(m, a, b, c)
 #calculate for forst months display
-cli <- clim_extract(m, a, b, c, Frost = TRUE, d)
+cli <- clim_extract(m, a, b, c, frost = TRUE, d)
 }
 }
 }
