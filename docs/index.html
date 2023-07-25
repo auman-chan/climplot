@@ -86,21 +86,27 @@
 <div class="section level2">
 <h2 id="installing-and-loading">Installing and loading<a class="anchor" aria-label="anchor" href="#installing-and-loading"></a>
 </h2>
-<p>To install the latest developmental version from <a href="https://github.com/" class="external-link">github</a> and <a href="https://gitee.com/" class="external-link">gitee</a>, you will need the R packages <a href="https://cran.r-project.org/package=remotes" class="external-link">remotes</a> and <a href="https://cran.r-project.org/package=git2r" class="external-link">git2r</a>. If you want to install the vignettes of this package, please add <code>build_vignettes= TRUE</code>.</p>
+<p>To install the latest developmental version from <a href="https://github.com/" class="external-link">github</a> and <a href="https://gitee.com/" class="external-link">gitee</a>, you will need the R packages <a href="https://cran.r-project.org/package=remotes" class="external-link">remotes</a> and <a href="https://cran.r-project.org/package=git2r" class="external-link">git2r</a>. If you want to install the vignettes of this package, please add <code>build_vignettes = TRUE</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'remotes'</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#from github</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span><span class="op">)</span></span>
 <span><span class="co">#from gitee</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'git2r'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"git2r"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#add vignettes</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>,build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span>,</span>
-<span>                     build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span>                     build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#add vignettes</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span>, </span>
+<span>                     build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="data-preparation">Data preparation<a class="anchor" aria-label="anchor" href="#data-preparation"></a>
@@ -372,7 +378,7 @@
 <p>Take the data <code>plotdata</code> and <code>plotdata_Frost</code> as an example, and import them into the function <code>clim_plot</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata"</span><span class="op">)</span></span>
-<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>,<span class="va">No</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>, <span class="va">No</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="articles/result.png" alt="plot result" align="center"></p>
 <p>In the figure above:</p>
@@ -434,7 +440,7 @@
 <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" class="external-link"><img src="https://img.shields.io/badge/licence-gpl--3.0-blue.svg" alt="Licence"></a></li>
 <li><a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R-%3E=%203.5.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="commits/develop"><img src="https://img.shields.io/badge/Package%20version-0.2.1-orange.svg?style=flat-square" alt="packageversion"></a></li>
-<li><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--07--24-yellow.svg" alt="Last-changedate"></a></li>
+<li><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--07--25-yellow.svg" alt="Last-changedate"></a></li>
 </ul>
 </div>
 

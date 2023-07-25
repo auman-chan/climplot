@@ -62,14 +62,15 @@ based on the provided location coordinates.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">clim_extract</span><span class="op">(</span><span class="va">file</span>,mintemp_path<span class="op">=</span><span class="cn">NA</span>,maxtemp_path<span class="op">=</span><span class="cn">NA</span>,</span>
-<span>prec_path<span class="op">=</span><span class="cn">NA</span>,Frost<span class="op">=</span><span class="cn">FALSE</span>,exmintemp_path<span class="op">=</span><span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">clim_extract</span><span class="op">(</span><span class="va">file</span>, mintemp_path <span class="op">=</span> <span class="cn">NA</span>,maxtemp_path <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>prec_path <span class="op">=</span> <span class="cn">NA</span>, Frost <span class="op">=</span> <span class="cn">FALSE</span>,exmintemp_path <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>file</dt>
-<dd><p>A data.frame(see details in dataset <code>locdata</code>) with the following 5 columns:</p><ul><li><p><code>No</code>: Serial number of the locations</p></li>
+<dd><p>A data.frame(see details in dataset <code>locdata</code>)
+    with the following 5 columns:</p><ul><li><p><code>No</code>: Serial number of the locations</p></li>
 <li><p><code>location</code>: Abbreviation of the locations</p></li>
 <li><p><code>lon</code>: Longitude of the locations in decimal digit
 (West longitude are represented by negative numbers)</p></li>
@@ -82,45 +83,54 @@ based on the provided location coordinates.</p>
 
 <dt>mintemp_path</dt>
 <dd><p>The path for the folder of annual average minimum
-temperature. The folder contains 12 .tif files corresponding to data of 12 months.</p></dd>
+temperature. The folder contains 12 .tif files
+corresponding to data of 12 months.</p></dd>
 
 
 <dt>maxtemp_path</dt>
 <dd><p>The path for the folder of annual average maximum
-temperature. The folder contains 12 .tif files corresponding to data of 12 months.</p></dd>
+temperature. The folder contains 12 .tif files
+corresponding to data of 12 months.</p></dd>
 
 
 <dt>prec_path</dt>
 <dd><p>The path for the folder of annual average maximum
-temperature. The folder contains 12 .tif files corresponding to data of 12 months.</p></dd>
+temperature. The folder contains 12 .tif files
+corresponding to data of 12 months.</p></dd>
 
 
 <dt>Frost</dt>
-<dd><p>A logical value for whether calculate the annual extreme minimum temperature,for
-follow-up plotting the frost months. Default is FALSE.</p></dd>
+<dd><p>A logical value for whether calculate the
+annual extreme minimum temperature,for
+   follow-up plotting the frost months. Default is FALSE.</p></dd>
 
 
 <dt>exmintemp_path</dt>
 <dd><p>The path for the folder of annual extreme minimum
-temperature. The folder contains 12 .tif files corresponding to data of 12 months.</p></dd>
+temperature. The folder contains 12 .tif files
+corresponding to data of 12 months.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A data.frame with annual average precipitation, annual average minimum
+<p>A data.frame with annual average precipitation,
+annual average minimum
 temperature and annual average max temperature of 12 months, as well as
 other essential information of every location. If Frost=True,
 it will also include values of annual extreme minimum
    temperature for plotting the forsty months.</p>
 
 
-<ul><li><p><code>No,location,lon,lat</code>: Information of the locations,the the same as
-which in parameter <code>file</code>.</p></li>
-<li><p><code>type</code>: The labels of climate data, encompassing annual average precipitation,
-    annual average minimum temperature and annual average maximum temperature.
-    In the event that Frost=True, it will also incorporate annual extreme minimum temperature.</p></li>
+<ul><li><p><code>No,location,lon,lat</code>: Information of the locations,
+   the the same as which in parameter <code>file</code>.</p></li>
+<li><p><code>type</code>: The labels of climate data,
+    encompassing annual average precipitation,
+    annual average minimum temperature and
+    annual average maximum temperature.
+    In the event that Frost=True, it will also incorporate
+    annual extreme minimum temperature.</p></li>
 <li><p><code>1-12</code>: The column names of the particular climate data type
     correspond to monthly values ranging from January to December.</p></li>
 </ul><p>See more details in dataset <code>plotdata</code>.</p>
@@ -130,11 +140,14 @@ which in parameter <code>file</code>.</p></li>
     <p>The function extracts precipitation and temperature from a
 series of arranged climate data in RasterLayer format,
 and arranges them to a data frame for plotting the climatic diagram.
-The RasterLayer are computed by Worldclim Historical monthly weather data in 2010-2019
-(Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html), containing annual average precipitation, annual average minimum
+The RasterLayer are computed by Worldclim Historical monthly weather
+data in 2010-2019
+(Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html),
+containing annual average precipitation, annual average minimum
 temperature and annual average max temperature of 12 months across 2010-2019.
 They can output from original climate data mentioned above with running the code
-in script <code>other/clim_cal.R</code>, or download directly from the supplementary material.</p>
+in script <code>other/clim_cal.R</code>, or download directly
+from the supplementary material.</p>
     </div>
 
     <div class="section level2">
@@ -151,9 +164,9 @@ in script <code>other/clim_cal.R</code>, or download directly from the supplemen
 <span class="r-in"><span><span class="co">#extraction of climate data</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co">#not sure whether the folders are ready</span></span></span>
-<span class="r-in"><span><span class="va">cli</span> <span class="op">&lt;-</span> <span class="fu">clim_extract</span><span class="op">(</span><span class="va">m</span>,<span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cli</span> <span class="op">&lt;-</span> <span class="fu">clim_extract</span><span class="op">(</span><span class="va">m</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">c</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">#calculate for forst months display</span></span></span>
-<span class="r-in"><span><span class="va">cli</span> <span class="op">&lt;-</span> <span class="fu">clim_extract</span><span class="op">(</span><span class="va">m</span>,<span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span>,Frost<span class="op">=</span><span class="cn">T</span>,<span class="va">d</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cli</span> <span class="op">&lt;-</span> <span class="fu">clim_extract</span><span class="op">(</span><span class="va">m</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">c</span>, Frost <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">d</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>

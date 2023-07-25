@@ -213,7 +213,7 @@ clim_plot(data = sub,ylabel = TRUE,
 
 data("plotdata_Frost")
 loc <- subset(plotdata_Frost, No == 3)
-clim_plot(data = loc, showfrost = T)
+clim_plot(data = loc, showfrost = TRUE)
 
 
 
@@ -232,10 +232,10 @@ x轴上浅蓝色的方块代表可能出现霜冻的月份,深蓝色表示确定
 loc <- subset(plotdata_Frost, No == 1)
 clim_plot(loc,pcol = "#8DB6CD", 
           tcol = "#FF6A6A", 
-          wcol="#4EEE94", 
+          wcol = "#4EEE94", 
           dcol = "#EEB422", 
-          pfcol="#00BFFF", 
-          sfcol="#8A2BE2", 
+          pfcol = "#00BFFF", 
+          sfcol = "#8A2BE2", 
           showfrost = TRUE)
 
 ```
@@ -245,7 +245,7 @@ clim_plot(loc,pcol = "#8DB6CD",
 
 ```{r label, echo=TRUE}
 loc <- subset(plotdata_Frost, No == 1)
-clim_plot(loc, xlab="M", mlab = "en",
+clim_plot(loc, xlab = "M", mlab = "en",
           ylabel = TRUE, ylab1 = "Temperature(\U{00B0}C)",
           ylab2 = "Precipitation(mm)", showfrost = TRUE)
 ```
@@ -257,7 +257,7 @@ clim_plot(loc, xlab="M", mlab = "en",
 ```{r auxiliary line}
 loc <- subset(plotdata_Frost, No == 1)
 clim_plot(loc, line_p3 = TRUE,
-          p50line = TRUE,
+          line_p50 = TRUE,
           temp_extreme = TRUE, showfrost = TRUE)
 ```
 
