@@ -166,28 +166,29 @@ The package offers functions for:
 To install the latest developmental version from [github](https://github.com/) and
 [gitee](https://gitee.com/), you will need the R packages
 [remotes](https://cran.r-project.org/package=remotes) and
-[git2r](https://cran.r-project.org/package=git2r). If you want to install the vignettes of this package, please add `build_vignettes= TRUE`.
+[git2r](https://cran.r-project.org/package=git2r). 
+If you want to install the vignettes of this package, please add `build_vignettes = TRUE`.
 
 ```{r intasll, eval=FALSE}
-install.packages('remotes')
+install.packages("remotes")
 
 #from github
 remotes::install_github("auman-chan/climplot")
 #from gitee
-install.packages('git2r')
+install.packages("git2r")
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 
 #add vignettes
-remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
 remotes::install_git("https://gitee.com/auman-chan/climplot.git",
                      build_vignettes= TRUE)
 
 #add vignettes
-remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
-remotes::install_git("https://gitee.com/auman-chan/climplot.git",
-                     build_vignettes= TRUE)
+remotes::install_git("https://gitee.com/auman-chan/climplot.git", 
+                     build_vignettes = TRUE)
 ```
 
 ```{r load package,include=FALSE}
@@ -251,7 +252,7 @@ plotdata <- clim_extract(locdata, a, b, c)
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-kable(plotdata,format = "pipe")
+kable(plotdata, format = "pipe")
 ```
 
 The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 3 kinds of climate factors across 12 months. An  data.frame stores in the data `plotdata` of this package, as an example of the function export.
@@ -266,13 +267,13 @@ c <- "G:/climplot/climdata/prec"
 d <- "G:/climplot/climdata/extmin"
 #extraction of climate data
 
-plotdata <- clim_extract(locdata,a,b,c,Frost = TRUE,d)
+plotdata <- clim_extract(locdata, a, b, c, Frost = TRUE, d)
 }
 ```
 
 ```{r plotdata_F,echo=FALSE}
 data("plotdata_Frost")
-kable(plotdata_Frost,format = "pipe")
+kable(plotdata_Frost, format = "pipe")
 ```
 
 In this mode, the data.frame exported includes 5 kinds of information of locations(as which in the data.frame imported), and values of 4 kinds of climate factors among 12 months. The annual extreme minimum temperature are included as a new row of every location. A  data.frame of this mode stores in the data `plotdata_Frost` of this package, as an example of the function export.
@@ -289,7 +290,7 @@ Take the data `plotdata` and `plotdata_Frost` as an example, and import them int
 
 ```{r}
 data("plotdata")
-loc <- subset(plotdata,No==2)
+loc <- subset(plotdata, No == 2)
 clim_plot(loc)
 
 ```
@@ -307,14 +308,14 @@ In the figure above:
 ```{r plot mutli, eval=FALSE}
 data("plotdata")
 list <- unique(plotdata$No)
-par(mfrow=c(1,1))
+par(mfrow=c(1, 1))
 for (i in 1:5){
  k <- list[i]
-sub <- subset(plotdata,No==k)
-clim_plot(data=sub,ylabel = TRUE,
-          ylab1="Temperature(\U{00B0}C)",
-          ylab2="Precipitation(mm)",
-           p50line = TRUE)
+sub <- subset(plotdata, No == k)
+clim_plot(data = sub, ylabel = TRUE, 
+          ylab1 = "Temperature(\U{00B0}C)", 
+          ylab2 = "Precipitation(mm)", 
+           line_p50 = TRUE)
 }
 ```
 
@@ -325,29 +326,37 @@ clim_plot(data=sub,ylabel = TRUE,
 ```{r echo=TRUE}
 
 data("plotdata_Frost")
-loc <- subset(plotdata_Frost,No==3)
-clim_plot(data=loc,ShowFrost = T)
+loc <- subset(plotdata_Frost, No == 3)
+clim_plot(data=loc, showfrost = TRUE)
 ```
 
-The blocks with light blue color on x-axis represent the months with potential frost, and the dark blue ones are those with confirmed frost.
+The blocks with light blue color on x-axis represent the months 
+with potential frost, and the dark blue ones are those with confirmed frost.
 
 ### Color and axis modification
 
 The color and the axis labels could be customized to meet specific requirements.
 
-It is possible to adjust the colors of line of temperature and precipitation, as well as  patches of humidity, aridity, wet season and frosty month blocks.
+It is possible to adjust the colors of line of temperature and precipitation, 
+as well as patches of humidity, aridity, wet season and frosty month blocks.
 
 ```{r echo=TRUE}
-loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,pcol = "#8DB6CD",tcol = "#FF6A6A",wcol="#4EEE94",dcol = "#EEB422",pfcol="#00BFFF",sfcol="#8A2BE2",ShowFrost = TRUE)
+loc <- subset(plotdata_Frost, No == 1)
+clim_plot(loc,pcol = "#8DB6CD", tcol = "#FF6A6A", wcol = "#4EEE94", 
+          dcol = "#EEB422", pfcol = "#00BFFF", sfcol = "#8A2BE2", 
+          showfrost = TRUE)
 
 ```
 
-Additionally, the display of axis labels can be controlled and custom labels can be imported using parameters `ylabel`, `ylab1`, `ylab2` `mlab` and `xlab` .
+Additionally, the display of axis labels can be controlled 
+and custom labels can be imported 
+using parameters `ylabel`, `ylab1`, `ylab2` `mlab` and `xlab` .
 
 ```{r echo=TRUE}
-loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",ylab2 ="Precipitation(mm)",ShowFrost = TRUE)
+loc <- subset(plotdata_Frost, No==1)
+clim_plot(loc, xlab = "月份", mlab = "en", ylabel = TRUE, 
+          ylab1 = "Temperature(\U{00B0}C)", 
+          ylab2 = "Precipitation(mm)", showfrost = TRUE)
 ```
 
 ### Auxiliary marker
@@ -355,10 +364,11 @@ clim_plot(loc,xlab="月份",mlab = "en",ylabel = TRUE,ylab1 ="Temperature(\U{00B
 Displaying extreme temperatures, the auxiliary line of precipitation curve and position of 50°C-100mm are optional.
 
 ```{r echo=TRUE}
-loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,p3line = TRUE,p50line = TRUE,extremeT = TRUE,ShowFrost = TRUE)
+loc <- subset(plotdata_Frost, No == 1)
+clim_plot(loc, line_p3 = TRUE, line_p50 = TRUE, temp_extreme = TRUE, 
+          showfrost = TRUE)
 ```
----
+
 
 ## Reference
 

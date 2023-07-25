@@ -87,11 +87,11 @@ library(kableExtra)
 
 ```{r echo=FALSE}
 a <- read.csv("climdata.csv")
-colnames(a) <- c("No","1","2","3","4")
-kable(a,format="latex", booktabs=TRUE) %>%
-  footnote(c("1. 年均最高气温",
-             "2. 年均最低气温",
-             "3. 年均降水",
+colnames(a) <- c("No", "1", "2", "3", "4")
+kable(a, format = "latex", booktabs = TRUE) %>%
+  footnote(c("1. 年均最高气温", 
+             "2. 年均最低气温", 
+             "3. 年均降水", 
              "4. 年极端最低气温"))
   
 
@@ -115,7 +115,7 @@ kable(a,format="latex", booktabs=TRUE) %>%
 
 ```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
 data("locdata")
-kable(locdata,format="latex", booktabs=TRUE)%>% 
+kable(locdata, format = "latex", booktabs = TRUE)%>% 
   kable_styling(latex_options = "scale_down")
 ```
 
@@ -131,13 +131,13 @@ c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
 
-plotdata <- clim_extract(locdata,a,b,c)
+plotdata <- clim_extract(locdata, a, b, c)
 }
 ```
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-kable(plotdata,format="latex", booktabs=TRUE) %>% 
+kable(plotdata,format = "latex", booktabs=TRUE) %>% 
   kable_styling(latex_options = "scale_down")
 ```
 导出的数据框包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
@@ -154,12 +154,12 @@ c <- "G:/climplot/climdata/prec"
 d <- "G:/climplot/climdata/extmin"
 #extraction of climate data
 
-plotdata <- clim_extract(locdata,a,b,c,Frost = TRUE,d)
+plotdata <- clim_extract(locdata, a, b, c, Frost = TRUE, d)
 }
 ```
 ```{r plotdata_F, echo=FALSE}
 data("plotdata_Frost")
-kable(plotdata_Frost,format="latex", booktabs=TRUE) %>% 
+kable(plotdata_Frost,format="latex", booktabs = TRUE) %>% 
   kable_styling(latex_options = "scale_down")
 ```
 
@@ -178,7 +178,7 @@ kable(plotdata_Frost,format="latex", booktabs=TRUE) %>%
 
 ```{r plot1}
 data("plotdata")
-loc <- subset(plotdata,No==2)
+loc <- subset(plotdata,No == 2)
 clim_plot(loc)
 
 ```
@@ -194,13 +194,13 @@ clim_plot(loc)
 ```{r plot mutli, eval=FALSE}
 data("plotdata")
 list <- unique(plotdata$No)
-par(mfrow=c(1,1))
+par(mfrow=c(1, 1))
 for (i in 1:5){
  k <- list[i]
-sub <- subset(plotdata,No==k)
-clim_plot(data=sub,ylabel = TRUE,
-          ylab1="Temperature(\U{00B0}C)",
-          ylab2="Precipitation(mm)",
+sub <- subset(plotdata, No == k)
+clim_plot(data = sub,ylabel = TRUE,
+          ylab1 = "Temperature(\U{00B0}C)",
+          ylab2 = "Precipitation(mm)",
            p50line = TRUE)
 }
 ```
@@ -212,8 +212,8 @@ clim_plot(data=sub,ylabel = TRUE,
 ```{r plot frost, echo=TRUE}
 
 data("plotdata_Frost")
-loc <- subset(plotdata_Frost,No==3)
-clim_plot(data=loc,ShowFrost = T)
+loc <- subset(plotdata_Frost, No == 3)
+clim_plot(data = loc, showfrost = TRUE)
 
 
 
@@ -229,14 +229,14 @@ x轴上浅蓝色的方块代表可能出现霜冻的月份,深蓝色表示确定
 可以调整温度和降水线，湿度、干旱、雨季斑块和霜冻月份色块的颜色。
 
 ```{r color picker, echo=TRUE}
-loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,pcol = "#8DB6CD",
-          tcol = "#FF6A6A",
-          wcol="#4EEE94",
-          dcol = "#EEB422",
-          pfcol="#00BFFF",
-          sfcol="#8A2BE2",
-          ShowFrost = TRUE)
+loc <- subset(plotdata_Frost, No == 1)
+clim_plot(loc,pcol = "#8DB6CD", 
+          tcol = "#FF6A6A", 
+          wcol = "#4EEE94", 
+          dcol = "#EEB422", 
+          pfcol = "#00BFFF", 
+          sfcol = "#8A2BE2", 
+          showfrost = TRUE)
 
 ```
 
@@ -244,10 +244,10 @@ clim_plot(loc,pcol = "#8DB6CD",
 并可以使用参数`ylabel`, `ylab1`, `ylab2`, `mlab`和`xlab`导入自定义标签。
 
 ```{r label, echo=TRUE}
-loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,xlab="M",mlab = "en",
-          ylabel = TRUE,ylab1 ="Temperature(\U{00B0}C)",
-          ylab2 ="Precipitation(mm)",ShowFrost = TRUE)
+loc <- subset(plotdata_Frost, No == 1)
+clim_plot(loc, xlab = "M", mlab = "en",
+          ylabel = TRUE, ylab1 = "Temperature(\U{00B0}C)",
+          ylab2 = "Precipitation(mm)", showfrost = TRUE)
 ```
 
 ### 辅助标记
@@ -255,10 +255,10 @@ clim_plot(loc,xlab="M",mlab = "en",
 可选择显示极端温度、降水曲线辅助线、50°C-100mm辅助标记线。
 
 ```{r auxiliary line}
-loc <- subset(plotdata_Frost,No==1)
-clim_plot(loc,p3line = TRUE,
-          p50line = TRUE,
-          extremeT = TRUE,ShowFrost = TRUE)
+loc <- subset(plotdata_Frost, No == 1)
+clim_plot(loc, line_p3 = TRUE,
+          line_p50 = TRUE,
+          temp_extreme = TRUE, showfrost = TRUE)
 ```
 
 # 参考文献

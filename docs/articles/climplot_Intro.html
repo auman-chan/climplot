@@ -74,7 +74,7 @@
                         <h4 data-toc-skip class="author"><a href="https://gitee.com/auman-chan" class="external-link">
 Auman Chan, PhD Candidate</a></h4>
             
-            <h4 data-toc-skip class="date">2023-07-24</h4>
+            <h4 data-toc-skip class="date">2023-07-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/auman-chan/climplot/blob/HEAD/vignettes/climplot_Intro.Rmd" class="external-link"><code>vignettes/climplot_Intro.Rmd</code></a></small>
       <div class="d-none name"><code>climplot_Intro.Rmd</code></div>
@@ -225,27 +225,27 @@ diagram</li>
 </h2>
 <p>To install the latest developmental version from <a href="https://github.com/" class="external-link">github</a> and <a href="https://gitee.com/" class="external-link">gitee</a>, you will need the R packages <a href="https://cran.r-project.org/package=remotes" class="external-link">remotes</a> and <a href="https://cran.r-project.org/package=git2r" class="external-link">git2r</a>. If you want
 to install the vignettes of this package, please add
-<code>build_vignettes= TRUE</code>.</p>
+<code>build_vignettes = TRUE</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'remotes'</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#from github</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span><span class="op">)</span></span>
 <span><span class="co">#from gitee</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'git2r'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"git2r"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#add vignettes</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>,build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span>,</span>
 <span>                     build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#add vignettes</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>,build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span>,</span>
-<span>                     build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span>, </span>
+<span>                     build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="plotting-data-extraction">Plotting data extraction<a class="anchor" aria-label="anchor" href="#plotting-data-extraction"></a>
@@ -1178,7 +1178,7 @@ extreme minimum temperatures.</p>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="st">"G:/climplot/climdata/extmin"</span></span>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#extraction of climate data</span></span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">clim_extract</span>(locdata,a,b,c,<span class="at">Frost =</span> <span class="cn">TRUE</span>,d)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">clim_extract</span>(locdata, a, b, c, <span class="at">Frost =</span> <span class="cn">TRUE</span>, d)</span>
 <span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
@@ -2049,7 +2049,7 @@ location<a class="anchor" aria-label="anchor" href="#walter-lieth-climatic-diagr
 as an example, and import them into <code>clim_plot</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata"</span><span class="op">)</span></span>
-<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>,<span class="va">No</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>, <span class="va">No</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="climplot_Intro_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <p>In the figure above:</p>
@@ -2077,14 +2077,14 @@ utilizing a loop is recommended:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata"</span><span class="op">)</span></span>
 <span><span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">plotdata</span><span class="op">$</span><span class="va">No</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">{</span></span>
 <span> <span class="va">k</span> <span class="op">&lt;-</span> <span class="va">list</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
-<span><span class="va">sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>,<span class="va">No</span><span class="op">==</span><span class="va">k</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">sub</span>,ylabel <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>          ylab1<span class="op">=</span><span class="st">"Temperature(\U{00B0}C)"</span>,</span>
-<span>          ylab2<span class="op">=</span><span class="st">"Precipitation(mm)"</span>,</span>
-<span>           p50line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>, <span class="va">No</span> <span class="op">==</span> <span class="va">k</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">sub</span>, ylabel <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>          ylab1 <span class="op">=</span> <span class="st">"Temperature(\U{00B0}C)"</span>, </span>
+<span>          ylab2 <span class="op">=</span> <span class="st">"Precipitation(mm)"</span>, </span>
+<span>           line_p50 <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -2095,8 +2095,8 @@ utilizing a loop is recommended:</p>
 </h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata_Frost"</span><span class="op">)</span></span>
-<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">loc</span>,ShowFrost <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>, <span class="va">No</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">loc</span>, showfrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="climplot_Intro_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p>The blocks with light blue color on x-axis represent the months with
 potential frost, and the dark blue ones are those with confirmed
@@ -2111,16 +2111,20 @@ requirements.</p>
 precipitation, as well as patches of humidity, aridity, wet season and
 frosty month blocks.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,pcol <span class="op">=</span> <span class="st">"#8DB6CD"</span>,tcol <span class="op">=</span> <span class="st">"#FF6A6A"</span>,wcol<span class="op">=</span><span class="st">"#4EEE94"</span>,dcol <span class="op">=</span> <span class="st">"#EEB422"</span>,pfcol<span class="op">=</span><span class="st">"#00BFFF"</span>,sfcol<span class="op">=</span><span class="st">"#8A2BE2"</span>,ShowFrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>, <span class="va">No</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,pcol <span class="op">=</span> <span class="st">"#8DB6CD"</span>, tcol <span class="op">=</span> <span class="st">"#FF6A6A"</span>, wcol <span class="op">=</span> <span class="st">"#4EEE94"</span>, </span>
+<span>          dcol <span class="op">=</span> <span class="st">"#EEB422"</span>, pfcol <span class="op">=</span> <span class="st">"#00BFFF"</span>, sfcol <span class="op">=</span> <span class="st">"#8A2BE2"</span>, </span>
+<span>          showfrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="climplot_Intro_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p>Additionally, the display of axis labels can be controlled and custom
 labels can be imported using parameters <code>ylabel</code>,
 <code>ylab1</code>, <code>ylab2</code> <code>mlab</code> and
 <code>xlab</code> .</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,xlab<span class="op">=</span><span class="st">"月份"</span>,mlab <span class="op">=</span> <span class="st">"en"</span>,ylabel <span class="op">=</span> <span class="cn">TRUE</span>,ylab1 <span class="op">=</span><span class="st">"Temperature(\U{00B0}C)"</span>,ylab2 <span class="op">=</span><span class="st">"Precipitation(mm)"</span>,ShowFrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>, <span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>, xlab <span class="op">=</span> <span class="st">"月份"</span>, mlab <span class="op">=</span> <span class="st">"en"</span>, ylabel <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>          ylab1 <span class="op">=</span> <span class="st">"Temperature(\U{00B0}C)"</span>, </span>
+<span>          ylab2 <span class="op">=</span> <span class="st">"Precipitation(mm)"</span>, showfrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="climplot_Intro_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
 <div class="section level4">
@@ -2129,14 +2133,11 @@ labels can be imported using parameters <code>ylabel</code>,
 <p>Displaying extreme temperatures, the auxiliary line of precipitation
 curve and position of 50°C-100mm are optional.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>,<span class="va">No</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>,p3line <span class="op">=</span> <span class="cn">TRUE</span>,p50line <span class="op">=</span> <span class="cn">TRUE</span>,extremeT <span class="op">=</span> <span class="cn">TRUE</span>,ShowFrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata_Frost</span>, <span class="va">No</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span>, line_p3 <span class="op">=</span> <span class="cn">TRUE</span>, line_p50 <span class="op">=</span> <span class="cn">TRUE</span>, temp_extreme <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>          showfrost <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="climplot_Intro_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
-</div>
-<div class="section level3">
-<h3 id="section">
-<img src="climplot_Intro_files/figure-html/unnamed-chunk-9-1.png" width="700"><a class="anchor" aria-label="anchor" href="#section"></a>
-</h3>
 </div>
 <div class="section level3">
 <h3 id="reference">Reference<a class="anchor" aria-label="anchor" href="#reference"></a>

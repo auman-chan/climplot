@@ -72,7 +72,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>climplot：用于绘制 Walter &amp; Lieth 气候图的流程化工具</h1>
             
-            <h4 data-toc-skip class="date">2023-07-24</h4>
+            <h4 data-toc-skip class="date">2023-07-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/auman-chan/climplot/blob/HEAD/vignettes/README.zh-CN.Rmd" class="external-link"><code>vignettes/README.zh-CN.Rmd</code></a></small>
       <div class="d-none name"><code>README.zh-CN.Rmd</code></div>
@@ -80,8 +80,7 @@
 
     
     
-<p><img src="imgfile.png" alt="climplot logo" align="right" width="35%">
-#(本文为readme文件的中文翻译版本)</p>
+<p><img src="imgfile.png" alt="climplot logo" align="right" width="35%"><em>本文为readme文件的中文翻译版本</em></p>
 <p><a href="https://gitee.com/auman-chan/climplot" class="external-link">climplot</a>为一个绘图程序包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。</p>
 <p>此程序包的主要作用为:</p>
 <ul>
@@ -98,22 +97,29 @@ Walter＆Lieth 气候图</p></li>
 <div class="section level2">
 <h2 id="安装与加载">安装与加载<a class="anchor" aria-label="anchor" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8A%A0%E8%BD%BD"></a>
 </h2>
-<p>从<a href="https://gitee.com" class="external-link">gitee</a>和<a href="https://github.com/" class="external-link">github</a> 安装最新的开发版本，请安装程序包<a href="https://cran.r-project.org/package=remotes" class="external-link">remotes</a>和<a href="https://cran.r-project.org/package=git2r" class="external-link">git2r</a>。
-如果你打算一同安装此程序包的插曲文件（vignettes），请在代码中加入<code>build_vignettes= TRUE</code>。</p>
+<p>从<a href="https://gitee.com" class="external-link">gitee</a>和<a href="https://github.com/" class="external-link">github</a> 安装最新的开发版本，
+请安装程序包<a href="https://cran.r-project.org/package=remotes" class="external-link">remotes</a>和 <a href="https://cran.r-project.org/package=git2r" class="external-link">git2r</a>。
+如果你打算一同安装此程序包的插曲文件（vignettes），请在代码中加入<code>build_vignettes = TRUE</code>。</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'remotes'</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#from github</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span><span class="op">)</span></span>
 <span><span class="co">#from gitee</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'git2r'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"git2r"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#add vignettes</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>,build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span>,</span>
-<span>                     build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span>                     build_vignettes<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#add vignettes</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"auman-chan/climplot"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span><span class="st">"https://gitee.com/auman-chan/climplot.git"</span>, </span>
+<span>                     build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="使用前数据准备">使用前数据准备<a class="anchor" aria-label="anchor" href="#%E4%BD%BF%E7%94%A8%E5%89%8D%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"></a>
@@ -150,7 +156,7 @@ Walter＆Lieth 气候图</p></li>
 <span></span>
 <span><span class="co">#extraction of climate data</span></span>
 <span></span>
-<span><span class="va">plotdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/climate_data.html">clim_extract</a></span><span class="op">(</span><span class="va">locdata</span>,<span class="va">a</span>,<span class="va">b</span>,<span class="va">c</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">plotdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/climate_data.html">clim_extract</a></span><span class="op">(</span><span class="va">locdata</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">c</span><span class="op">)</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="2%">
@@ -384,7 +390,7 @@ Walter＆Lieth 气候图</p></li>
 <p>以<code>plotdata</code>数据为例，导入到函数<code>clim_plot</code>中：</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"plotdata"</span><span class="op">)</span></span>
-<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>,<span class="va">No</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">plotdata</span>, <span class="va">No</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/climatic_diagram.html">clim_plot</a></span><span class="op">(</span><span class="va">loc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="result.png" alt="climplot" align="center"></p>
 <p>在上图中:</p>

@@ -1,15 +1,19 @@
 #' @rdname climatic_diagram
 #' @title  Walter & Lieth climatic diagram drawing
-#' @usage clim_plot(data,mlab="",pcol="blue",tcol="red",wcol="green",dcol="orange",
-#'pfcol="#79e6e8",sfcol="#09a0d1",ylabel=FALSE,ylab1=NA,ylab2=NA,xlab="Month",
-#'ShowFrost=FALSE,shem=FALSE,p3line=FALSE,p50line=FALSE,extremeT=FALSE,
-#'margen=c(4,4,5,4),per=NA)
+#' @usage clim_plot(data, mlab = "", pcol = "blue", tcol = "red",
+#' wcol = "green", dcol = "orange",
+#'pfcol = "#79e6e8", sfcol = "#09a0d1", ylabel = FALSE, ylab1 = NA,
+#'ylab2 = NA, xlab = "Month",
+#'showfrost = FALSE, shem = FALSE, line_p3 = FALSE, line_p50 = FALSE,
+#'temp_extreme = FALSE, margen = c(4, 4, 5, 4),per = NA)
 #'
 #' @description \code{clim_plot} plots the Walter & Lieth climatic diagram
-#' with the climate data of different locations. It is based on the method of function
+#' with the climate data of different locations.
+#' It is based on the method of function
 #' \code{diagwl()}from package \code{climatol},
 #' but offers additional parameters for color selection, axis labeling,
-#' and location information display to meet diverse research and publishing needs.
+#' and location information display
+#' to meet diverse research and publishing needs.
 #'
 #'
 #' @param data A data.frame(see details in the dataset \code{plotdata})
@@ -22,14 +26,18 @@
 #'     \item \code{lat}: Latitude of the locations in decimal digit
 #'     (negative numbers indicating south latitude).
 #'     \item \code{altitude}: Altitude of the locations.
-#'     \item \code{type}: The labels of climate data, encompassing annual average precipitation,
-#'     annual average minimum temperature and annual average maximum temperature.
-#'     In the event that Frost=True, it will also incorporate annual extreme minimum temperature.
+#'     \item \code{type}: The labels of climate data, encompassing
+#'     annual average precipitation,
+#'     annual average minimum temperature and
+#'     annual average maximum temperature.
+#'     In the event that Frost=True, it will also incorporate
+#'     annual extreme minimum temperature.
 #'     \item \code{1-12}: The column names of the particular climate data type
 #'     correspond to monthly values ranging from January to December.
 #'}
-#'     Other columns containing information may be placed after the aforementioned columns,
-#'     but will be disregarded in subsequent processes.
+#'     Other columns containing information may be placed
+#'     after the aforementioned columns, but will be disregarded
+#'     in subsequent processes.
 #'
 #' @param mlab A vector of 12 monthly labels for the X axis.Deafult is numeric.
 #' Alternatively, set as 'en' or 'es' can be specified to display
@@ -44,15 +52,17 @@
 #'
 #' @param dcol Color of the arid season polygon. Default is "orange".
 #'
-#' @param ShowFrost A logical value for whether marking forst months. Default is FALSE.
+#' @param showfrost A logical value for whether marking forst months.
+#' Default is FALSE.
 #'
-#' @param pfcol Color of the potential frosty months. Default is "#79e6e8". No use when
-#' ShowFrost= FALSE.
+#' @param pfcol Color of the potential frosty months. Default is "#79e6e8".
+#' No use when showfrost= FALSE.
 #'
 #' @param sfcol Color of the confirmed frosty months. Default is "#09a0d1".
-#' No use when ShowFrost= FALSE.
+#' No use when showfrost= FALSE.
 #'
-#' @param ylabel A logical value for whether using customized label of y axis. Default is FALSE.
+#' @param ylabel A logical value for whether using customized label of y axis.
+#' Default is FALSE.
 #'
 #' @param ylab1 A character value for label of y axis of temperature. Default is NA.
 #'
@@ -62,26 +72,27 @@
 #'
 #' @param shem A logical value for whether keeping the summer period in
 #' the central zone of the graphic
-#' (the diagram will begin the plot with the July data). Default is FALSE. Useful when the
-#' location is in southern hemisphere
+#' (the diagram will begin the plot with the July data). Default is FALSE.
+#' Useful when the location is in southern hemisphere
 #' (original parameter of the referenced function \code{diagwl()}).
 #'
-#' @param p3line A logical value for whether displaying
+#' @param line_p3 A logical value for whether displaying
 #' a supplementary precipitation line referenced to three times the temperature.
 #' Default is FALSE
 #' (original parameter of the referenced function \code{diagwl()}).
 #'
-#' @param p50line A logical value for whether displaying a supplementary
+#' @param line_p50 A logical value for whether displaying a supplementary
 #' precipitation line in 50°C-100mm. Default is FALSE.
 
-#' @param extremeT A logical value for whether displaying the extreme temperature.
+#' @param temp_extreme A logical value for whether displaying the extreme temperature.
 #' Default is FALSE.
 #'
-#' @param margen A vector to control the range of plot. Default is "c(4,4,5,4)"
+#' @param margen A vector to control the range of plot.
+#' Default is "c(4, 4, 5, 4)"
 #'
 #' @param per a parameter from the referenced function \code{diagwl()}. No use temporarily.
 #'
-#'#'@details The function extracts precipitation and temperature from arranged
+#' @details The function extracts precipitation and temperature from arranged
 #'Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
 #'and arranges them to a data.frame for drawing the climatic diagram.
 #'
@@ -90,22 +101,22 @@
 #'
 #' @examples {
 #' data("plotdata")
-#' test <- subset(plotdata,No==10)
-#'clim_plot(data=test,ylabel = TRUE,
-#'         ylab1="Temperature(\U{00B0}C)",
-#'         ylab2="Precipitation(mm)",
-#'         p50line = TRUE)
+#' test <- subset(plotdata, No == 10)
+#'clim_plot(data = test,ylabel = TRUE,
+#'         ylab1 = "Temperature(\U{00B0}C)",
+#'         ylab2 = "Precipitation(mm)",
+#'         line_p50 = TRUE)
 #'
 #'#use loop to plot multiple diagrams simultaneously
 #'list <- unique(plotdata$No)
-#'par(mfrow=c(1,1))
+#'par(mfrow = c(1,1))
 #'for (i in 1:5){
 #'  k <- list[i]
-#' sub <- subset(plotdata,No==k)
-#' clim_plot(data=sub,ylabel = TRUE,
-#'           ylab1="Temperature(\U{00B0}C)",
-#'           ylab2="Precipitation(mm)",
-#'            p50line = TRUE)
+#' sub <- subset(plotdata, No == k)
+#' clim_plot(data = sub, ylabel = TRUE,
+#'           ylab1 = "Temperature(\U{00B0}C)",
+#'           ylab2 = "Precipitation(mm)",
+#'            line_p50 = TRUE)
 #'}
 #'
 #' }
@@ -126,11 +137,11 @@ clim_plot <- function(data,     #dataset
                        ylab1=NA,
                        ylab2=NA,
                        xlab="Month",
-                       ShowFrost=FALSE, #whether display the frosty months
+                       showfrost=FALSE, #whether display the frosty months
                        shem=FALSE,
-                       p3line=FALSE, #auxiliary line of temperature
-                       p50line=FALSE,#auxiliary line of 50-100mm precipitation
-                       extremeT=FALSE,
+                       line_p3=FALSE, #auxiliary line of temperature
+                       line_p50=FALSE,#auxiliary line of 50-100mm precipitation
+                       temp_extreme=FALSE,
                       margen=c(4,4,5,4),
                       per=NA #观测年份
                        ) {
@@ -223,7 +234,7 @@ clim_plot <- function(data,     #dataset
   mtext(xlab,cex = 1.2,side=1,line=2.5,adj=0.5)
 
   abline(0,0)
-  if(p50line){abline(50,0)}
+  if(line_p50){abline(50,0)}
   #information above the plot
   if(is.na(alt))
   {mtext(est,line=2,adj=0,cex=1.2)
@@ -245,7 +256,7 @@ clim_plot <- function(data,     #dataset
   p2 <- c(p[12],p[1:12],p[1])
   #14 points for a smooth line of precipitation
 
-  if(p3line) { #auxiliary line of precipitation
+  if(line_p3) { #auxiliary line of precipitation
     yl3 <- c(p[12],p[1:12],p[1])/3
     yl3[yl3>50] <- 50
   }
@@ -376,7 +387,7 @@ clim_plot <- function(data,     #dataset
   y1 <- subset(pi,d<0)
   y2 <- subset(ti,d<0)
   if(length(xw)>0) segments(xw,y1,xw,y2,col=dcol,lty=3,lwd=2)
-  if(ShowFrost& nrow(dat)==4){
+  if(showfrost& nrow(dat)==4){
     #Forsty months display
     #accurate frosty months
     for(i in 1:12) if(dat[2,i]<=0) rect(i-1,-1.5,i,0,col=sfcol)
@@ -385,10 +396,10 @@ clim_plot <- function(data,     #dataset
   }
 
   lines(xl[1:n2],yl[1:n2],col=pcol,lwd=2)#prec curve
-  if(p3line) lines(x,yl3)
+  if(line_p3) lines(x,yl3)
   lines(x,c(tm[12],tm[1:12],tm[1]),col=tcol,lwd=2)# temp curve
 
-  if(extremeT){#extreme value
+  if(temp_extreme){#extreme value
 
     mtext(formatC(max(as.matrix(dat[3,])),digits=1,format="f"),2,las=1,
           line=2,at=45)

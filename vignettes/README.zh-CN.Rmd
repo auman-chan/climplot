@@ -25,7 +25,7 @@ params:
 ---
 
 <img src="imgfile.png" alt="climplot logo" align="right" width="35%"/>
-#(本文为readme文件的中文翻译版本)
+*本文为readme文件的中文翻译版本*
 
 [climplot](https://gitee.com/auman-chan/climplot)为一个绘图程序包，旨在以更加用户友好和个性化的方式收集全球各地的关键气候数据，并绘制Walter＆Lieth气候图。
 
@@ -45,23 +45,31 @@ params:
 
 ## 安装与加载
 
-从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装程序包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。 
-如果你打算一同安装此程序包的插曲文件（vignettes），请在代码中加入`build_vignettes= TRUE`。
+从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，
+请安装程序包[remotes](https://cran.r-project.org/package=remotes)和
+[git2r](https://cran.r-project.org/package=git2r)。 
+如果你打算一同安装此程序包的插曲文件（vignettes），请在代码中加入`build_vignettes = TRUE`。
 
 ```{r intasll, eval=FALSE}
-install.packages('remotes')
+install.packages("remotes")
 
 #from github
 remotes::install_github("auman-chan/climplot")
 #from gitee
-install.packages('git2r')
+install.packages("git2r")
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 
 #add vignettes
-remotes::install_github("auman-chan/climplot",build_vignettes= TRUE)
+remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
 remotes::install_git("https://gitee.com/auman-chan/climplot.git",
                      build_vignettes= TRUE)
+
+#add vignettes
+remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
+
+remotes::install_git("https://gitee.com/auman-chan/climplot.git", 
+                     build_vignettes = TRUE)
 ```
 
 ```{r load package,include=FALSE}
@@ -111,14 +119,14 @@ c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
 
-plotdata <- clim_extract(locdata,a,b,c)
+plotdata <- clim_extract(locdata, a, b, c)
 
 ```
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-p <- plotdata %>% dplyr::filter(No<4)
-kable(p,format = "pipe")
+p <- plotdata %>% dplyr::filter(No < 4)
+kable(p, format = "pipe")
 ```
 
 导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。 导出数据框架存储在此程序包的数据`plotdata`中，作为函数导出结果的示例。
@@ -129,7 +137,7 @@ kable(p,format = "pipe")
 
 ```{r plot1, eval=FALSE}
 data("plotdata")
-loc <- subset(plotdata,No==2)
+loc <- subset(plotdata, No == 2)
 clim_plot(loc)
 
 ```
