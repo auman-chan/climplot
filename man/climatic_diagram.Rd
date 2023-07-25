@@ -4,10 +4,12 @@
 \alias{clim_plot}
 \title{Walter & Lieth climatic diagram drawing}
 \usage{
-clim_plot(data,mlab="",pcol="blue",tcol="red",wcol="green",dcol="orange",
-pfcol="#79e6e8",sfcol="#09a0d1",ylabel=FALSE,ylab1=NA,ylab2=NA,xlab="Month",
-ShowFrost=FALSE,shem=FALSE,p3line=FALSE,p50line=FALSE,extremeT=FALSE,
-margen=c(4,4,5,4),per=NA)
+clim_plot(data, mlab = "", pcol = "blue", tcol = "red",
+wcol = "green", dcol = "orange",
+pfcol = "#79e6e8", sfcol = "#09a0d1", ylabel = FALSE, ylab1 = NA,
+ylab2 = NA, xlab = "Month",
+showfrost = FALSE, shem = FALSE,line_p3 = FALSE, line_p50 = FALSE,
+temp_extreme = FALSE, margen = c(4, 4, 5, 4),per = NA)
 }
 \arguments{
 \item{data}{A data.frame(see details in the dataset \code{plotdata})
@@ -20,14 +22,18 @@ with the following 18 columns:
     \item \code{lat}: Latitude of the locations in decimal digit
     (negative numbers indicating south latitude).
     \item \code{altitude}: Altitude of the locations.
-    \item \code{type}: The labels of climate data, encompassing annual average precipitation,
-    annual average minimum temperature and annual average maximum temperature.
-    In the event that Frost=True, it will also incorporate annual extreme minimum temperature.
+    \item \code{type}: The labels of climate data, encompassing
+    annual average precipitation,
+    annual average minimum temperature and
+    annual average maximum temperature.
+    In the event that Frost=True, it will also incorporate
+    annual extreme minimum temperature.
     \item \code{1-12}: The column names of the particular climate data type
     correspond to monthly values ranging from January to December.
 }
-    Other columns containing information may be placed after the aforementioned columns,
-    but will be disregarded in subsequent processes.}
+    Other columns containing information may be placed
+    after the aforementioned columns, but will be disregarded
+    in subsequent processes.}
 
 \item{mlab}{A vector of 12 monthly labels for the X axis.Deafult is numeric.
 Alternatively, set as 'en' or 'es' can be specified to display
@@ -42,13 +48,14 @@ the month names in English or Spanish respectively.
 
 \item{dcol}{Color of the arid season polygon. Default is "orange".}
 
-\item{pfcol}{Color of the potential frosty months. Default is "#79e6e8". No use when
-ShowFrost= FALSE.}
+\item{pfcol}{Color of the potential frosty months. Default is "#79e6e8".
+No use when showfrost= FALSE.}
 
 \item{sfcol}{Color of the confirmed frosty months. Default is "#09a0d1".
-No use when ShowFrost= FALSE.}
+No use when showfrost= FALSE.}
 
-\item{ylabel}{A logical value for whether using customized label of y axis. Default is FALSE.}
+\item{ylabel}{A logical value for whether using customized label of y axis.
+Default is FALSE.}
 
 \item{ylab1}{A character value for label of y axis of temperature. Default is NA.}
 
@@ -56,23 +63,24 @@ No use when ShowFrost= FALSE.}
 
 \item{xlab}{A character value for label of x axis. Default is "Month".}
 
-\item{ShowFrost}{A logical value for whether marking forst months. Default is FALSE.}
+\item{showfrost}{A logical value for whether marking forst months.
+Default is FALSE.}
 
 \item{shem}{A logical value for whether keeping the summer period in
 the central zone of the graphic
-(the diagram will begin the plot with the July data). Default is FALSE. Useful when the
-location is in southern hemisphere
+(the diagram will begin the plot with the July data). Default is FALSE.
+Useful when the location is in southern hemisphere
 (original parameter of the referenced function \code{diagwl()}).}
 
-\item{p3line}{A logical value for whether displaying
+\item{line_p3}{A logical value for whether displaying
 a supplementary precipitation line referenced to three times the temperature.
 Default is FALSE
 (original parameter of the referenced function \code{diagwl()}).}
 
-\item{p50line}{A logical value for whether displaying a supplementary
+\item{line_p50}{A logical value for whether displaying a supplementary
 precipitation line in 50°C-100mm. Default is FALSE.}
 
-\item{extremeT}{A logical value for whether displaying the extreme temperature.
+\item{temp_extreme}{A logical value for whether displaying the extreme temperature.
 Default is FALSE.}
 
 \item{margen}{A vector to control the range of plot. Default is "c(4,4,5,4)"}
@@ -89,30 +97,32 @@ of temperature and precipitation , as well as the time of humid and arid season.
 }
 \description{
 \code{clim_plot} plots the Walter & Lieth climatic diagram
-with the climate data of different locations. It is based on the method of function
+with the climate data of different locations.
+It is based on the method of function
 \code{diagwl()}from package \code{climatol},
 but offers additional parameters for color selection, axis labeling,
-and location information display to meet diverse research and publishing needs.
+and location information display
+to meet diverse research and publishing needs.
 }
 \examples{
 {
 data("plotdata")
-test <- subset(plotdata,No==10)
-clim_plot(data=test,ylabel = TRUE,
-        ylab1="Temperature(\U{00B0}C)",
-        ylab2="Precipitation(mm)",
-        p50line = TRUE)
+test <- subset(plotdata,No == 10)
+clim_plot(data = test,ylabel = TRUE,
+        ylab1 = "Temperature(\U{00B0}C)",
+        ylab2 = "Precipitation(mm)",
+        line_p50 = TRUE)
 
 #use loop to plot multiple diagrams simultaneously
 list <- unique(plotdata$No)
-par(mfrow=c(1,1))
+par(mfrow = c(1,1))
 for (i in 1:5){
  k <- list[i]
-sub <- subset(plotdata,No==k)
-clim_plot(data=sub,ylabel = TRUE,
-          ylab1="Temperature(\U{00B0}C)",
-          ylab2="Precipitation(mm)",
-           p50line = TRUE)
+sub <- subset(plotdata, No == k)
+clim_plot(data=sub, ylabel = TRUE,
+          ylab1 = "Temperature(\U{00B0}C)",
+          ylab2 = "Precipitation(mm)",
+           line_p50 = TRUE)
 }
 
 }

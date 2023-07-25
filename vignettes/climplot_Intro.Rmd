@@ -327,7 +327,7 @@ clim_plot(data = sub, ylabel = TRUE,
 
 data("plotdata_Frost")
 loc <- subset(plotdata_Frost, No == 3)
-clim_plot(data=loc, showfrost = T)
+clim_plot(data=loc, showfrost = TRUE)
 ```
 
 The blocks with light blue color on x-axis represent the months 
@@ -368,7 +368,7 @@ loc <- subset(plotdata_Frost, No == 1)
 clim_plot(loc, line_p3 = TRUE, line_p50 = TRUE, temp_extreme = TRUE, 
           showfrost = TRUE)
 ```
----
+
 
 ## Reference
 

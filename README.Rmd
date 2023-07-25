@@ -132,7 +132,7 @@ plotdata <- clim_extract(locdata, a, b, c)
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-p <- plotdata %>% dplyr::filter(No<4)
+p <- plotdata %>% dplyr::filter(No < 4)
 kable(p,format = "pipe")
 ```
 
@@ -145,7 +145,7 @@ Take the data `plotdata` and `plotdata_Frost` as an example, and import them int
 
 ```{r eval=FALSE}
 data("plotdata")
-loc <- subset(plotdata,No==2)
+loc <- subset(plotdata, No == 2)
 clim_plot(loc)
 
 ```
