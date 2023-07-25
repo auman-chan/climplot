@@ -44,26 +44,29 @@ header-includes:
 从[gitee](https://gitee.com)和[github](https://github.com/) 安装最新的开发版本，请安装程序包[remotes](https://cran.r-project.org/package=remotes)和[git2r](https://cran.r-project.org/package=git2r)。如果你打算一同安装此程序包的插曲文件（vignettes）, 请在代码中加入 `build_vignettes= TRUE`
 
 ```{r intasll, eval=FALSE}
-install.packages('remotes')
+install.packages("remotes")
 
-#from github
+# from github
 remotes::install_github("auman-chan/climplot")
-#from gitee
-install.packages('git2r')
+# from gitee
+install.packages("git2r")
 remotes::install_git(
-  "https://gitee.com/auman-chan/climplot.git")
+  "https://gitee.com/auman-chan/climplot.git"
+)
 
-#add vignettes
+# add vignettes
 remotes::install_github("auman-chan/climplot",
-                        build_vignettes= TRUE)
+  build_vignettes = TRUE
+)
 
 remotes::install_git(
   "https://gitee.com/auman-chan/climplot.git",
-                     build_vignettes= TRUE)
+  build_vignettes = TRUE
+)
 ```
 
 ```{r load package,include=FALSE}
-#load package
+# load package
 library(climplot)
 ```
 
@@ -89,12 +92,12 @@ library(kableExtra)
 a <- read.csv("climdata.csv")
 colnames(a) <- c("No", "1", "2", "3", "4")
 kable(a, format = "latex", booktabs = TRUE) %>%
-  footnote(c("1. 年均最高气温", 
-             "2. 年均最低气温", 
-             "3. 年均降水", 
-             "4. 年极端最低气温"))
-  
-
+  footnote(c(
+    "1. 年均最高气温",
+    "2. 年均最低气温",
+    "3. 年均降水",
+    "4. 年极端最低气温"
+  ))
 ```
 
 ### 目标地点的信息准备
@@ -115,7 +118,7 @@ kable(a, format = "latex", booktabs = TRUE) %>%
 
 ```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
 data("locdata")
-kable(locdata, format = "latex", booktabs = TRUE)%>% 
+kable(locdata, format = "latex", booktabs = TRUE) %>%
   kable_styling(latex_options = "scale_down")
 ```
 
@@ -124,20 +127,19 @@ kable(locdata, format = "latex", booktabs = TRUE)%>%
 在准备好气候数据集和位置信息后，导入三个气候数据集的数据框和数据集路径，此函数将导出一个数据框。
 
 ```{r extraction,eval=FALSE}
-#Modify the path of yours
+# Modify the path of yours
 a <- "G:/climplot/climdata/tmin"
 b <- "G:/climplot/climdata/tmax"
 c <- "G:/climplot/climdata/prec"
 
-#extraction of climate data
+# extraction of climate data
 
 plotdata <- clim_extract(locdata, a, b, c)
-}
 ```
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-kable(plotdata,format = "latex", booktabs=TRUE) %>% 
+kable(plotdata, format = "latex", booktabs = TRUE) %>%
   kable_styling(latex_options = "scale_down")
 ```
 导出的数据框包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。
@@ -147,19 +149,17 @@ kable(plotdata,format = "latex", booktabs=TRUE) %>%
 将参数Frost从FALSE设置为TRUE，并提供包含年极端最低温度数据集的路径。
 
 ```{r extraction with Frost,eval=FALSE}
-#Modify the path of yours
+# Modify the path of yours
 a <- "G:/climplot/climdata/tmin"
 b <- "G:/climplot/climdata/tmax"
 c <- "G:/climplot/climdata/prec"
 d <- "G:/climplot/climdata/extmin"
-#extraction of climate data
-
+# extraction of climate data
 plotdata <- clim_extract(locdata, a, b, c, Frost = TRUE, d)
-}
 ```
 ```{r plotdata_F, echo=FALSE}
 data("plotdata_Frost")
-kable(plotdata_Frost,format="latex", booktabs = TRUE) %>% 
+kable(plotdata_Frost, format = "latex", booktabs = TRUE) %>%
   kable_styling(latex_options = "scale_down")
 ```
 
@@ -178,9 +178,8 @@ kable(plotdata_Frost,format="latex", booktabs = TRUE) %>%
 
 ```{r plot1}
 data("plotdata")
-loc <- subset(plotdata,No == 2)
+loc <- subset(plotdata, No == 2)
 clim_plot(loc)
-
 ```
 
 在上图中:
@@ -194,14 +193,16 @@ clim_plot(loc)
 ```{r plot mutli, eval=FALSE}
 data("plotdata")
 list <- unique(plotdata$No)
-par(mfrow=c(1, 1))
-for (i in 1:5){
- k <- list[i]
-sub <- subset(plotdata, No == k)
-clim_plot(data = sub,ylabel = TRUE,
-          ylab1 = "Temperature(\U{00B0}C)",
-          ylab2 = "Precipitation(mm)",
-           p50line = TRUE)
+par(mfrow = c(1, 1))
+for (i in 1:5) {
+  k <- list[i]
+  sub <- subset(plotdata, No == k)
+  clim_plot(
+    data = sub, ylabel = TRUE,
+    ylab1 = "Temperature(\U{00B0}C)",
+    ylab2 = "Precipitation(mm)",
+    p50line = TRUE
+  )
 }
 ```
 
@@ -210,13 +211,9 @@ clim_plot(data = sub,ylabel = TRUE,
 ### 在气候图中标记霜冻月份
 
 ```{r plot frost, echo=TRUE}
-
 data("plotdata_Frost")
 loc <- subset(plotdata_Frost, No == 3)
 clim_plot(data = loc, showfrost = TRUE)
-
-
-
 ```
 
 
@@ -230,14 +227,15 @@ x轴上浅蓝色的方块代表可能出现霜冻的月份,深蓝色表示确定
 
 ```{r color picker, echo=TRUE}
 loc <- subset(plotdata_Frost, No == 1)
-clim_plot(loc,pcol = "#8DB6CD", 
-          tcol = "#FF6A6A", 
-          wcol = "#4EEE94", 
-          dcol = "#EEB422", 
-          pfcol = "#00BFFF", 
-          sfcol = "#8A2BE2", 
-          showfrost = TRUE)
-
+clim_plot(loc,
+  pcol = "#8DB6CD",
+  tcol = "#FF6A6A",
+  wcol = "#4EEE94",
+  dcol = "#EEB422",
+  pfcol = "#00BFFF",
+  sfcol = "#8A2BE2",
+  showfrost = TRUE
+)
 ```
 
 此外，可以控制轴标签的显示，
@@ -245,9 +243,11 @@ clim_plot(loc,pcol = "#8DB6CD",
 
 ```{r label, echo=TRUE}
 loc <- subset(plotdata_Frost, No == 1)
-clim_plot(loc, xlab = "M", mlab = "en",
-          ylabel = TRUE, ylab1 = "Temperature(\U{00B0}C)",
-          ylab2 = "Precipitation(mm)", showfrost = TRUE)
+clim_plot(loc,
+  xlab = "M", mlab = "en",
+  ylabel = TRUE, ylab1 = "Temperature(\U{00B0}C)",
+  ylab2 = "Precipitation(mm)", showfrost = TRUE
+)
 ```
 
 ### 辅助标记
@@ -256,9 +256,11 @@ clim_plot(loc, xlab = "M", mlab = "en",
 
 ```{r auxiliary line}
 loc <- subset(plotdata_Frost, No == 1)
-clim_plot(loc, line_p3 = TRUE,
-          line_p50 = TRUE,
-          temp_extreme = TRUE, showfrost = TRUE)
+clim_plot(loc,
+  line_p3 = TRUE,
+  line_p50 = TRUE,
+  temp_extreme = TRUE, showfrost = TRUE
+)
 ```
 
 # 参考文献
@@ -270,5 +272,3 @@ clim_plot(loc, line_p3 = TRUE,
 3.  Harris, I., Osborn, T.J., Jones, P.D., Lister, D.H. (2020). Version 4 of the CRU TS monthly high-resolution gridded multivariate climate dataset. Scientific Data 7: 109.
 
 4.  Walter H & Lieth H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
-
-

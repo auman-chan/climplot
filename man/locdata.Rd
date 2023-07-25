@@ -24,7 +24,8 @@ A dataset containing the abbreviation, coordinates and altitude
 of different locations.
 }
 \details{
-5 columns of this dataset: "No", "location", "lon", "lat", "altitude"
-are essential for diagram drawing, the columns "name" just a remark.
+5 columns of this dataset: "No", "location",
+"lon", "lat", "altitude" are essential for diagram drawing,
+the columns "name" just a remark.
 }
 \keyword{internal}

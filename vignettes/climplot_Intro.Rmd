@@ -172,27 +172,29 @@ If you want to install the vignettes of this package, please add `build_vignette
 ```{r intasll, eval=FALSE}
 install.packages("remotes")
 
-#from github
+# from github
 remotes::install_github("auman-chan/climplot")
-#from gitee
+# from gitee
 install.packages("git2r")
 remotes::install_git("https://gitee.com/auman-chan/climplot.git")
 
-#add vignettes
+# add vignettes
 remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
 remotes::install_git("https://gitee.com/auman-chan/climplot.git",
-                     build_vignettes= TRUE)
+  build_vignettes = TRUE
+)
 
-#add vignettes
+# add vignettes
 remotes::install_github("auman-chan/climplot", build_vignettes = TRUE)
 
-remotes::install_git("https://gitee.com/auman-chan/climplot.git", 
-                     build_vignettes = TRUE)
+remotes::install_git("https://gitee.com/auman-chan/climplot.git",
+  build_vignettes = TRUE
+)
 ```
 
 ```{r load package,include=FALSE}
-#load package
+# load package
 library(climplot)
 ```
 
@@ -216,7 +218,7 @@ The dataset comprises of four folders and a total of 48 .tif files, which includ
 
 ```{r echo=FALSE}
 m <- read.csv("climdata.csv")
-kable(m,format = "pipe")
+kable(m, format = "pipe")
 ```
 
 ### Location information preparation
@@ -233,7 +235,7 @@ The data `locdata` in this package can be an example of the import data.frame. O
 
 ```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
 data("locdata")
-kable(locdata,format = "pipe")
+kable(locdata, format = "pipe")
 ```
 
 ## Extraction of climate data
@@ -241,12 +243,12 @@ kable(locdata,format = "pipe")
 After preparing the climate dataset and location information, import the data.frame and path of three climate datasets, this function will export a data.frame.
 
 ```{r extraction,eval=FALSE}
-#Modify the path of yours
+# Modify the path of yours
 a <- "G:/climplot/climdata/tmin"
 b <- "G:/climplot/climdata/tmax"
 c <- "G:/climplot/climdata/prec"
 
-#extraction of climate data
+# extraction of climate data
 plotdata <- clim_extract(locdata, a, b, c)
 ```
 
@@ -260,15 +262,14 @@ The exported data.frame includes 5 kinds of information of locations(as which in
 To include the frosty months in subsequent plots, it is necessary to extract the extreme minimum temperature for each location. Set the parameter `Frost` from `FALSE` to `TRUE`, and provide the path of the dataset containing annual extreme minimum temperatures.
 
 ```{r extraction with Frost,eval=FALSE}
-#Modify the path of yours
+# Modify the path of yours
 a <- "G:/climplot/climdata/tmin"
 b <- "G:/climplot/climdata/tmax"
 c <- "G:/climplot/climdata/prec"
 d <- "G:/climplot/climdata/extmin"
-#extraction of climate data
+# extraction of climate data
 
-plotdata <- clim_extract(locdata, a, b, c, Frost = TRUE, d)
-}
+plotdata <- clim_extract(locdata, a, b, c, frost = TRUE, d)
 ```
 
 ```{r plotdata_F,echo=FALSE}
@@ -292,7 +293,6 @@ Take the data `plotdata` and `plotdata_Frost` as an example, and import them int
 data("plotdata")
 loc <- subset(plotdata, No == 2)
 clim_plot(loc)
-
 ```
 
 In the figure above:
@@ -308,14 +308,16 @@ In the figure above:
 ```{r plot mutli, eval=FALSE}
 data("plotdata")
 list <- unique(plotdata$No)
-par(mfrow=c(1, 1))
-for (i in 1:5){
- k <- list[i]
-sub <- subset(plotdata, No == k)
-clim_plot(data = sub, ylabel = TRUE, 
-          ylab1 = "Temperature(\U{00B0}C)", 
-          ylab2 = "Precipitation(mm)", 
-           line_p50 = TRUE)
+par(mfrow = c(1, 1))
+for (i in 1:5) {
+  k <- list[i]
+  sub <- subset(plotdata, No == k)
+  clim_plot(
+    data = sub, ylabel = TRUE,
+    ylab1 = "Temperature(\U{00B0}C)",
+    ylab2 = "Precipitation(mm)",
+    line_p50 = TRUE
+  )
 }
 ```
 
@@ -324,10 +326,9 @@ clim_plot(data = sub, ylabel = TRUE,
 ### Plotting the frosty months
 
 ```{r echo=TRUE}
-
 data("plotdata_Frost")
 loc <- subset(plotdata_Frost, No == 3)
-clim_plot(data=loc, showfrost = TRUE)
+clim_plot(data = loc, showfrost = TRUE)
 ```
 
 The blocks with light blue color on x-axis represent the months 
@@ -342,10 +343,11 @@ as well as patches of humidity, aridity, wet season and frosty month blocks.
 
 ```{r echo=TRUE}
 loc <- subset(plotdata_Frost, No == 1)
-clim_plot(loc,pcol = "#8DB6CD", tcol = "#FF6A6A", wcol = "#4EEE94", 
-          dcol = "#EEB422", pfcol = "#00BFFF", sfcol = "#8A2BE2", 
-          showfrost = TRUE)
-
+clim_plot(loc,
+  pcol = "#8DB6CD", tcol = "#FF6A6A", wcol = "#4EEE94",
+  dcol = "#EEB422", pfcol = "#00BFFF", sfcol = "#8A2BE2",
+  showfrost = TRUE
+)
 ```
 
 Additionally, the display of axis labels can be controlled 
@@ -353,10 +355,12 @@ and custom labels can be imported
 using parameters `ylabel`, `ylab1`, `ylab2` `mlab` and `xlab` .
 
 ```{r echo=TRUE}
-loc <- subset(plotdata_Frost, No==1)
-clim_plot(loc, xlab = "月份", mlab = "en", ylabel = TRUE, 
-          ylab1 = "Temperature(\U{00B0}C)", 
-          ylab2 = "Precipitation(mm)", showfrost = TRUE)
+loc <- subset(plotdata_Frost, No == 1)
+clim_plot(loc,
+  xlab = "月份", mlab = "en", ylabel = TRUE,
+  ylab1 = "Temperature(\U{00B0}C)",
+  ylab2 = "Precipitation(mm)", showfrost = TRUE
+)
 ```
 
 ### Auxiliary marker
@@ -365,8 +369,10 @@ Displaying extreme temperatures, the auxiliary line of precipitation curve and p
 
 ```{r echo=TRUE}
 loc <- subset(plotdata_Frost, No == 1)
-clim_plot(loc, line_p3 = TRUE, line_p50 = TRUE, temp_extreme = TRUE, 
-          showfrost = TRUE)
+clim_plot(loc,
+  line_p3 = TRUE, line_p50 = TRUE, temp_extreme = TRUE,
+  showfrost = TRUE
+)
 ```
 
 

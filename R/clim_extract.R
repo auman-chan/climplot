@@ -1,22 +1,22 @@
 #' @rdname climate_data
 #' @title Obtain climate data for climatic diagram drawing
 #' @usage clim_extract(file, mintemp_path = NA, maxtemp_path = NA,
-#' prec_path = NA, Frost = FALSE, exmintemp_path = NA)
+#' prec_path = NA, frost = FALSE, exmintemp_path = NA)
 #' @description \code{clim_extract} acquires crucial climate data for
 #' generating Walter & Lieth climatic diagrams
 #' based on the provided location coordinates.
 #'
-#'@details The function extracts precipitation and temperature from a
-#'series of arranged climate data in RasterLayer format,
-#'and arranges them to a data frame for plotting the climatic diagram.
-#'The RasterLayer are computed by Worldclim Historical monthly weather
-#'data in 2010-2019
-#'(Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html),
-#'containing annual average precipitation, annual average minimum
+#' @details The function extracts precipitation and temperature from a
+#' series of arranged climate data in RasterLayer format,
+#' and arranges them to a data frame for plotting the climatic diagram.
+#' The RasterLayer are computed by Worldclim Historical monthly weather
+#' data in 2010-2019
+#' (Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html),
+#' containing annual average precipitation, annual average minimum
 #' temperature and annual average max temperature of 12 months across 2010-2019.
-#'They can output from original climate data mentioned above with running the code
-#'in script \code{other/clim_cal.R}, or download directly
-#'from the supplementary material.
+#' They can output from original climate data mentioned above
+#' with running the code in script \code{other/clim_cal.R},
+#' or download directly from the supplementary material.
 #'
 #' @param file
 #'     A data.frame(see details in dataset \code{locdata})
@@ -25,9 +25,9 @@
 #'     \item \code{No}: Serial number of the locations
 #'     \item \code{location}: Abbreviation of the locations
 #'     \item \code{lon}: Longitude of the locations in decimal digit
-#'(West longitude are represented by negative numbers)
+#' (West longitude are represented by negative numbers)
 #'     \item \code{lat}: Latitude of the locations in decimal digit
-#'(South latitude are represented by negative numbers)
+#' (South latitude are represented by negative numbers)
 #'     \item \code{altitude}: Altitude of the locations
 #'     }
 #'     Other columns with information is allowed behind the columns above
@@ -45,7 +45,7 @@
 #'    temperature. The folder contains 12 .tif files
 #'    corresponding to data of 12 months.
 #'
-#' @param Frost A logical value for whether calculate the
+#' @param frost A logical value for whether calculate the
 #' annual extreme minimum temperature,for
 #'    follow-up plotting the frost months. Default is FALSE.
 #'
@@ -56,7 +56,7 @@
 #' @return A data.frame with annual average precipitation,
 #' annual average minimum
 #' temperature and annual average max temperature of 12 months, as well as
-#' other essential information of every location. If Frost=True,
+#' other essential information of every location. If frost=True,
 #' it will also include values of annual extreme minimum
 #'    temperature for plotting the forsty months.
 #'
@@ -67,14 +67,14 @@
 #'     encompassing annual average precipitation,
 #'     annual average minimum temperature and
 #'     annual average maximum temperature.
-#'     In the event that Frost=True, it will also incorporate
+#'     In the event that frost=True, it will also incorporate
 #'     annual extreme minimum temperature.
 #'     \item \code{1-12}: The column names of the particular climate data type
 #'     correspond to monthly values ranging from January to December.
-#'}
-#'See more details in dataset \code{plotdata}.
+#' }
+#' See more details in dataset \code{plotdata}.
 #'
-#'@examples{
+#' @examples{
 #' #import data of stations
 #' data("locdata")
 #' #or create a new data.frame
@@ -88,7 +88,7 @@
 #' #not sure whether the folders are ready
 #' cli <- clim_extract(m, a, b, c)
 #' #calculate for forst months display
-#' cli <- clim_extract(m, a, b, c, Frost = TRUE, d)
+#' cli <- clim_extract(m, a, b, c, frost = TRUE, d)
 #' }
 #' }
 #' @importFrom sf st_as_sf
@@ -100,84 +100,99 @@
 #' @export
 
 clim_extract <- function(file,
-                         mintemp_path=NA,
-                         maxtemp_path=NA,
-                         prec_path=NA,
-                         Frost=FALSE,
-                         exmintemp_path=NA
-                         ){
-  if(!file.exists(mintemp_path)) {
+                         mintemp_path = NA,
+                         maxtemp_path = NA,
+                         prec_path = NA,
+                         frost = FALSE,
+                         exmintemp_path = NA) {
+  if (!file.exists(mintemp_path)) {
     stop("The path of 'mintemp' data doesn't exist!")
   }
 
-  if(!file.exists(maxtemp_path)) {
+  if (!file.exists(maxtemp_path)) {
     stop("The path of 'maxtemp' data doesn't exist!")
   }
 
-  if(!file.exists(prec_path)) {
+  if (!file.exists(prec_path)) {
     stop("The path of 'prep' data doesn't exist!")
   }
 
-  if(Frost){
-    if(!file.exists(exmintemp_path)) {
+  if (frost) {
+    if (!file.exists(exmintemp_path)) {
       stop("The path of 'exmintemp' data doesn't exist!")
     }
   }
 
-  avmintemp <- list.files(mintemp_path,full.names = T) %>% rast()
-  avmaxtemp <- list.files(maxtemp_path,full.names = T) %>% rast()
-  avprec <- list.files(prec_path,full.names = T) %>% rast()
-  if(Frost){
-    exmintemp <- list.files(exmintemp_path,full.names = T) %>% rast()
+  avmintemp <- list.files(mintemp_path, full.names = TRUE) %>% rast()
+  avmaxtemp <- list.files(maxtemp_path, full.names = TRUE) %>% rast()
+  avprec <- list.files(prec_path, full.names = TRUE) %>% rast()
+  if (frost) {
+    exmintemp <- list.files(exmintemp_path, full.names = TRUE) %>% rast()
   }
 
-pointdata <- file
+  pointdata <- file
 
-  point <- st_as_sf(file, coords = c("lon","lat"),crs=crs(avmintemp))
+  point <- st_as_sf(file, coords = c("lon", "lat"), crs = crs(avmintemp))
 
-  avtemp1 <- extract(avmintemp,point) %>% as_tibble()%>% select(-ID)
+  avtemp1 <- extract(avmintemp, point) %>%
+    as_tibble() %>%
+    select(-ID)
   colnames(avtemp1) <- as.character(c(1:12))
-  avtemp1 <- avtemp1 %>% mutate(No=pointdata$No,
-                                       Altitude=pointdata$altitude,
-                                       Location=pointdata$location,
-                                       Lon=pointdata$lon,
-                                       Lat=pointdata$lat,
-                                       Type="min.temprature",.before = 1)
+  avtemp1 <- avtemp1 %>% mutate(
+    No = pointdata$No,
+    Altitude = pointdata$altitude,
+    Location = pointdata$location,
+    Lon = pointdata$lon,
+    Lat = pointdata$lat,
+    Type = "min.temprature", .before = 1
+  )
 
-  avtemp2 <- extract(avmaxtemp,point) %>% as_tibble()%>% select(-ID)
+  avtemp2 <- extract(avmaxtemp, point) %>%
+    as_tibble() %>%
+    select(-ID)
   colnames(avtemp2) <- as.character(c(1:12))
-  avtemp2 <- avtemp2 %>% mutate(No=pointdata$No,
-                                       Altitude=pointdata$altitude,
-                                       Location=pointdata$location,
-                                       Lon=pointdata$lon,
-                                       Lat=pointdata$lat,
-                                       Type="max.temprature",.before = 1)
+  avtemp2 <- avtemp2 %>% mutate(
+    No = pointdata$No,
+    Altitude = pointdata$altitude,
+    Location = pointdata$location,
+    Lon = pointdata$lon,
+    Lat = pointdata$lat,
+    Type = "max.temprature", .before = 1
+  )
 
-  prec <- extract(avprec,point) %>% as_tibble()%>% select(-ID)
+  prec <- extract(avprec, point) %>%
+    as_tibble() %>%
+    select(-ID)
   colnames(prec) <- as.character(c(1:12))
-  prec <- prec %>% mutate(No=pointdata$No,
-                                 Altitude=pointdata$altitude,
-                                 Location=pointdata$location,
-                                 Lon=pointdata$lon,
-                                 Lat=pointdata$lat,
-                                 Type="precipitation",.before = 1)
-  if(Frost){
-    exmtemp <- extract(exmintemp,point) %>% as_tibble()%>% select(-ID)
+  prec <- prec %>% mutate(
+    No = pointdata$No,
+    Altitude = pointdata$altitude,
+    Location = pointdata$location,
+    Lon = pointdata$lon,
+    Lat = pointdata$lat,
+    Type = "precipitation", .before = 1
+  )
+  if (frost) {
+    exmtemp <- extract(exmintemp, point) %>%
+      as_tibble() %>%
+      select(-ID)
     colnames(exmtemp) <- as.character(c(1:12))
-    exmtemp <- exmtemp %>% mutate(No=pointdata$No,
-                            Altitude=pointdata$altitude,
-                            Location=pointdata$location,
-                            Lon=pointdata$lon,
-                            Lat=pointdata$lat,
-                            Type="extreme.min.temperature",.before = 1)
+    exmtemp <- exmtemp %>% mutate(
+      No = pointdata$No,
+      Altitude = pointdata$altitude,
+      Location = pointdata$location,
+      Lon = pointdata$lon,
+      Lat = pointdata$lat,
+      Type = "extreme.min.temperature", .before = 1
+    )
   }
 
-  #arrange by the order of mean precipitation,mean min_temperature and
-  #mean max_temperature
-  if(Frost){
-    clidata <- rbind(prec,avtemp1,avtemp2,exmtemp) %>% arrange(No)
-  }else{
-    clidata <- rbind(prec,avtemp1,avtemp2) %>% arrange(No)
+  # arrange by the order of mean precipitation,mean min_temperature and
+  # mean max_temperature
+  if (frost) {
+    clidata <- rbind(prec, avtemp1, avtemp2, exmtemp) %>% arrange(No)
+  } else {
+    clidata <- rbind(prec, avtemp1, avtemp2) %>% arrange(No)
   }
 
 

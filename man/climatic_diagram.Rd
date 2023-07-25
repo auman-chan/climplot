@@ -57,9 +57,11 @@ No use when showfrost= FALSE.}
 \item{ylabel}{A logical value for whether using customized label of y axis.
 Default is FALSE.}
 
-\item{ylab1}{A character value for label of y axis of temperature. Default is NA.}
+\item{ylab1}{A character value for label of y axis of temperature.
+Default is NA.}
 
-\item{ylab2}{A character value for label of y axis of precipitation. Default is NA.}
+\item{ylab2}{A character value for label of y axis of precipitation.
+Default is NA.}
 
 \item{xlab}{A character value for label of x axis. Default is "Month".}
 
@@ -80,17 +82,20 @@ Default is FALSE
 \item{line_p50}{A logical value for whether displaying a supplementary
 precipitation line in 50°C-100mm. Default is FALSE.}
 
-\item{temp_extreme}{A logical value for whether displaying the extreme temperature.
-Default is FALSE.}
+\item{temp_extreme}{A logical value for whether displaying
+the extreme temperature. Default is FALSE.}
 
 \item{margen}{A vector to control the range of plot.
 Default is "c(4, 4, 5, 4)"}
 
-\item{per}{a parameter from the referenced function \code{diagwl()}. No use temporarily.}
+\item{per}{a parameter from the referenced function \code{diagwl()}.
+No use temporarily.}
 }
 \value{
-A Walter & Lieth climatic diagram of the provided locations, including annual variation
-of temperature and precipitation , as well as the time of humid and arid season.
+A Walter & Lieth climatic diagram of the provided locations,
+including annual variation
+of temperature and precipitation ,
+as well as the time of humid and arid season.
 }
 \description{
 \code{clim_plot} plots the Walter & Lieth climatic diagram
@@ -103,30 +108,34 @@ to meet diverse research and publishing needs.
 }
 \details{
 The function extracts precipitation and temperature from arranged
-Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
+Worldclim Historical monthly weather data
+(https://worldclim.org/data/monthlywth.html)
 and arranges them to a data.frame for drawing the climatic diagram.
 }
 \examples{
 {
-data("plotdata")
-test <- subset(plotdata, No == 10)
-clim_plot(data = test,ylabel = TRUE,
-        ylab1 = "Temperature(\U{00B0}C)",
-        ylab2 = "Precipitation(mm)",
-        line_p50 = TRUE)
+  data("plotdata")
+  test <- subset(plotdata, No == 10)
+  clim_plot(
+    data = test, ylabel = TRUE,
+    ylab1 = "Temperature(\U{00B0}C)",
+    ylab2 = "Precipitation(mm)",
+    line_p50 = TRUE
+  )
 
-#use loop to plot multiple diagrams simultaneously
-list <- unique(plotdata$No)
-par(mfrow = c(1,1))
-for (i in 1:5){
- k <- list[i]
-sub <- subset(plotdata, No == k)
-clim_plot(data = sub, ylabel = TRUE,
-          ylab1 = "Temperature(\U{00B0}C)",
-          ylab2 = "Precipitation(mm)",
-           line_p50 = TRUE)
-}
-
+  # use loop to plot multiple diagrams simultaneously
+  list <- unique(plotdata$No)
+  par(mfrow = c(1, 1))
+  for (i in 1:5) {
+    k <- list[i]
+    sub <- subset(plotdata, No == k)
+    clim_plot(
+      data = sub, ylabel = TRUE,
+      ylab1 = "Temperature(\U{00B0}C)",
+      ylab2 = "Precipitation(mm)",
+      line_p50 = TRUE
+    )
+  }
 }
 
 }
