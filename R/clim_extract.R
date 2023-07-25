@@ -1,7 +1,7 @@
 #' @rdname climate_data
 #' @title Obtain climate data for climatic diagram drawing
-#' @usage clim_extract(file, mintemp_path = NA,maxtemp_path = NA,
-#' prec_path = NA, Frost = FALSE,exmintemp_path = NA)
+#' @usage clim_extract(file, mintemp_path = NA, maxtemp_path = NA,
+#' prec_path = NA, Frost = FALSE, exmintemp_path = NA)
 #' @description \code{clim_extract} acquires crucial climate data for
 #' generating Walter & Lieth climatic diagrams
 #' based on the provided location coordinates.

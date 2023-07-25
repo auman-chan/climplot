@@ -8,7 +8,7 @@ clim_plot(data, mlab = "", pcol = "blue", tcol = "red",
 wcol = "green", dcol = "orange",
 pfcol = "#79e6e8", sfcol = "#09a0d1", ylabel = FALSE, ylab1 = NA,
 ylab2 = NA, xlab = "Month",
-showfrost = FALSE, shem = FALSE,line_p3 = FALSE, line_p50 = FALSE,
+showfrost = FALSE, shem = FALSE, line_p3 = FALSE, line_p50 = FALSE,
 temp_extreme = FALSE, margen = c(4, 4, 5, 4),per = NA)
 }
 \arguments{
@@ -83,13 +83,10 @@ precipitation line in 50°C-100mm. Default is FALSE.}
 \item{temp_extreme}{A logical value for whether displaying the extreme temperature.
 Default is FALSE.}
 
-\item{margen}{A vector to control the range of plot. Default is "c(4,4,5,4)"}
+\item{margen}{A vector to control the range of plot.
+Default is "c(4, 4, 5, 4)"}
 
-\item{per}{a parameter from the referenced function \code{diagwl()}. No use temporarily.
-
-#'@details The function extracts precipitation and temperature from arranged
-Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
-and arranges them to a data.frame for drawing the climatic diagram.}
+\item{per}{a parameter from the referenced function \code{diagwl()}. No use temporarily.}
 }
 \value{
 A Walter & Lieth climatic diagram of the provided locations, including annual variation
@@ -104,10 +101,15 @@ but offers additional parameters for color selection, axis labeling,
 and location information display
 to meet diverse research and publishing needs.
 }
+\details{
+The function extracts precipitation and temperature from arranged
+Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
+and arranges them to a data.frame for drawing the climatic diagram.
+}
 \examples{
 {
 data("plotdata")
-test <- subset(plotdata,No == 10)
+test <- subset(plotdata, No == 10)
 clim_plot(data = test,ylabel = TRUE,
         ylab1 = "Temperature(\U{00B0}C)",
         ylab2 = "Precipitation(mm)",
@@ -119,7 +121,7 @@ par(mfrow = c(1,1))
 for (i in 1:5){
  k <- list[i]
 sub <- subset(plotdata, No == k)
-clim_plot(data=sub, ylabel = TRUE,
+clim_plot(data = sub, ylabel = TRUE,
           ylab1 = "Temperature(\U{00B0}C)",
           ylab2 = "Precipitation(mm)",
            line_p50 = TRUE)

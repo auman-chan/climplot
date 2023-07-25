@@ -4,7 +4,7 @@
 #' wcol = "green", dcol = "orange",
 #'pfcol = "#79e6e8", sfcol = "#09a0d1", ylabel = FALSE, ylab1 = NA,
 #'ylab2 = NA, xlab = "Month",
-#'showfrost = FALSE, shem = FALSE,line_p3 = FALSE, line_p50 = FALSE,
+#'showfrost = FALSE, shem = FALSE, line_p3 = FALSE, line_p50 = FALSE,
 #'temp_extreme = FALSE, margen = c(4, 4, 5, 4),per = NA)
 #'
 #' @description \code{clim_plot} plots the Walter & Lieth climatic diagram
@@ -87,11 +87,12 @@
 #' @param temp_extreme A logical value for whether displaying the extreme temperature.
 #' Default is FALSE.
 #'
-#' @param margen A vector to control the range of plot. Default is "c(4,4,5,4)"
+#' @param margen A vector to control the range of plot.
+#' Default is "c(4, 4, 5, 4)"
 #'
 #' @param per a parameter from the referenced function \code{diagwl()}. No use temporarily.
 #'
-#'#'@details The function extracts precipitation and temperature from arranged
+#' @details The function extracts precipitation and temperature from arranged
 #'Worldclim Historical monthly weather data(https://worldclim.org/data/monthlywth.html)
 #'and arranges them to a data.frame for drawing the climatic diagram.
 #'
@@ -100,7 +101,7 @@
 #'
 #' @examples {
 #' data("plotdata")
-#' test <- subset(plotdata,No == 10)
+#' test <- subset(plotdata, No == 10)
 #'clim_plot(data = test,ylabel = TRUE,
 #'         ylab1 = "Temperature(\U{00B0}C)",
 #'         ylab2 = "Precipitation(mm)",
@@ -112,7 +113,7 @@
 #'for (i in 1:5){
 #'  k <- list[i]
 #' sub <- subset(plotdata, No == k)
-#' clim_plot(data=sub, ylabel = TRUE,
+#' clim_plot(data = sub, ylabel = TRUE,
 #'           ylab1 = "Temperature(\U{00B0}C)",
 #'           ylab2 = "Precipitation(mm)",
 #'            line_p50 = TRUE)
