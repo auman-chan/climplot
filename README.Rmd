@@ -19,6 +19,7 @@ editor_options:
 [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellow.svg)](/commits/master)
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not ready-red.svg)
 [![R-CMD-check](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 
 <img src="./vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
