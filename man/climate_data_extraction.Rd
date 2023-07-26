@@ -22,7 +22,7 @@ clim_extract(file, path = tempdir())
     but would be discarded in following process.}
 
 \item{path}{character.A Path for storing the downloaded data,
-avoid downloading the same data many times over and
+avoids downloading the same data many times over and
 guards against service interruptions. Deafault is
  tempdir().}
 }

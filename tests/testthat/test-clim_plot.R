@@ -4,6 +4,6 @@ test_that("plot", {
   climplot::clim_plot(x)
   path <- tempdir()
   png(filename = file.path(path, "plot.png"))
-  exp <- list.files(tempdir(), pattern = "plot.png")
-  expect_equal(exp, "plot.png")
+  exp <- list.files(tempdir(), pattern = "plot.png",full.names = TRUE)
+  expect_true(file.exists(exp))
 })
