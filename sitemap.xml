@@ -28,7 +28,7 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/climate_data.html</loc>
+    <loc>/reference/climate_data_extraction.html</loc>
   </url>
   <url>
     <loc>/reference/climatic_diagram.html</loc>
@@ -41,8 +41,5 @@
   </url>
   <url>
     <loc>/reference/plotdata.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plotdata_Frost.html</loc>
   </url>
 </urlset>

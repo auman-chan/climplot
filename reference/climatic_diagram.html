@@ -22,7 +22,7 @@ to meet diverse research and publishing needs."><!-- mathjax --><script src="htt
     
     <a class="navbar-brand me-2" href="../index.html">climplot</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,9 +78,8 @@ to meet diverse research and publishing needs.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">clim_plot</span><span class="op">(</span><span class="va">data</span>, mlab <span class="op">=</span> <span class="st">""</span>, pcol <span class="op">=</span> <span class="st">"blue"</span>, tcol <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>wcol <span class="op">=</span> <span class="st">"green"</span>, dcol <span class="op">=</span> <span class="st">"orange"</span>,</span>
-<span>pfcol <span class="op">=</span> <span class="st">"#79e6e8"</span>, sfcol <span class="op">=</span> <span class="st">"#09a0d1"</span>, ylabel <span class="op">=</span> <span class="cn">FALSE</span>, ylab1 <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>ylab2 <span class="op">=</span> <span class="cn">NA</span>, xlab <span class="op">=</span> <span class="st">"Month"</span>,</span>
+<span>wcol <span class="op">=</span> <span class="st">"green"</span>, dcol <span class="op">=</span> <span class="st">"orange"</span>,fcol <span class="op">=</span> <span class="st">"#09a0d1"</span>,</span>
+<span>ylabel <span class="op">=</span> <span class="cn">FALSE</span>, ylab1 <span class="op">=</span> <span class="cn">NA</span>, ylab2 <span class="op">=</span> <span class="cn">NA</span>, xlab <span class="op">=</span> <span class="st">"Month"</span>,</span>
 <span>showfrost <span class="op">=</span> <span class="cn">FALSE</span>, shem <span class="op">=</span> <span class="cn">FALSE</span>, line_p3 <span class="op">=</span> <span class="cn">FALSE</span>, line_p50 <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>temp_extreme <span class="op">=</span> <span class="cn">FALSE</span>, margen <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">4</span><span class="op">)</span>,per <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -132,12 +131,7 @@ the month names in English or Spanish respectively.
 <dd><p>Color of the arid season polygon. Default is "orange".</p></dd>
 
 
-<dt>pfcol</dt>
-<dd><p>Color of the potential frosty months. Default is "#79e6e8".
-No use when showfrost= FALSE.</p></dd>
-
-
-<dt>sfcol</dt>
+<dt>fcol</dt>
 <dd><p>Color of the confirmed frosty months. Default is "#09a0d1".
 No use when showfrost= FALSE.</p></dd>
 
