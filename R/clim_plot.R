@@ -1,9 +1,8 @@
 #' @rdname climatic_diagram
 #' @title  Walter & Lieth climatic diagram drawing
 #' @usage clim_plot(data, mlab = "", pcol = "blue", tcol = "red",
-#' wcol = "green", dcol = "orange",
-#' pfcol = "#79e6e8", sfcol = "#09a0d1", ylabel = FALSE, ylab1 = NA,
-#' ylab2 = NA, xlab = "Month",
+#' wcol = "green", dcol = "orange",fcol = "#09a0d1",
+#' ylabel = FALSE, ylab1 = NA, ylab2 = NA, xlab = "Month",
 #' showfrost = FALSE, shem = FALSE, line_p3 = FALSE, line_p50 = FALSE,
 #' temp_extreme = FALSE, margen = c(4, 4, 5, 4),per = NA)
 #'
@@ -55,10 +54,7 @@
 #' @param showfrost A logical value for whether marking forst months.
 #' Default is FALSE.
 #'
-#' @param pfcol Color of the potential frosty months. Default is "#79e6e8".
-#' No use when showfrost= FALSE.
-#'
-#' @param sfcol Color of the confirmed frosty months. Default is "#09a0d1".
+#' @param fcol Color of the confirmed frosty months. Default is "#09a0d1".
 #' No use when showfrost= FALSE.
 #'
 #' @param ylabel A logical value for whether using customized label of y axis.
@@ -140,8 +136,7 @@ clim_plot <- function(data,
                       tcol = "red",
                       wcol = "green",
                       dcol = "orange",
-                      pfcol = "#79e6e8",
-                      sfcol = "#09a0d1",
+                      fcol = "#09a0d1",
                       ylabel = FALSE,
                       ylab1 = NA,
                       ylab2 = NA,
@@ -174,9 +169,8 @@ clim_plot <- function(data,
   old_par <- par(no.readonly = TRUE)
   on.exit(par(old_par))
   par(mar = margen, pty = "m", las = 0, new = FALSE)
-  nr <- nrow(dat)
-  if (nrow(dat) < 3) stop("Three rows of monthly data should be provided.\n")
-  # etiquetas de los meses
+
+
   if (mlab == "es") {
     mlab <- c(
       "E", "F", "M", "A", "M", "J", "J",
@@ -198,11 +192,9 @@ clim_plot <- function(data,
     mlab <- c(mlab[7:12], mlab[1:6])
   }
   p <- dat[1, ] # get precipitation data
-  if (nr == 2) {
-    tm <- dat[2, ]
-  } else {
-    tm <- apply(dat[2:3, ], 2, mean)
-  } # calculate mean temperature
+
+  tm <- dat[2, ]
+
   pmax <- max(p) # get max precipitation
   ymax <- 60 # set max value of temperature
   if (pmax > 300) ymax <- 50 + 10 * floor((pmax + 100) / 200)
@@ -409,18 +401,13 @@ clim_plot <- function(data,
   y1 <- subset(pi, d < 0)
   y2 <- subset(ti, d < 0)
   if (length(xw) > 0) segments(xw, y1, xw, y2, col = dcol, lty = 3, lwd = 2)
-  if (showfrost && nrow(dat) == 4) {
+
+  if (showfrost) {
     # Forsty months display
     # accurate frosty months
     for (i in 1:12) {
-      if (dat[2, i] <= 0) {
-        rect(i - 1, -1.5, i, 0, col = sfcol)
-      }
-    }
-    # potential frosty months
-    for (i in 1:12) {
-      if (dat[4, i] <= 0 && dat[2, i] > 0) {
-        rect(i - 1, -1.5, i, 0, col = pfcol)
+      if (dat[3, i] <= 0) {
+        rect(i - 1, -1.5, i, 0, col = fcol)
       }
     }
   }
@@ -431,11 +418,11 @@ clim_plot <- function(data,
 
   if (temp_extreme) { # extreme value
 
-    mtext(formatC(max(as.matrix(dat[3, ])), digits = 1, format = "f"), 2,
+    mtext(formatC(max(as.matrix(dat[4, ])), digits = 1, format = "f"), 2,
       las = 1, line = 2, at = 45
     )
 
-    mtext(formatC(min(as.matrix(dat[2, ])), digits = 1, format = "f"), 2,
+    mtext(formatC(min(as.matrix(dat[3, ])), digits = 1, format = "f"), 2,
       las = 1, line = 2, at = 5
     )
   }

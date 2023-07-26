@@ -5,9 +5,8 @@
 \title{Walter & Lieth climatic diagram drawing}
 \usage{
 clim_plot(data, mlab = "", pcol = "blue", tcol = "red",
-wcol = "green", dcol = "orange",
-pfcol = "#79e6e8", sfcol = "#09a0d1", ylabel = FALSE, ylab1 = NA,
-ylab2 = NA, xlab = "Month",
+wcol = "green", dcol = "orange",fcol = "#09a0d1",
+ylabel = FALSE, ylab1 = NA, ylab2 = NA, xlab = "Month",
 showfrost = FALSE, shem = FALSE, line_p3 = FALSE, line_p50 = FALSE,
 temp_extreme = FALSE, margen = c(4, 4, 5, 4),per = NA)
 }
@@ -48,10 +47,7 @@ the month names in English or Spanish respectively.
 
 \item{dcol}{Color of the arid season polygon. Default is "orange".}
 
-\item{pfcol}{Color of the potential frosty months. Default is "#79e6e8".
-No use when showfrost= FALSE.}
-
-\item{sfcol}{Color of the confirmed frosty months. Default is "#09a0d1".
+\item{fcol}{Color of the confirmed frosty months. Default is "#09a0d1".
 No use when showfrost= FALSE.}
 
 \item{ylabel}{A logical value for whether using customized label of y axis.

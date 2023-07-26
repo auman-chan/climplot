@@ -14,7 +14,9 @@ Imports:
     terra,
     magrittr,
     graphics,
-    stats
+    stats,
+    geodata,
+    plyr
 RoxygenNote: 7.2.3
 Depends: 
     R (>= 3.5.0)

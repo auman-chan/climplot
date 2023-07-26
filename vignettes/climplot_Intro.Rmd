@@ -151,12 +151,12 @@ knitr::include_graphics("imgfile.png")
 ::: {.alert .alert-info}
 The main features of the package are:
 
--   The use of worldwide climate data to obtain standardized and reliable data for drawing Walter & Lieth climatic diagrams
+-   The automatic obtainment and arrangement of standardized and reliable data for drawing Walter & Lieth climatic diagrams
 -   The provision for more parameter to customize the plots and display comprehensive information
 
 The package offers functions for:
 
--   Obtain climate data to draw Walter & Lieth Climatic Diagram for global locations
+-   Download and arrange worldwide climate data to draw Walter & Lieth climatic diagram for global locations
 -   Draw the Walter & Lieth climatic diagram
 -   Revise the color scheme and information presentation of the diagram
 :::
@@ -206,22 +206,10 @@ library(kableExtra)
 
 # Plotting data extraction
 
-The task of searching for and processing climate data from multiple locations is a challenging endeavor. Function `clim_extract` can retrieve data from Worldclim Historical monthly weather data in 2010-2019 (Version of 2.5 minutes, [https://worldclim.org/data/monthlywth.html](#0){.uri}), which are used for diagrams visualization.
+The task of searching for and processing climate data from multiple locations is a challenging endeavor. Function `clim_extract` retrieves data from [Worldclim Historical monthly weather data(Version of 30 seconds)](https://worldclim.org/data/monthlywth.html). These data would  be downloaded automatically according to your locations with package `geodata`, and arranged for diagrams visualization.
 
-## Data preparation
 
-### Climate data download
-
-The climate data provided by Worldclim is indispensable. however, due to its global-scale raster layer format, the file size are substantial and cannot be accommodated within the package. Therefore, kindly obtain the climate dataset from [Figshare](NULL) before use.
-
-The dataset comprises of four folders and a total of 48 .tif files, which include annual average minimum temperature, annual average maximum temperature, annual average precipitation, and annual extreme minimum temperature. These values are calculated by taking the monthly averages and minimizations within 2010-2019. The structure of the dataset is illustrated in the table below:
-
-```{r echo=FALSE}
-m <- read.csv("climdata.csv")
-kable(m, format = "pipe")
-```
-
-### Location information preparation
+## Location information preparation
 
 In order to extract climate data for specific locations, precise coordinates are essential. Additionally, the diagram should display other relevant information such as location names and altitudes. Therefore, a data.frame containing information of the target locations is necessary for `clim_extract`. The imported data.frame must contain five columns in the following order:
 
@@ -240,16 +228,11 @@ kable(locdata, format = "pipe")
 
 ## Extraction of climate data
 
-After preparing the climate dataset and location information, import the data.frame and path of three climate datasets, this function will export a data.frame.
+After preparing the information of locations, this function will check your coordinates,and download the corresponding raster tiles of climate data from Worldclim export a data.frame.
 
 ```{r extraction,eval=FALSE}
-# Modify the path of yours
-a <- "G:/climplot/climdata/tmin"
-b <- "G:/climplot/climdata/tmax"
-c <- "G:/climplot/climdata/prec"
-
 # extraction of climate data
-plotdata <- clim_extract(locdata, a, b, c)
+plotdata <- clim_extract(locdata)
 ```
 
 ```{r plotdata,echo=FALSE}
@@ -257,27 +240,17 @@ data("plotdata")
 kable(plotdata, format = "pipe")
 ```
 
-The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 3 kinds of climate factors across 12 months. An  data.frame stores in the data `plotdata` of this package, as an example of the function export.
+The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 3 kinds of climate factors across 12 months. Note that some locations don't have data of annual average temperature(not included in `geodata`), so they would be replace by values averaged by annual average minimum temperature and annual average maximum temperature, as the method in Walter & Lieth climatic diagram.
 
-To include the frosty months in subsequent plots, it is necessary to extract the extreme minimum temperature for each location. Set the parameter `Frost` from `FALSE` to `TRUE`, and provide the path of the dataset containing annual extreme minimum temperatures.
+An  data.frame stores in the data `plotdata` of this package, as an example of the function export.
 
-```{r extraction with Frost,eval=FALSE}
-# Modify the path of yours
-a <- "G:/climplot/climdata/tmin"
-b <- "G:/climplot/climdata/tmax"
-c <- "G:/climplot/climdata/prec"
-d <- "G:/climplot/climdata/extmin"
-# extraction of climate data
+Except the temp folders, you can modify the path to store data to prevent the delection or redownloading of climate data.
 
-plotdata <- clim_extract(locdata, a, b, c, frost = TRUE, d)
+```{r extraction2,eval=FALSE}
+# add your path
+plotdata <- clim_extract(locdata, path= "G:/climplot")
 ```
 
-```{r plotdata_F,echo=FALSE}
-data("plotdata_Frost")
-kable(plotdata_Frost, format = "pipe")
-```
-
-In this mode, the data.frame exported includes 5 kinds of information of locations(as which in the data.frame imported), and values of 4 kinds of climate factors among 12 months. The annual extreme minimum temperature are included as a new row of every location. A  data.frame of this mode stores in the data `plotdata_Frost` of this package, as an example of the function export.
 
 Hereto `clim_extact` have obtained all essential information for the Walter & Lieth climatic diagram drawing.
 
@@ -326,13 +299,13 @@ for (i in 1:5) {
 ### Plotting the frosty months
 
 ```{r echo=TRUE}
-data("plotdata_Frost")
-loc <- subset(plotdata_Frost, No == 3)
+data("plotdata")
+loc <- subset(plotdata, No == 3)
 clim_plot(data = loc, showfrost = TRUE)
 ```
 
-The blocks with light blue color on x-axis represent the months 
-with potential frost, and the dark blue ones are those with confirmed frost.
+The blocks with dark blue color on x-axis represent the months 
+with confirmed frost.
 
 ### Color and axis modification
 
@@ -342,12 +315,10 @@ It is possible to adjust the colors of line of temperature and precipitation,
 as well as patches of humidity, aridity, wet season and frosty month blocks.
 
 ```{r echo=TRUE}
-loc <- subset(plotdata_Frost, No == 1)
+loc <- subset(plotdata, No == 1)
 clim_plot(loc,
   pcol = "#8DB6CD", tcol = "#FF6A6A", wcol = "#4EEE94",
-  dcol = "#EEB422", pfcol = "#00BFFF", sfcol = "#8A2BE2",
-  showfrost = TRUE
-)
+  dcol = "#EEB422", fcol = "#8A2BE2", showfrost = TRUE)
 ```
 
 Additionally, the display of axis labels can be controlled 
@@ -355,7 +326,7 @@ and custom labels can be imported
 using parameters `ylabel`, `ylab1`, `ylab2` `mlab` and `xlab` .
 
 ```{r echo=TRUE}
-loc <- subset(plotdata_Frost, No == 1)
+loc <- subset(plotdata, No == 1)
 clim_plot(loc,
   xlab = "月份", mlab = "en", ylabel = TRUE,
   ylab1 = "Temperature(\U{00B0}C)",
@@ -368,7 +339,7 @@ clim_plot(loc,
 Displaying extreme temperatures, the auxiliary line of precipitation curve and position of 50°C-100mm are optional.
 
 ```{r echo=TRUE}
-loc <- subset(plotdata_Frost, No == 1)
+loc <- subset(plotdata, No == 1)
 clim_plot(loc,
   line_p3 = TRUE, line_p50 = TRUE, temp_extreme = TRUE,
   showfrost = TRUE

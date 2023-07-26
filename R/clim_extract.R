@@ -1,22 +1,19 @@
-#' @rdname climate_data
-#' @title Obtain climate data for climatic diagram drawing
-#' @usage clim_extract(file, mintemp_path = NA, maxtemp_path = NA,
-#' prec_path = NA, frost = FALSE, exmintemp_path = NA)
-#' @description \code{clim_extract} acquires crucial climate data for
-#' generating Walter & Lieth climatic diagrams
+#' @rdname climate_data_extraction
+#' @title Obtain climate data for climatic diagram drawing online
+#' @usage clim_extract(file, path = tempdir())
+#' @description \code{clim_extract} acquires crucial climate data from online
+#' datasets for drawing Walter & Lieth climatic diagrams
 #' based on the provided location coordinates.
 #'
-#' @details The function extracts precipitation and temperature from a
-#' series of arranged climate data in RasterLayer format,
-#' and arranges them to a data frame for plotting the climatic diagram.
-#' The RasterLayer are computed by Worldclim Historical monthly weather
+#' @details This function extracts precipitation and temperature from
+#' Worldclim Historical monthly weather
 #' data in 2010-2019
 #' (Version of 2.5 minutes,https://worldclim.org/data/monthlywth.html),
-#' containing annual average precipitation, annual average minimum
-#' temperature and annual average max temperature of 12 months across 2010-2019.
-#' They can output from original climate data mentioned above
-#' with running the code in script \code{other/clim_cal.R},
-#' or download directly from the supplementary material.
+#' containing annual average precipitation, annual average
+#' temperature,annual average minimum
+#' temperature and annual average max temperature of 12 months. It downloads the
+#' climate data, extracts and arranges them to a data frame for drawing
+#' the climatic diagram.
 #'
 #' @param file
 #'     A data.frame(see details in dataset \code{locdata})
@@ -33,168 +30,163 @@
 #'     Other columns with information is allowed behind the columns above
 #'     but would be discarded in following process.
 #'
-#' @param mintemp_path The path for the folder of annual average minimum
-#'    temperature. The folder contains 12 .tif files
-#'    corresponding to data of 12 months.
+#' @param path character.A Path for storing the downloaded data,
+#' avoids downloading the same data many times over and
+#' guards against service interruptions. Deafault is
+#'  tempdir().
 #'
-#' @param maxtemp_path The path for the folder of annual average maximum
-#'    temperature. The folder contains 12 .tif files
-#'    corresponding to data of 12 months.
+#' @return A data.frame with annual average precipitation, annual average
+#' temperature, annual average minimum temperature and
+#' annual average max temperature of 12 months, as well as
+#' other essential information of every location.
+#' Note that some locations don't have data of annual average temperature,
+#' so they would be replace by values averaged by
+#' annual average minimum temperature and annual average maximum temperature.
 #'
-#' @param prec_path The path for the folder of annual average maximum
-#'    temperature. The folder contains 12 .tif files
-#'    corresponding to data of 12 months.
-#'
-#' @param frost A logical value for whether calculate the
-#' annual extreme minimum temperature,for
-#'    follow-up plotting the frost months. Default is FALSE.
-#'
-#' @param exmintemp_path The path for the folder of annual extreme minimum
-#'    temperature. The folder contains 12 .tif files
-#'    corresponding to data of 12 months.
-#'
-#' @return A data.frame with annual average precipitation,
-#' annual average minimum
-#' temperature and annual average max temperature of 12 months, as well as
-#' other essential information of every location. If frost=True,
-#' it will also include values of annual extreme minimum
-#'    temperature for plotting the forsty months.
 #'
 #' \itemize{
 #'    \item \code{No,location,lon,lat}: Information of the locations,
 #'    the the same as which in parameter \code{file}.
 #'     \item \code{type}: The labels of climate data,
 #'     encompassing annual average precipitation,
-#'     annual average minimum temperature and
+#'     annual average minimum temperature,annual average temperature and
 #'     annual average maximum temperature.
-#'     In the event that frost=True, it will also incorporate
-#'     annual extreme minimum temperature.
 #'     \item \code{1-12}: The column names of the particular climate data type
 #'     correspond to monthly values ranging from January to December.
 #' }
 #' See more details in dataset \code{plotdata}.
 #'
 #' @examples{
-#' #import data of stations
-#' data("locdata")
-#' #or create a new data.frame
-#' #Please modify the path of yours
-#' a <- "D:/climplot/climdata/mean_mintemp"
-#' b <- "D:/climplot/climdata/mean_maxtemp"
-#' c <- "D:/climplot/climdata/mean_prec"
-#' d <- "D:/climplot/climdata/min_mintemp"
-#' #extraction of climate data
-#' \dontrun{
-#' #not sure whether the folders are ready
-#' cli <- clim_extract(m, a, b, c)
-#' #calculate for forst months display
-#' cli <- clim_extract(m, a, b, c, frost = TRUE, d)
+#' #import data of locations
+#' x <- data.frame(No = "1", location = "test",
+#' lon = 0, lat = -30, altitude = 20)
+#' y <- clim_extract(x)
 #' }
-#' }
+#'
 #' @importFrom sf st_as_sf
-#' @importFrom dplyr mutate arrange desc select
+#' @importFrom dplyr mutate arrange select
 #' @importFrom terra extract rast crs
 #' @importFrom dplyr as_tibble
 #' @importFrom magrittr %>%
+#' @importFrom geodata worldclim_tile
+#' @importFrom plyr ddply
 #'
 #' @export
 
-clim_extract <- function(file,
-                         mintemp_path = NA,
-                         maxtemp_path = NA,
-                         prec_path = NA,
-                         frost = FALSE,
-                         exmintemp_path = NA) {
-  if (!file.exists(mintemp_path)) {
-    stop("The path of 'mintemp' data doesn't exist!")
+clim_extract <- function(file, path = tempdir()) {
+  if (!is.numeric(file$lon)) {
+    stop("The longitude should be numeric")
+  }
+  if (!is.numeric(file$lat)) {
+    stop("The latitude should be numeric")
+  }
+  if (!dir.exists(path)) {
+    stop("The path doesn't exist")
   }
 
-  if (!file.exists(maxtemp_path)) {
-    stop("The path of 'maxtemp' data doesn't exist!")
-  }
+  extract_one_location <- function(sub) {
+    No <- sub$No
+    lon <- sub$lon
+    lat <- sub$lat
 
-  if (!file.exists(prec_path)) {
-    stop("The path of 'prep' data doesn't exist!")
-  }
+    mintemp <- worldclim_tile(
+      var = "tmin",
+      lon = lon, lat = lat, path = path
+    )
+    maxtemp <- worldclim_tile(
+      var = "tmax",
+      lon = lon, lat = lat, path = path
+    )
+    avtemp <- worldclim_tile(
+      var = "tavg",
+      lon = lon, lat = lat, path = path
+    )
+    avprec <- worldclim_tile(
+      var = "prec",
+      lon = lon, lat = lat, path = path
+    )
 
-  if (frost) {
-    if (!file.exists(exmintemp_path)) {
-      stop("The path of 'exmintemp' data doesn't exist!")
+    if (is.null(mintemp) || is.null(maxtemp) || is.null(avprec)) {
+      stop(paste("Can not find data for location", No))
     }
-  }
 
-  avmintemp <- list.files(mintemp_path, full.names = TRUE) %>% rast()
-  avmaxtemp <- list.files(maxtemp_path, full.names = TRUE) %>% rast()
-  avprec <- list.files(prec_path, full.names = TRUE) %>% rast()
-  if (frost) {
-    exmintemp <- list.files(exmintemp_path, full.names = TRUE) %>% rast()
-  }
 
-  pointdata <- file
+    point <- st_as_sf(sub, coords = c("lon", "lat"), crs = 4326)
 
-  point <- st_as_sf(file, coords = c("lon", "lat"), crs = crs(avmintemp))
-
-  avtemp1 <- extract(avmintemp, point) %>%
-    as_tibble() %>%
-    select(-ID)
-  colnames(avtemp1) <- as.character(c(1:12))
-  avtemp1 <- avtemp1 %>% mutate(
-    No = pointdata$No,
-    Altitude = pointdata$altitude,
-    Location = pointdata$location,
-    Lon = pointdata$lon,
-    Lat = pointdata$lat,
-    Type = "min.temprature", .before = 1
-  )
-
-  avtemp2 <- extract(avmaxtemp, point) %>%
-    as_tibble() %>%
-    select(-ID)
-  colnames(avtemp2) <- as.character(c(1:12))
-  avtemp2 <- avtemp2 %>% mutate(
-    No = pointdata$No,
-    Altitude = pointdata$altitude,
-    Location = pointdata$location,
-    Lon = pointdata$lon,
-    Lat = pointdata$lat,
-    Type = "max.temprature", .before = 1
-  )
-
-  prec <- extract(avprec, point) %>%
-    as_tibble() %>%
-    select(-ID)
-  colnames(prec) <- as.character(c(1:12))
-  prec <- prec %>% mutate(
-    No = pointdata$No,
-    Altitude = pointdata$altitude,
-    Location = pointdata$location,
-    Lon = pointdata$lon,
-    Lat = pointdata$lat,
-    Type = "precipitation", .before = 1
-  )
-  if (frost) {
-    exmtemp <- extract(exmintemp, point) %>%
+    prec <- extract(avprec, point) %>%
       as_tibble() %>%
       select(-ID)
-    colnames(exmtemp) <- as.character(c(1:12))
-    exmtemp <- exmtemp %>% mutate(
-      No = pointdata$No,
-      Altitude = pointdata$altitude,
-      Location = pointdata$location,
-      Lon = pointdata$lon,
-      Lat = pointdata$lat,
-      Type = "extreme.min.temperature", .before = 1
+
+    colnames(prec) <- as.character(c(1:12))
+
+    avtemp1 <- extract(mintemp, point) %>%
+      as_tibble() %>%
+      select(-ID)
+
+    colnames(avtemp1) <- as.character(c(1:12))
+
+    avtemp2 <- extract(maxtemp, point) %>%
+      as_tibble() %>%
+      select(-ID)
+
+    colnames(avtemp2) <- as.character(c(1:12))
+
+    if (!is.null(avtemp)) {
+      avtemp3 <- extract(maxtemp, point) %>%
+        as_tibble() %>%
+        select(-ID)
+
+      colnames(avtemp3) <- as.character(c(1:12))
+    } else {
+      avtemp3 <- apply(rbind(avtemp1, avtemp2), 2, mean) %>%
+        t() %>%
+        as_tibble()
+    }
+
+    avtemp1 <- avtemp1 %>% mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "min_temp", .before = 1
     )
+
+    avtemp2 <- avtemp2 %>% mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "max_temp", .before = 1
+    )
+
+    avtemp3 <- avtemp3 %>% mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "mean_temp", .before = 1
+    )
+
+    prec <- prec %>% mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "prec", .before = 1
+    )
+
+    clidata <- rbind(prec, avtemp3, avtemp1, avtemp2) %>% arrange(No)
+
+    return(clidata)
   }
 
-  # arrange by the order of mean precipitation,mean min_temperature and
-  # mean max_temperature
-  if (frost) {
-    clidata <- rbind(prec, avtemp1, avtemp2, exmtemp) %>% arrange(No)
-  } else {
-    clidata <- rbind(prec, avtemp1, avtemp2) %>% arrange(No)
-  }
 
 
-  return(clidata)
+  all_clidata <- ddply(file, ~No, extract_one_location)
+
+  return(all_clidata)
 }

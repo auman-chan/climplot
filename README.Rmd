@@ -29,15 +29,12 @@ Lieth climatic diagrams in a more user-friendly and personalized manner.
 
 The main features of the package are:
 
--   The use of worldwide climate data to obtain standardized and
-    reliable data for drawing Walter & Lieth climatic diagrams
--   The provision for more parameter to customize the plots and display
-    comprehensive information
+-   The automatic obtainment and arrangement of standardized and reliable data for drawing Walter & Lieth climatic diagrams
+-   The provision for more parameter to customize the plots and display comprehensive information
 
 The package offers functions for:
 
--   Obtain climate data to draw Walter & Lieth Climatic Diagram for
-    global locations
+-   Download and arrange worldwide climate data to draw Walter & Lieth climatic diagram for global locations
 -   Draw the Walter & Lieth climatic diagram
 -   Revise the color scheme and information presentation of the diagram
 
@@ -75,18 +72,6 @@ remotes::install_git("https://gitee.com/auman-chan/climplot.git",
 library(climplot)
 ```
 
-## Data preparation
-
-The climate data provided by Worldclim is indispensable, however, due to
-its global-scale raster layer format, the file size are substantial and
-cannot be accommodated within the package. Therefore, kindly obtain the
-climate dataset from [Figshare](NULL) before use.
-
-The dataset comprises of four folders and a total of 48 .tif files,
-which include annual average minimum temperature, annual average maximum
-temperature, annual average precipitation, and annual extreme minimum
-temperature.
-
 ```{r include=FALSE}
 library(dplyr)
 library(knitr)
@@ -120,14 +105,10 @@ data.frame and path of three climate datasets into the function `clim_extract`:
 ```{r extraction,eval=FALSE}
 #Example data in this package
 data("locdata")
-#Modify the path of yours
-a <- "G:/climplot/climdata/tmin"
-b <- "G:/climplot/climdata/tmax"
-c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
 
-plotdata <- clim_extract(locdata, a, b, c)
+plotdata <- clim_extract(locdata)
 
 ```
 
@@ -161,7 +142,7 @@ In the figure above:
 
 ## More inforamtion
 
-More examples and information, please view the help pages and [the websites of this package](https://auman-chan.github.io/climplot/).
+More examples and information, please view the help pages and [the  online vigenettes of this package](https://auman-chan.github.io/climplot/).
 
 
 ## Citations
