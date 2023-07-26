@@ -83,8 +83,7 @@ library(kableExtra)
 ### Extraction of climate data
 
 Information of the target locations should be ready for the
-extraction. The data `locdata` in this package can be a example of the
-import data.frame. It must contain five columns in the following order:
+extraction. It must contain five columns in the following order:
 
 -   **No**: Serial number of the locations
 -   **location**: Abbreviation of the locations
@@ -97,8 +96,11 @@ import data.frame. It must contain five columns in the following order:
 Other extra columns with information is allowed behind the columns
 above, but would be discarded in following process.
 
+The data `locdata` in this package can be a example of the
+import data.frame.
+
 After preparing the climate dataset and location information, import the
-data.frame and path of three climate datasets into the function `clim_extract`:
+data.frame to the function `clim_extract`:
 
 
 
@@ -118,12 +120,12 @@ p <- plotdata %>% dplyr::filter(No < 4)
 kable(p,format = "pipe")
 ```
 
-The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 3 kinds of climate factors across 12 months. A data.frame stores in the data `plotdata` of this package, as an example of the function export.
+The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 4 kinds of climate factors across 12 months. A data.frame stores in the data `plotdata` of this package, as an example of the function export.
 
 
 ### Climatic diagram drawing
 
-Take the data `plotdata` and `plotdata_Frost` as an example, and import them into the function `clim_plot`:
+Take the data `plotdata` as an example, and import them into the function `clim_plot`:
 
 ```{r eval=FALSE}
 data("plotdata")
@@ -142,7 +144,7 @@ In the figure above:
 
 ## More inforamtion
 
-More examples and information, please view the help pages and [the  online vigenettes of this package](https://auman-chan.github.io/climplot/).
+More examples and information, please view the help pages and [the online vigenettes of this package](https://auman-chan.github.io/climplot/).
 
 
 ## Citations

@@ -77,12 +77,6 @@ remotes::install_git("https://gitee.com/auman-chan/climplot.git",
 library(climplot)
 ```
 
-## 使用前数据准备
-
-Worldclim气候数据是本程序包必不可少的，由于其全球尺度栅格数据的文件较大，程序包中无法容纳需要的气候数据。因此，请在使用前从[Figshare](NULL)获取对应的气候数据集。
-
-此数据集包括4个文件夹，共48个tif文件，其中包括年均最低气温、年均最高气温、年均降水和年极端最低气温。
-
 ```{r include=FALSE}
 library(dplyr)
 library(knitr)
@@ -93,7 +87,7 @@ library(kableExtra)
 
 ### 气候数据提取
 
-使用前需要按格式整理好绘图地点的信息。这个程序包中的数据 `locdata` 是 导入数据格式的样例。导入的数据框必须包含5列，顺序如下:
+使用前需要按格式整理好绘图地点的信息。导入的数据框必须包含5列，顺序如下:
 
 -   **No**:目标地点的序号
 
@@ -107,20 +101,16 @@ library(kableExtra)
 
 上述列的后面允许添加包含其他信息的列，但在后续处理中将被舍弃。
 
-在准备好气候数据集和地点信息后，向函数 `clim_extract` 导入三个气候数据集的数据框和数据集路径：
+这个程序包中的数据 `locdata` 是导入数据格式的样例。
+
+在准备好气候数据集和地点信息后，向函数 `clim_extract` 导入数据框：
 
 ```{r extraction,eval=FALSE}
 #Example data in this package
 data("locdata")
-#Modify the path of yours
-a <- "G:/climplot/climdata/tmin"
-b <- "G:/climplot/climdata/tmax"
-c <- "G:/climplot/climdata/prec"
 
 #extraction of climate data
-
-plotdata <- clim_extract(locdata, a, b, c)
-
+plotdata <- clim_extract(locdata)
 ```
 
 ```{r plotdata,echo=FALSE}
@@ -129,7 +119,7 @@ p <- plotdata %>% dplyr::filter(No < 4)
 kable(p, format = "pipe")
 ```
 
-导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的3种气候数值。 导出数据框架存储在此程序包的数据`plotdata`中，作为函数导出结果的示例。
+导出带有气候数据的数据框,其包含5种地点信息(与导入数据框中的相同)，以及12个月份的4种气候数值。 导出数据框架存储在此程序包的数据`plotdata`中，作为函数导出结果的示例。
 
 ### Walter & Lieth的气候图绘制
 
@@ -150,7 +140,7 @@ clim_plot(loc)
 
 ## 其他参考
 
-更多参考内容请阅读程序包内的帮助文件，以及[此程序包的网页](https://auman-chan.github.io/climplot/)。
+更多参考内容请阅读程序包内的帮助文件，以及[此程序包的插曲网页](https://auman-chan.github.io/climplot/)。
 
 ## 引用
 

@@ -1,7 +1,7 @@
 Package: climplot
 Type: Package
 Title: climplot: Facilitate and tailor Walter & Lieth climatic diagram drawing
-Version: 0.2.1
+Version: 0.3.0
 Author: Auman Chan
 Maintainer: Auman Chan <czhfreelancer@163.com>
 Description: "climplot" aims to collect crucial climate data for global locations and draw the Walter & Lieth climatic diagrams in a more user-friendly and personalized manner.

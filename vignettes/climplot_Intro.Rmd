@@ -206,7 +206,7 @@ library(kableExtra)
 
 # Plotting data extraction
 
-The task of searching for and processing climate data from multiple locations is a challenging endeavor. Function `clim_extract` retrieves data from [Worldclim Historical monthly weather data(Version of 30 seconds)](https://worldclim.org/data/monthlywth.html). These data would  be downloaded automatically according to your locations with package `geodata`, and arranged for diagrams visualization.
+The task of searching for and processing climate data from multiple locations is a challenging endeavor. Function `clim_extract` retrieves data from [Worldclim Historical monthly weather data(Version of 30 seconds)](https://worldclim.org/data/monthlywth.html). These data would be downloaded automatically according to your locations with package `geodata`, and arranged for diagrams visualization.
 
 
 ## Location information preparation
@@ -223,28 +223,31 @@ The data `locdata` in this package can be an example of the import data.frame. O
 
 ```{r global options, echo=FALSE, message=FALSE, warning=FALSE}
 data("locdata")
-kable(locdata, format = "pipe")
+kable(locdata, format = "pipe",caption = "Table1 The example of the import data.frame")
 ```
 
 ## Extraction of climate data
 
-After preparing the information of locations, this function will check your coordinates,and download the corresponding raster tiles of climate data from Worldclim export a data.frame.
+After preparing the information of locations, this function will check the coordinates, and download the corresponding raster tiles of climate data from Worldclim. At last it exports a data.frame.
 
 ```{r extraction,eval=FALSE}
-# extraction of climate data
+#Example data in this package
+data("locdata")
+
+#extraction of climate data
 plotdata <- clim_extract(locdata)
 ```
 
 ```{r plotdata,echo=FALSE}
 data("plotdata")
-kable(plotdata, format = "pipe")
+kable(plotdata, format = "pipe", caption = "Table2 The example of the output data.frame")
 ```
 
-The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 3 kinds of climate factors across 12 months. Note that some locations don't have data of annual average temperature(not included in `geodata`), so they would be replace by values averaged by annual average minimum temperature and annual average maximum temperature, as the method in Walter & Lieth climatic diagram.
+The exported data.frame includes 5 kinds of information of locations(as which in the data.frame imported), and values of 4 kinds of climate factors across 12 months. **Note that some locations don't have data of annual average temperature(not included in `geodata`), so they would be replace by values averaged by annual average minimum temperature and annual average maximum temperature, as the method in Walter & Lieth climatic diagram.**
 
 An  data.frame stores in the data `plotdata` of this package, as an example of the function export.
 
-Except the temp folders, you can modify the path to store data to prevent the delection or redownloading of climate data.
+Except the temp folders, the storage path could be modified to prevent the delection or redownloading of climate data.
 
 ```{r extraction2,eval=FALSE}
 # add your path
@@ -260,9 +263,9 @@ The function `clim_plot` can draw the Walter & Lieth climatic diagram plotting i
 
 ## Walter & Lieth climatic diagram drawing of a single location
 
-Take the data `plotdata` and `plotdata_Frost` as an example, and import them into `clim_plot`.
+Take the data `plotdata` as an example, and import them into `clim_plot`.
 
-```{r}
+```{r plot1, fig.cap="Fig 1 The example of diagram drawing"}
 data("plotdata")
 loc <- subset(plotdata, No == 2)
 clim_plot(loc)
@@ -298,7 +301,7 @@ for (i in 1:5) {
 
 ### Plotting the frosty months
 
-```{r echo=TRUE}
+```{r echo=TRUE, fig.cap="Fig 2 The example of marking frosty months"}
 data("plotdata")
 loc <- subset(plotdata, No == 3)
 clim_plot(data = loc, showfrost = TRUE)
@@ -314,7 +317,7 @@ The color and the axis labels could be customized to meet specific requirements.
 It is possible to adjust the colors of line of temperature and precipitation, 
 as well as patches of humidity, aridity, wet season and frosty month blocks.
 
-```{r echo=TRUE}
+```{r echo=TRUE, fig.cap="Fig 3 The example of color modification"}
 loc <- subset(plotdata, No == 1)
 clim_plot(loc,
   pcol = "#8DB6CD", tcol = "#FF6A6A", wcol = "#4EEE94",
@@ -325,7 +328,7 @@ Additionally, the display of axis labels can be controlled
 and custom labels can be imported 
 using parameters `ylabel`, `ylab1`, `ylab2` `mlab` and `xlab` .
 
-```{r echo=TRUE}
+```{r echo=TRUE, fig.cap = "Fig 4 The example of axis labels modification"}
 loc <- subset(plotdata, No == 1)
 clim_plot(loc,
   xlab = "月份", mlab = "en", ylabel = TRUE,
@@ -338,7 +341,7 @@ clim_plot(loc,
 
 Displaying extreme temperatures, the auxiliary line of precipitation curve and position of 50°C-100mm are optional.
 
-```{r echo=TRUE}
+```{r echo=TRUE, fig.cap ="Fig 5 The example of auxiliary marker"}
 loc <- subset(plotdata, No == 1)
 clim_plot(loc,
   line_p3 = TRUE, line_p50 = TRUE, temp_extreme = TRUE,
