@@ -25,7 +25,8 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
-    readxl
+    readxl,
+    Cairo
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://github.com/auman-chan/climplot
