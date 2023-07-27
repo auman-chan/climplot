@@ -15,8 +15,7 @@ version](https://img.shields.io/badge/R-%3E=%203.5.0-6666ff.svg)](https://cran.r
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 [![R-CMD-check](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/auman-chan/climplot/branch/master/graph/badge.svg)](https://app.codecov.io/gh/auman-chan/climplot?branch=master)
+[![codecov](https://codecov.io/gh/auman-chan/climplot/branch/master/graph/badge.svg?token=G0LTPTO38E)](https://codecov.io/gh/auman-chan/climplot)
 <!-- badges: end -->
 
 <img src="./vignettes/imgfile.png" alt="climplot logo" align="right" width="35%"/>
