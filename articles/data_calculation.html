@@ -231,7 +231,10 @@ Set as “min” to calculate annual minimum climatic values for forsty
 month display.</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster" class="external-link">raster</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co">#Please check whether you have installed these packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster" class="external-link">raster</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://had.co.nz/plyr" class="external-link">plyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://future.apply.futureverse.org" class="external-link">future.apply</a></span><span class="op">)</span></span>
@@ -277,8 +280,19 @@ month display.</p></li>
 <span>    <span class="fu">writeRaster</span><span class="op">(</span><span class="va">ras</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"_"</span>, <span class="va">month</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="st">".tif"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>Then use codes below to extract the data.frames for climatic diagram
-plotting.</p>
+<p>Then use the code below to extract the data.frames for climatic
+diagram plotting:</p>
+<ul>
+<li><p><strong>file</strong>: A data.frame. It must be the same as the
+import data of <code>clim_extract</code> with the five columns(please
+refer to the data <code>locdata</code> in this package).</p></li>
+<li><p><strong>mintemp_path</strong>: The path of export arranged data
+of monthly minimum temperature in format .tif</p></li>
+<li><p><strong>maxtemp_path </strong>: The path of export arranged data
+of monthly maximum temperature in format .tif</p></li>
+<li><p><strong>prec_path</strong>: The path of export arranged data of
+monthly precipitation in format .tif</p></li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_extract</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">file</span>,<span class="va">mintemp_path</span> <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>                         <span class="va">maxtemp_path</span> <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -304,7 +318,7 @@ plotting.</p>
 <span>    <span class="op">}</span></span>
 <span>    </span>
 <span>    </span>
-<span>    <span class="va">point</span> <span class="op">&lt;-</span> <span class="fu">st_as_sf</span><span class="op">(</span><span class="va">sub</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
+<span>    <span class="va">point</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">sub</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
 <span>    </span>
 <span>    <span class="va">prec</span> <span class="op">&lt;-</span> <span class="fu">raster</span><span class="fu">::</span><span class="fu">extract</span><span class="op">(</span><span class="va">avprec</span>, <span class="va">point</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>      <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> </span>
@@ -362,14 +376,14 @@ plotting.</p>
 <span>      Type <span class="op">=</span> <span class="st">"prec"</span>, .before <span class="op">=</span> <span class="fl">1</span></span>
 <span>    <span class="op">)</span></span>
 <span>    </span>
-<span>    <span class="va">clidata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">prec</span>, <span class="va">avtemp3</span>, <span class="va">avtemp1</span>, <span class="va">avtemp2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">No</span><span class="op">)</span></span>
+<span>    <span class="va">clidata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">prec</span>, <span class="va">avtemp3</span>, <span class="va">avtemp1</span>, <span class="va">avtemp2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/plyr/man/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">No</span><span class="op">)</span></span>
 <span>    </span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">clidata</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span>  </span>
 <span>  </span>
 <span>  </span>
-<span>  <span class="va">all_clidata</span> <span class="op">&lt;-</span> <span class="fu">ddply</span><span class="op">(</span><span class="va">file</span>, <span class="op">~</span><span class="va">No</span>, <span class="va">extract_one_location</span><span class="op">)</span></span>
+<span>  <span class="va">all_clidata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/plyr/man/ddply.html" class="external-link">ddply</a></span><span class="op">(</span><span class="va">file</span>, <span class="op">~</span><span class="va">No</span>, <span class="va">extract_one_location</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">all_clidata</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
