@@ -167,7 +167,10 @@ annual average climatic values.
 Set as "min" to calculate annual minimum climatic values for forsty month display.
 
 ```{r  cal_code,eval=FALSE}
+#Please check whether you have installed these packages
 library(raster)
+library(sf)
+library(plyr)
 library(dplyr)
 library(stringr)
 library(future.apply)
@@ -215,7 +218,20 @@ clim_cal <- function(imp_path,
 }
 ```
 
-Then use codes below to extract the data.frames for climatic diagram plotting.
+Then use the code below to extract the data.frames for climatic diagram plotting:
+
+- **file**: A data.frame. It must be the same as the import data of `clim_extract`
+with the five columns(please refer to the data `locdata` in this package).
+
+- **mintemp_path**: The path of export arranged data of monthly minimum temperature
+ in format  .tif
+
+- **maxtemp_path **: The path of export arranged data of monthly maximum temperature
+ in format  .tif
+
+- **prec_path**: The path of export arranged data of monthly precipitation
+ in format  .tif
+
 
 ```{r cal_code2,eval=FALSE}
 clim_extract <- function(file,mintemp_path = NA,
