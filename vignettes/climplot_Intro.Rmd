@@ -297,6 +297,28 @@ for (i in 1:5) {
 }
 ```
 
+To save the plot you can build a frame for picture before plotting:
+
+```{r png save, eval=FALSE}
+for (i in 1:3) {
+  
+  sub <- subset(b, No == i)
+  png(filename = paste0(i, "_plot", ".png"),
+      width=847,
+      height=738,res=100
+      )
+  #save the plot
+  clim_plot(
+    data = sub, ylabel = TRUE,
+    ylab1 = "Temperature(\U{00B0}C)",
+    ylab2 = "precipitation(mm)",
+    xlab="Month"
+  )
+  dev.off()
+  }
+```
+
+
 ## Other tips of climatic diagram plotting
 
 ### Plotting the frosty months

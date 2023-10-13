@@ -110,7 +110,7 @@
 #'     ylab2 = "Precipitation(mm)",
 #'     line_p50 = TRUE
 #'   )
-#'
+#'\dontrun{
 #'   # use loop to plot multiple diagrams simultaneously
 #'   list <- unique(plotdata$No)
 #'   par(mfrow = c(1, 1))
@@ -123,6 +123,7 @@
 #'       ylab2 = "Precipitation(mm)",
 #'       line_p50 = TRUE
 #'     )
+#'   }
 #'   }
 #' }
 #'

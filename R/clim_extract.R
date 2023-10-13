@@ -60,7 +60,10 @@
 #' #import data of locations
 #' x <- data.frame(No = "1", location = "test",
 #' lon = 0, lat = -30, altitude = 20)
+#' #Code below will download data automatically
+#' \dontrun{
 #' y <- clim_extract(x)
+#' }
 #' }
 #'
 #' @importFrom sf st_as_sf

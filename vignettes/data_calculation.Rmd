@@ -218,111 +218,100 @@ clim_cal <- function(imp_path,
 Then use codes below to extract the data.frames for climatic diagram plotting.
 
 ```{r cal_code2,eval=FALSE}
-clim_extract <- function(file,
-                         mintemp_path = NA,
+clim_extract <- function(file,mintemp_path = NA,
                          maxtemp_path = NA,
-                         prec_path = NA,
-                         frost = FALSE,
-                         exmintemp_path = NA) {
-  if (is.numeric(file$lon)) {
+                         prec_path = NA) {
+  if (!is.numeric(file$lon)) {
     stop("The longitude should be numeric")
   }
-  if (is.numeric(file$lat)) {
+  if (!is.numeric(file$lat)) {
     stop("The latitude should be numeric")
   }
-  if (!file.exists(mintemp_path)) {
-    stop("The path of 'mintemp' data doesn't exist!")
-  }
 
-  if (!file.exists(maxtemp_path)) {
-    stop("The path of 'maxtemp' data doesn't exist!")
-  }
-
-  if (!file.exists(prec_path)) {
-    stop("The path of 'prep' data doesn't exist!")
-  }
-
-  if (frost) {
-    if (!file.exists(exmintemp_path)) {
-      stop("The path of 'exmintemp' data doesn't exist!")
+  extract_one_location <- function(sub) {
+    No <- sub$No
+    lon <- sub$lon
+    lat <- sub$lat
+    
+    mintemp <- list.files(mintemp_path,full.names = T) %>% stack()
+    maxtemp <- list.files(maxtemp_path,full.names = T) %>% stack()
+    avprec <- list.files(prec_path,full.names = T) %>% stack()
+    
+    if (is.null(mintemp) || is.null(maxtemp) || is.null(avprec)) {
+      stop(paste("Can not find data for location", No))
     }
-  }
-
-  avmintemp <- list.files(mintemp_path, full.names = TRUE) %>% rast()
-  avmaxtemp <- list.files(maxtemp_path, full.names = TRUE) %>% rast()
-  avprec <- list.files(prec_path, full.names = TRUE) %>% rast()
-  if (frost) {
-    exmintemp <- list.files(exmintemp_path, full.names = TRUE) %>% rast()
-  }
-
-  pointdata <- file
-
-  point <- st_as_sf(file, coords = c("lon", "lat"), crs = crs(avmintemp))
-
-  avtemp1 <- extract(avmintemp, point) %>%
-    as_tibble() %>%
-    select(-ID)
-  colnames(avtemp1) <- as.character(c(1:12))
-  avtemp1 <- avtemp1 %>% mutate(
-    No = pointdata$No,
-    Altitude = pointdata$altitude,
-    Location = pointdata$location,
-    Lon = pointdata$lon,
-    Lat = pointdata$lat,
-    Type = "min.temprature", .before = 1
-  )
-
-  avtemp2 <- extract(avmaxtemp, point) %>%
-    as_tibble() %>%
-    select(-ID)
-  colnames(avtemp2) <- as.character(c(1:12))
-  avtemp2 <- avtemp2 %>% mutate(
-    No = pointdata$No,
-    Altitude = pointdata$altitude,
-    Location = pointdata$location,
-    Lon = pointdata$lon,
-    Lat = pointdata$lat,
-    Type = "max.temprature", .before = 1
-  )
-
-  prec <- extract(avprec, point) %>%
-    as_tibble() %>%
-    select(-ID)
-  colnames(prec) <- as.character(c(1:12))
-  prec <- prec %>% mutate(
-    No = pointdata$No,
-    Altitude = pointdata$altitude,
-    Location = pointdata$location,
-    Lon = pointdata$lon,
-    Lat = pointdata$lat,
-    Type = "precipitation", .before = 1
-  )
-  if (frost) {
-    exmtemp <- extract(exmintemp, point) %>%
-      as_tibble() %>%
-      select(-ID)
-    colnames(exmtemp) <- as.character(c(1:12))
-    exmtemp <- exmtemp %>% mutate(
-      No = pointdata$No,
-      Altitude = pointdata$altitude,
-      Location = pointdata$location,
-      Lon = pointdata$lon,
-      Lat = pointdata$lat,
-      Type = "extreme.min.temperature", .before = 1
+    
+    
+    point <- st_as_sf(sub, coords = c("lon", "lat"), crs = 4326)
+    
+    prec <- raster::extract(avprec, point) %>%
+      as_tibble() 
+    
+    colnames(prec) <- as.character(c(1:12))
+    
+    avtemp1 <- raster::extract(mintemp, point) %>%
+      as_tibble() 
+    
+    colnames(avtemp1) <- as.character(c(1:12))
+    
+    avtemp2 <- raster::extract(maxtemp, point) %>%
+      as_tibble() 
+    
+    colnames(avtemp2) <- as.character(c(1:12))
+    
+    
+      avtemp3 <- apply(rbind(avtemp1, avtemp2), 2, mean) %>%
+        t() %>%
+        as_tibble()
+    
+    avtemp1 <- avtemp1 %>% dplyr::mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "min_temp", .before = 1
     )
+    
+    avtemp2 <- avtemp2 %>% dplyr::mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "max_temp", .before = 1
+    )
+    
+    avtemp3 <- avtemp3 %>% dplyr::mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "mean_temp", .before = 1
+    )
+    
+    prec <- prec %>% dplyr::mutate(
+      No = sub$No,
+      Altitude = sub$altitude,
+      Location = sub$location,
+      Lon = sub$lon,
+      Lat = sub$lat,
+      Type = "prec", .before = 1
+    )
+    
+    clidata <- rbind(prec, avtemp3, avtemp1, avtemp2) %>% arrange(No)
+    
+    return(clidata)
   }
-
-  # arrange by the order of mean precipitation,mean min_temperature and
-  # mean max_temperature
-  if (frost) {
-    clidata <- rbind(prec, avtemp1, avtemp2, exmtemp) %>% arrange(No)
-  } else {
-    clidata <- rbind(prec, avtemp1, avtemp2) %>% arrange(No)
-  }
-
-
-  return(clidata)
+  
+  
+  
+  all_clidata <- ddply(file, ~No, extract_one_location)
+  
+  return(all_clidata)
 }
+
 ```
 
 

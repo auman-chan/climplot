@@ -118,7 +118,7 @@ and arranges them to a data.frame for drawing the climatic diagram.
     ylab2 = "Precipitation(mm)",
     line_p50 = TRUE
   )
-
+\dontrun{
   # use loop to plot multiple diagrams simultaneously
   list <- unique(plotdata$No)
   par(mfrow = c(1, 1))
@@ -131,6 +131,7 @@ and arranges them to a data.frame for drawing the climatic diagram.
       ylab2 = "Precipitation(mm)",
       line_p50 = TRUE
     )
+  }
   }
 }
 
