@@ -1,3 +1,9 @@
+# climplot 0.4.0 (2025.2.18)
+
+#### New featrues
+
+-   Now the climate diagram could be plotted with ggplot2 experimentally.
+
 ## climplot 0.3.0 (2023.7.26)
 
 #### New featrues
