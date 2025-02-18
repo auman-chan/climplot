@@ -17,6 +17,9 @@ Imports:
     stats,
     geodata,
     plyr
+    ggplot2
+    tibble
+    
 RoxygenNote: 7.3.2
 Depends: 
     R (>= 3.5.0)
