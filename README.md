@@ -11,7 +11,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![minimal R
 version](https://img.shields.io/badge/R-%3E=%203.5.0-6666ff.svg)](https://cran.r-project.org/)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.3.0-orange.svg?style=flat-square)](commits/develop)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2023--07--27-yellow.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2025--02--18-yellow.svg)](/commits/master)
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 [![R-CMD-check](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml)
@@ -103,20 +103,20 @@ data("locdata")
 plotdata <- clim_extract(locdata)
 ```
 
-|  No | Altitude | Location   |      Lon |     Lat | Type      |    1 |    2 |    3 |    4 |     5 |     6 |     7 |     8 |     9 |   10 |   11 |   12 |
-|----:|---------:|:-----------|---------:|--------:|:----------|-----:|-----:|-----:|-----:|------:|------:|------:|------:|------:|-----:|-----:|-----:|
-|   1 |     2025 | Motuo      |  95.3536 | 29.3042 | prec      | 10.0 | 22.0 | 38.0 | 93.0 | 114.0 | 230.0 | 241.0 | 216.0 | 187.0 | 72.0 | 12.0 |  7.0 |
-|   1 |     2025 | Motuo      |  95.3536 | 29.3042 | mean_temp | 10.9 | 11.6 | 15.1 | 18.6 |  21.9 |  24.0 |  24.4 |  24.6 |  23.1 | 20.1 | 16.0 | 12.4 |
-|   1 |     2025 | Motuo      |  95.3536 | 29.3042 | min_temp  | -1.9 | -0.5 |  3.1 |  6.2 |   9.9 |  12.5 |  13.6 |  13.3 |  12.7 |  9.2 |  2.9 | -0.3 |
-|   1 |     2025 | Motuo      |  95.3536 | 29.3042 | max_temp  | 10.9 | 11.6 | 15.1 | 18.6 |  21.9 |  24.0 |  24.4 |  24.6 |  23.1 | 20.1 | 16.0 | 12.4 |
-|   2 |     1301 | Wulianshan | 100.5000 | 24.5000 | prec      | 12.0 | 16.0 | 20.0 | 35.0 |  75.0 | 173.0 | 204.0 | 193.0 | 126.0 | 98.0 | 47.0 | 18.0 |
-|   2 |     1301 | Wulianshan | 100.5000 | 24.5000 | mean_temp | 20.8 | 23.2 | 26.5 | 29.0 |  29.5 |  28.6 |  28.3 |  28.5 |  27.3 | 25.2 | 22.2 | 19.9 |
-|   2 |     1301 | Wulianshan | 100.5000 | 24.5000 | min_temp  |  5.7 |  7.4 | 10.7 | 14.4 |  17.8 |  20.4 |  20.6 |  20.1 |  18.6 | 16.0 | 11.4 |  7.1 |
-|   2 |     1301 | Wulianshan | 100.5000 | 24.5000 | max_temp  | 20.8 | 23.2 | 26.5 | 29.0 |  29.5 |  28.6 |  28.3 |  28.5 |  27.3 | 25.2 | 22.2 | 19.9 |
-|   3 |     2082 | Wawushan   | 102.9167 | 29.5000 | prec      | 12.0 | 13.0 | 21.0 | 53.0 | 104.0 | 168.0 | 191.0 | 180.0 | 145.0 | 73.0 | 27.0 | 14.0 |
-|   3 |     2082 | Wawushan   | 102.9167 | 29.5000 | mean_temp |  4.2 |  5.9 | 10.9 | 15.6 |  18.3 |  19.8 |  22.0 |  21.8 |  17.6 | 13.7 |  9.9 |  5.9 |
-|   3 |     2082 | Wawushan   | 102.9167 | 29.5000 | min_temp  | -4.1 | -2.8 |  1.0 |  5.7 |   9.1 |  11.9 |  14.7 |  14.3 |  11.0 |  7.0 |  2.0 | -2.2 |
-|   3 |     2082 | Wawushan   | 102.9167 | 29.5000 | max_temp  |  4.2 |  5.9 | 10.9 | 15.6 |  18.3 |  19.8 |  22.0 |  21.8 |  17.6 | 13.7 |  9.9 |  5.9 |
+| No | Altitude | Location | Lon | Lat | Type | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---:|---:|:---|---:|---:|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 2025 | Motuo | 95.3536 | 29.3042 | prec | 10.0 | 22.0 | 38.0 | 93.0 | 114.0 | 230.0 | 241.0 | 216.0 | 187.0 | 72.0 | 12.0 | 7.0 |
+| 1 | 2025 | Motuo | 95.3536 | 29.3042 | mean_temp | 10.9 | 11.6 | 15.1 | 18.6 | 21.9 | 24.0 | 24.4 | 24.6 | 23.1 | 20.1 | 16.0 | 12.4 |
+| 1 | 2025 | Motuo | 95.3536 | 29.3042 | min_temp | -1.9 | -0.5 | 3.1 | 6.2 | 9.9 | 12.5 | 13.6 | 13.3 | 12.7 | 9.2 | 2.9 | -0.3 |
+| 1 | 2025 | Motuo | 95.3536 | 29.3042 | max_temp | 10.9 | 11.6 | 15.1 | 18.6 | 21.9 | 24.0 | 24.4 | 24.6 | 23.1 | 20.1 | 16.0 | 12.4 |
+| 2 | 1301 | Wulianshan | 100.5000 | 24.5000 | prec | 12.0 | 16.0 | 20.0 | 35.0 | 75.0 | 173.0 | 204.0 | 193.0 | 126.0 | 98.0 | 47.0 | 18.0 |
+| 2 | 1301 | Wulianshan | 100.5000 | 24.5000 | mean_temp | 20.8 | 23.2 | 26.5 | 29.0 | 29.5 | 28.6 | 28.3 | 28.5 | 27.3 | 25.2 | 22.2 | 19.9 |
+| 2 | 1301 | Wulianshan | 100.5000 | 24.5000 | min_temp | 5.7 | 7.4 | 10.7 | 14.4 | 17.8 | 20.4 | 20.6 | 20.1 | 18.6 | 16.0 | 11.4 | 7.1 |
+| 2 | 1301 | Wulianshan | 100.5000 | 24.5000 | max_temp | 20.8 | 23.2 | 26.5 | 29.0 | 29.5 | 28.6 | 28.3 | 28.5 | 27.3 | 25.2 | 22.2 | 19.9 |
+| 3 | 2082 | Wawushan | 102.9167 | 29.5000 | prec | 12.0 | 13.0 | 21.0 | 53.0 | 104.0 | 168.0 | 191.0 | 180.0 | 145.0 | 73.0 | 27.0 | 14.0 |
+| 3 | 2082 | Wawushan | 102.9167 | 29.5000 | mean_temp | 4.2 | 5.9 | 10.9 | 15.6 | 18.3 | 19.8 | 22.0 | 21.8 | 17.6 | 13.7 | 9.9 | 5.9 |
+| 3 | 2082 | Wawushan | 102.9167 | 29.5000 | min_temp | -4.1 | -2.8 | 1.0 | 5.7 | 9.1 | 11.9 | 14.7 | 14.3 | 11.0 | 7.0 | 2.0 | -2.2 |
+| 3 | 2082 | Wawushan | 102.9167 | 29.5000 | max_temp | 4.2 | 5.9 | 10.9 | 15.6 | 18.3 | 19.8 | 22.0 | 21.8 | 17.6 | 13.7 | 9.9 | 5.9 |
 
 The exported data.frame includes 5 kinds of information of locations(as
 which in the data.frame imported), and values of 4 kinds of climate

@@ -1,9 +1,8 @@
-pandoc: 3.1.1
-pkgdown: 2.0.7
+pandoc: '3.2'
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   climplot_Intro: climplot_Intro.html
   data_calculation: data_calculation.html
   README.zh-CN: README.zh-CN.html
-last_built: 2023-10-13T05:12Z
-
+last_built: 2025-02-18T13:08Z
