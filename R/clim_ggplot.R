@@ -6,7 +6,7 @@
 #' showfrost = FALSE, shem = FALSE, line_p3 = FALSE,
 #' temp_extreme = FALSE,per = NA)
 #'
-#' @description \code{clim_plot} plots the Walter & Lieth climatic diagram
+#' @description \code{clim_ggplot} plots the Walter & Lieth climatic diagram
 #' with the climate data of different locations.
 #' It is based on the method of function
 #' \code{ggclimat_walter_lieth()}from the package \code{climaemet},
@@ -517,7 +517,8 @@ clim_ggplot <- function(data,mlab = "", pcol = "blue",
         ),
         data = tm_max_line,
         color = dcol,
-        alpha = 0.15
+        linetype=3,
+        alpha = 0.3
       )
   }
 
@@ -532,7 +533,7 @@ clim_ggplot <- function(data,mlab = "", pcol = "blue",
         ),
         data = pm_max_line,
         color = wcol,
-        alpha = 0.15
+        alpha = 0.2
       )
   }
 
@@ -635,27 +636,27 @@ clim_ggplot <- function(data,mlab = "", pcol = "blue",
         size = 14,
 
       ),
-      plot.tag = element_text(size = 10),
+      plot.tag = element_text(size = 12),
       plot.tag.position = "left",
       axis.ticks.length.x.bottom = unit(0, "pt"),
       axis.line.x.bottom = element_blank(),
       axis.title.y.left = element_text(
         angle = 90,
         vjust = 0.9,
-        size = 10,
+        size = 12,
         colour = tcol,
         margin = unit(rep(10, 4), "pt")
       ),
-      axis.text.x.bottom = element_text(size = 10),
-      axis.text.y.left = element_text(colour = tcol, size = 10),
+      axis.text.x.bottom = element_text(size = 12),
+      axis.text.y.left = element_text(colour = tcol, size = 12),
       axis.title.y.right = element_text(
         angle = 90,
         vjust = 0.9,
-        size = 10,
+        size = 12,
         colour = pcol,
         margin = unit(rep(10, 4), "pt")
       ),
-      axis.text.y.right = element_text(colour = pcol, size = 10)
+      axis.text.y.right = element_text(colour = pcol, size = 12)
     )
 
 

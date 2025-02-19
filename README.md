@@ -12,7 +12,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 version](https://img.shields.io/badge/R-%3E=%203.5.0-6666ff.svg)](https://cran.r-project.org/)
 [![package
 version](https://img.shields.io/badge/Package%20version-0.4.0-orange.svg?style=flat-square)](commits/develop)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2025--02--18-yellow.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2025--02--19-yellow.svg)](/commits/master)
 ![CRAN_Status_Badge](https://img.shields.io/badge/CRAN-Not%20ready-red.svg)
 [![R-CMD-check](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/auman-chan/climplot/actions/workflows/test-coverage.yaml)
@@ -161,10 +161,11 @@ package](https://auman-chan.github.io/climplot/).
 
 Please cite climplot as follows:
 
-Chan A (2023). climplot: climplot: Facilitate and tailor Walter & Lieth
-climatic diagram drawing. R package version 0.2.1,
+Chan A (2025). climplot: climplot: Facilitate and tailor Walter & Lieth
+climatic diagram drawing. R package version 0.4.0,
 <https://github.com/auman-chan/climplot>.
 
 NOTE: please also cite the
-[‘climatol’](https://CRAN.R-project.org/package=climatol) package and
+[‘climatol’](https://CRAN.R-project.org/package=climatol) package, the
+[‘climaemet’](doi:10.32614/CRAN.package.climaemet) package and
 [Worldclim](https://worldclim.org/data/monthlywth.html) data.

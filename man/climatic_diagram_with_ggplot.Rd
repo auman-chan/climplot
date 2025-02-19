@@ -90,7 +90,7 @@ of temperature and precipitation ,
 as well as the time of humid and arid season.
 }
 \description{
-\code{clim_plot} plots the Walter & Lieth climatic diagram
+\code{clim_ggplot} plots the Walter & Lieth climatic diagram
 with the climate data of different locations.
 It is based on the method of function
 \code{ggclimat_walter_lieth()}from the package \code{climaemet},
